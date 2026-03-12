@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bsb4rfndty27l"]
 
+[ext_resource type="Script" uid="uid://dc3a3agx54c2a" path="res://Scripts/game.gd" id="1_i6g32"]
 [ext_resource type="PackedScene" uid="uid://wsal5fwceue7" path="res://Scenes/rooms/base_room.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b570itv381hel" path="res://Scenes/characters/player/guns/obj_pistol.tscn" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
@@ -7,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bbmekswojnl5c" path="res://Scripts/constructors/map_constructor.gd" id="9_ldgsr"]
 
 [node name="game" type="Node2D" unique_id=1109737252]
+script = ExtResource("1_i6g32")
 
 [node name="base_room" parent="." unique_id=1428881972 instance=ExtResource("1_wrm1d")]
 

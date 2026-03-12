@@ -79,6 +79,8 @@ visibility_layer = 23
 z_index = 1
 collision_mask = 13
 script = ExtResource("1_sd3sm")
+speed = null
+health = null
 
 [node name="animPlayer" type="AnimatedSprite2D" parent="." unique_id=1673899738]
 texture_filter = 3
