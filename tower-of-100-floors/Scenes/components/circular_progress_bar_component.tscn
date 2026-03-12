@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bbv410pi8rqxa"]
+
+[ext_resource type="Script" uid="uid://o31y3c7npedu" path="res://Scripts/components/circular_progress_bar_component.gd" id="1_8n5lm"]
+[ext_resource type="Texture2D" uid="uid://hrdibyax07p3" path="res://Resources/images/CircularProgressBar.png" id="2_w7i1s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p55yf"]
+load_path = "res://.godot/imported/CircularProgressBar.png-2740c414ed9748016b5e6c56e7a21b74.ctex"
+
+[node name="CircularProgressBarComponent" type="Node" unique_id=897445385 node_paths=PackedStringArray("texture")]
+script = ExtResource("1_8n5lm")
+texture = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1057617245]
+texture_filter = 2
+offset_right = 300.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.5)
+fill_mode = 4
+texture_under = SubResource("CompressedTexture2D_p55yf")
+texture_progress = ExtResource("2_w7i1s")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.6666667, 1, 0, 1)

@@ -1,6 +1,7 @@
 shader_type canvas_item;
 render_mode blend_premul_alpha;
 
+// Shader link = https://godotshaders.com/shader/multi-stage-shine-canvasitem/
 // ───────── Visual controls ─────────
 uniform float Angle_deg : hint_range(-90.0, 90.0) = 30.0;   // base band angle (degrees)
 uniform float Brightness : hint_range(0.0, 5.0) = 2.5;      // white intensity added over sprite

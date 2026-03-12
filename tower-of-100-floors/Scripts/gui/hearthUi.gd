@@ -1,5 +1,5 @@
 extends Node
-class_name HeartUI
+class_name HeartComponent
 
 #@onready var hearth_container: HBoxContainer = $hearthContainer
 const HEART_TEX = preload("res://Resources/images/player/Heart.png")
