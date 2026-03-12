@@ -20,4 +20,4 @@ script = ExtResource("9_ldgsr")
 [node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("5_wowpa")]
 
 [node name="objPistol" parent="." unique_id=820236886 instance=ExtResource("5_i6g32")]
-position = Vector2(873, 282)
+position = Vector2(881, 330)

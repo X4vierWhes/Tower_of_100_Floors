@@ -7,6 +7,9 @@ class_name Player
 var death: bool = false
 @onready var anim_player: AnimatedSprite2D = $animPlayer
 
+func _ready() -> void:
+	pass
+
 func _process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed

@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://b570itv381hel"]
 
 [ext_resource type="Script" uid="uid://dbi8e84tlk5tv" path="res://Scripts/characters/guns/obj_pistol.gd" id="1_6b0xm"]
+[ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://shaders/shine.gdshader" id="1_s1rvl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uf5p"]
+shader = ExtResource("1_s1rvl")
+shader_parameter/Angle_deg = 30.0
+shader_parameter/Brightness = 2.5
+shader_parameter/Band_Soft = 0.06
+shader_parameter/Stage_Count = 2
+shader_parameter/Stage1_Duration = 1.0
+shader_parameter/Stage2_Duration = 1.5
+shader_parameter/Stage3_Duration = 1.0
+shader_parameter/Stage1_Width = 0.12
+shader_parameter/Stage2_Width = 0.12
+shader_parameter/Stage3_Width = 0.12
+shader_parameter/Stage1_LeftToRight = true
+shader_parameter/Stage2_LeftToRight = false
+shader_parameter/Stage3_LeftToRight = true
+shader_parameter/One_Shot = false
+shader_parameter/OneShot_Delay = 0.0
+shader_parameter/Phase_Offset = 0.0
+shader_parameter/Wiggle_Angle = false
+shader_parameter/Wiggle_Amount_deg = 15.0
+shader_parameter/Shine_Pause = 0.4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1rvl"]
 load_path = "res://.godot/imported/Pistol_Solo.png-0b1f27068884265d1916051c409eb305.ctex"
@@ -8,11 +31,13 @@ load_path = "res://.godot/imported/Pistol_Solo.png-0b1f27068884265d1916051c409eb
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b0xm"]
 radius = 88.051125
 
-[node name="objPistol" type="CharacterBody2D" unique_id=820236886]
+[node name="objPistol" type="CharacterBody2D" unique_id=820236886 node_paths=PackedStringArray("rich_text_label")]
 light_mask = 17
 visibility_layer = 8
+material = SubResource("ShaderMaterial_0uf5p")
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_6b0xm")
+rich_text_label = NodePath("RichTextLabel")
 
 [node name="pistol" type="Sprite2D" parent="." unique_id=332062464]
 texture_filter = 3
@@ -27,16 +52,14 @@ collision_mask = 19
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1292123857]
 shape = SubResource("CircleShape2D_6b0xm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=824138087]
-layer = 2
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1047939887]
+position = Vector2(-1.6666666, -56.666664)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1198685475]
-top_level = true
-z_index = 2
-offset_left = -59.0
-offset_top = -52.0
-offset_right = 140.0
-offset_bottom = -12.0
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=878853882]
+offset_left = -61.666664
+offset_top = -70.0
+offset_right = 151.66666
+offset_bottom = -30.0
 bbcode_enabled = true
 text = "[shake] Press [F] to equip [/shake]"
 

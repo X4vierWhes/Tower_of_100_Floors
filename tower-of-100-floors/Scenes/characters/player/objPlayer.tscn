@@ -96,3 +96,5 @@ shape = SubResource("RectangleShape2D_eoce3")
 z_index = -1
 position = Vector2(-1, 14)
 texture = ExtResource("3_wphea")
+
+[node name="guns_pivot" type="Marker2D" parent="." unique_id=617503045]
