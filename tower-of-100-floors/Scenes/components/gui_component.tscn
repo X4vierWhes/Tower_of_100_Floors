@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://nwxhee7cnq3l" path="res://Resources/images/uis/GUI.png" id="1_lfbsx"]
 [ext_resource type="Texture2D" uid="uid://cj8duhdt5n3np" path="res://Resources/images/itens/Coin.png" id="2_2ecj8"]
+[ext_resource type="Script" uid="uid://vogy4qmmle12" path="res://Scripts/gui/itensUi.gd" id="2_jawp2"]
 [ext_resource type="Script" uid="uid://bxbnqt18srrqs" path="res://Scripts/gui/hearthUi.gd" id="3_2ecj8"]
 
 [sub_resource type="Shader" id="Shader_jawp2"]
@@ -668,16 +669,19 @@ texture_filter = 3
 texture = ExtResource("1_lfbsx")
 centered = false
 
-[node name="itens" type="Node" parent="CanvasLayer" unique_id=1434819757]
+[node name="itens_component" type="Node" parent="CanvasLayer" unique_id=1434819757 node_paths=PackedStringArray("coins_label", "bombs_label")]
+script = ExtResource("2_jawp2")
+coins_label = NodePath("coins/coinsCount")
+bombs_label = NodePath("bombs/bombsCount")
 
-[node name="coins" type="Sprite2D" parent="CanvasLayer/itens" unique_id=900390988]
+[node name="coins" type="Sprite2D" parent="CanvasLayer/itens_component" unique_id=900390988]
 texture_filter = 3
 material = SubResource("ShaderMaterial_adgjo")
 position = Vector2(88, 656)
 scale = Vector2(0.6714285, 0.63750046)
 texture = ExtResource("2_2ecj8")
 
-[node name="coinsCount" type="RichTextLabel" parent="CanvasLayer/itens/coins" unique_id=1350903393]
+[node name="coinsCount" type="RichTextLabel" parent="CanvasLayer/itens_component/coins" unique_id=1350903393]
 material = SubResource("ShaderMaterial_rdmnq")
 offset_right = 77.44682
 offset_bottom = 81.5686
@@ -687,13 +691,13 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bombs" type="Sprite2D" parent="CanvasLayer/itens" unique_id=1687440391]
+[node name="bombs" type="Sprite2D" parent="CanvasLayer/itens_component" unique_id=1687440391]
 texture_filter = 3
 material = SubResource("ShaderMaterial_v0ych")
 position = Vector2(223, 654)
 texture = SubResource("CompressedTexture2D_jawp2")
 
-[node name="bombsCount" type="RichTextLabel" parent="CanvasLayer/itens/bombs" unique_id=1817707819]
+[node name="bombsCount" type="RichTextLabel" parent="CanvasLayer/itens_component/bombs" unique_id=1817707819]
 anchors_preset = -1
 anchor_top = 0.25800002
 anchor_bottom = 0.25800002
@@ -707,10 +711,10 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hearth" type="Node" parent="CanvasLayer" unique_id=1839527346]
+[node name="heart_component" type="Node" parent="CanvasLayer" unique_id=1839527346]
 script = ExtResource("3_2ecj8")
 
-[node name="hearthContainer" type="HBoxContainer" parent="CanvasLayer/hearth" unique_id=936672143]
+[node name="hearthContainer" type="HBoxContainer" parent="CanvasLayer/heart_component" unique_id=936672143]
 z_index = 99
 texture_filter = 3
 material = SubResource("ShaderMaterial_10gr5")

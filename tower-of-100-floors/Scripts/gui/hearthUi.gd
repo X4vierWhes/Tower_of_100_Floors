@@ -1,14 +1,33 @@
 extends Node
-class_name HearthUI
+class_name HeartUI
 
-@onready var hearth_container: HBoxContainer = $hearthContainer
+#@onready var hearth_container: HBoxContainer = $hearthContainer
+const HEART_TEX = preload("res://Resources/images/player/Heart.png")
 @export_category("Configurações")
-@export var max_hearth: int = 8
-@onready var _elements: Array = []
+@export var max_heart: int = 8
+@export var heart_container: HBoxContainer
+@onready var _elements: Array[TextureRect] = []
 
 #Vai agir como uma pilha, onde ultimo sai
-func stack() -> void:
-	pass
+func stack() -> void: #Empilhar
+	if _elements.size() < max_heart:
+		var heart: TextureRect = TextureRect.new()
+		heart.texture = HEART_TEX
+		heart.expand_mode =TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
+		heart.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+		heart.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		heart.custom_minimum_size = Vector2(32, 32)
+		heart_container.add_child(heart)
+		heart.use_parent_material = true
+		_elements.append(heart)
+		print(_elements.size())
+	else:
+		print("Hearth full!")
+	
 
-func unstack() -> void:
-	pass
+func unstack() -> void: #Desempilhar
+	if !_elements.is_empty():
+		var last = _elements.pop_back()
+		if is_instance_valid(last):
+			last.queue_free()
+	
