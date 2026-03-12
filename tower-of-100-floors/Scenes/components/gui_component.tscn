@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://dlsmjg41i2f62"]
 
 [ext_resource type="Texture2D" uid="uid://nwxhee7cnq3l" path="res://Resources/images/uis/GUI.png" id="1_lfbsx"]
+[ext_resource type="Script" uid="uid://daw4wt714p7rj" path="res://Scripts/gui/gui_component.gd" id="1_rdmnq"]
 [ext_resource type="Texture2D" uid="uid://cj8duhdt5n3np" path="res://Resources/images/itens/Coin.png" id="2_2ecj8"]
 [ext_resource type="Script" uid="uid://vogy4qmmle12" path="res://Scripts/gui/itensUi.gd" id="2_jawp2"]
 [ext_resource type="Script" uid="uid://bxbnqt18srrqs" path="res://Scripts/gui/hearthUi.gd" id="3_2ecj8"]
 [ext_resource type="Script" uid="uid://tpop2ishxrwn" path="res://Scripts/gui/gunUi.gd" id="5_adgjo"]
-[ext_resource type="Texture2D" uid="uid://cdmbj8702adv1" path="res://Resources/images/pistol/Ammo.png" id="6_10gr5"]
+[ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://shaders/shine.gdshader" id="6_10gr5"]
 
 [sub_resource type="Shader" id="Shader_jawp2"]
 code = "shader_type canvas_item;
@@ -660,7 +661,30 @@ shader_parameter/Wiggle_Angle = false
 shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbk55"]
+shader = ExtResource("6_10gr5")
+shader_parameter/Angle_deg = 30.0
+shader_parameter/Brightness = 2.5
+shader_parameter/Band_Soft = 0.06
+shader_parameter/Stage_Count = 2
+shader_parameter/Stage1_Duration = 1.0
+shader_parameter/Stage2_Duration = 1.5
+shader_parameter/Stage3_Duration = 1.0
+shader_parameter/Stage1_Width = 0.12
+shader_parameter/Stage2_Width = 0.12
+shader_parameter/Stage3_Width = 0.12
+shader_parameter/Stage1_LeftToRight = true
+shader_parameter/Stage2_LeftToRight = false
+shader_parameter/Stage3_LeftToRight = true
+shader_parameter/One_Shot = false
+shader_parameter/OneShot_Delay = 0.0
+shader_parameter/Phase_Offset = 0.0
+shader_parameter/Wiggle_Angle = false
+shader_parameter/Wiggle_Amount_deg = 15.0
+shader_parameter/Shine_Pause = 0.4
+
 [node name="gui_component" type="Node2D" unique_id=963733602]
+script = ExtResource("1_rdmnq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1063729661]
 layer = 99
@@ -737,94 +761,13 @@ gun_location = NodePath("Marker2D")
 ammo_container = NodePath("ammoContainer")
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer/gun_component" unique_id=1762340157]
+material = SubResource("ShaderMaterial_vbk55")
 position = Vector2(211, 460)
 
 [node name="ammoContainer" type="HBoxContainer" parent="CanvasLayer/gun_component" unique_id=1436714447]
+texture_filter = 3
 offset_left = 53.0
 offset_top = 538.0
 offset_right = 381.0
 offset_bottom = 576.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1394351584]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1052578464]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1268271895]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=752162042]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=431885864]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=503385021]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1429984439]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1518583042]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=97544500]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect10" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1136435004]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect11" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=13985616]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect12" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1809037509]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect13" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=565448215]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect14" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1906437844]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect15" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1462384749]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect16" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=88661304]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect17" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=493042486]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect18" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=484902362]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect19" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=1341153911]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect20" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=118696231]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
-
-[node name="TextureRect21" type="TextureRect" parent="CanvasLayer/gun_component/ammoContainer" unique_id=508615532]
-layout_mode = 2
-texture = ExtResource("6_10gr5")
+theme_override_constants/separation = 1
