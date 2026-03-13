@@ -5,17 +5,21 @@ class_name IteractableItem
 @export var ITEM_NAME: String = "null"
 @export var action_name: String = "Interact"
 @export var INTERACT_TEXT: String = "Press [F] to "
-const ITENS_DIR: String = "res://Scenes/itens/equip_itens/"
+@export var consumable_item: bool = true
+
 @onready var is_player_in_area: bool = false
 @onready var player_pointer: Player = null
+
+const ITENS_DIR: String = "res://Scenes/itens/equip_itens/obj_"
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && is_player_in_area:
 		_interact()
 
 func _interact() -> void:
-	if is_player_in_area && player_pointer:
-		player_pointer.equip(_get_item())
+	if is_player_in_area && player_pointer && consumable_item:
+		player_pointer._equip(_get_item())
 		queue_free()
 
 func _get_item() -> Item: #Sobrescrever cenas que herdam

@@ -6,4 +6,9 @@ class_name Item
 @export var damage: int = 2
 @export var max_ammo: int = 22
 @onready var actual_clip: int = 0
-const DIR_DROP_ITEM: String = "res://Scenes/itens/iteractable_itens/obj"
+@onready var gui_pointer: GUI = null
+@onready var player_pointer: Player = null
+const DIR_DROP_ITEM: String = "res://Scenes/itens/iteractable_itens/"
+
+func _get_drop_item() -> IteractableItem:
+	return null

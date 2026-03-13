@@ -23,3 +23,6 @@ func _process(delta: float) -> void:
 	if direction.x != 0:
 		anim_player.flip_h = (direction.x < 0)
 	
+
+func _equip(item: Item) -> void:
+	pass
