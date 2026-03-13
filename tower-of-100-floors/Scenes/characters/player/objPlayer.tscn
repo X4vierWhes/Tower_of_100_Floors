@@ -77,7 +77,8 @@ size = Vector2(20, 26)
 [node name="objPlayer" type="CharacterBody2D" unique_id=1282361699 groups=["Player"]]
 visibility_layer = 23
 z_index = 1
-collision_mask = 13
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_sd3sm")
 speed = null
 health = null

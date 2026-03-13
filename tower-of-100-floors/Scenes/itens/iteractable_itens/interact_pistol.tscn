@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ce62llbkfs1vh"]
+
+[ext_resource type="Script" uid="uid://wxquxhowhbw6" path="res://Scripts/itens/iteractable_itens/interact_pistol.gd" id="1_yeg44"]
+[ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/pistol/Pistol_Solo.png" id="2_qrsnj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hn20"]
+size = Vector2(340, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeg44"]
+size = Vector2(88, 36)
+
+[node name="interact_pistol" type="StaticBody2D" unique_id=70214556 groups=["Itens"]]
+light_mask = 4
+visibility_layer = 11
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_yeg44")
+ITEM_NAME = "pistol"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1914878894]
+texture_filter = 3
+texture = ExtResource("2_qrsnj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=716386264]
+show_behind_parent = true
+top_level = true
+light_mask = 4
+visibility_layer = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1978917792]
+light_mask = 4
+visibility_layer = 11
+position = Vector2(-8, 1)
+shape = SubResource("RectangleShape2D_1hn20")
+
+[node name="label_location" type="Marker2D" parent="." unique_id=714915600]
+position = Vector2(0, -90)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=839798734]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143184743]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_yeg44")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
