@@ -15,7 +15,8 @@ func _input(event: InputEvent) -> void:
 
 func _interact() -> void:
 	if is_player_in_area && player_pointer:
-		print("Interagiu")
+		player_pointer.equip(_get_item())
+		queue_free()
 
 func _get_item() -> Item: #Sobrescrever cenas que herdam
 	if ITEM_NAME == "null" && _search_item(ITEM_NAME):
