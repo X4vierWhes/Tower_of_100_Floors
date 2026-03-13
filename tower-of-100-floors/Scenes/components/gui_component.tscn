@@ -683,8 +683,11 @@ shader_parameter/Wiggle_Angle = false
 shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
-[node name="gui_component" type="Node2D" unique_id=963733602]
+[node name="gui_component" type="Node2D" unique_id=963733602 node_paths=PackedStringArray("itens_component", "heart_component", "gun_component")]
 script = ExtResource("1_rdmnq")
+itens_component = NodePath("CanvasLayer/itens_component")
+heart_component = NodePath("CanvasLayer/heart_component")
+gun_component = NodePath("CanvasLayer/gun_component")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1063729661]
 layer = 99
@@ -714,6 +717,7 @@ offset_top = -1.5686263
 offset_right = 86.382996
 offset_bottom = 79.99998
 theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
 text = "0
 "
 horizontal_alignment = 1
@@ -734,6 +738,7 @@ offset_top = -14.512001
 offset_right = 56.0
 offset_bottom = 33.488
 theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
 text = "0
 "
 horizontal_alignment = 1
@@ -757,10 +762,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="gun_component" type="Node" parent="CanvasLayer" unique_id=664749248 node_paths=PackedStringArray("gun_location", "ammo_container")]
 script = ExtResource("5_adgjo")
-gun_location = NodePath("Marker2D")
+gun_location = NodePath("texture")
 ammo_container = NodePath("ammoContainer")
 
-[node name="Marker2D" type="Marker2D" parent="CanvasLayer/gun_component" unique_id=1762340157]
+[node name="texture" type="Marker2D" parent="CanvasLayer/gun_component" unique_id=1762340157]
 material = SubResource("ShaderMaterial_vbk55")
 position = Vector2(211, 460)
 

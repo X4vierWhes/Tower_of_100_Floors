@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://ckisamdxmuhow" path="res://Scenes/characters/player/objPlayer.tscn" id="9_h4fw4"]
 
-[node name="game" type="Node2D" unique_id=1109737252]
+[node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("game_interface", "room_manager")]
 script = ExtResource("1_i6g32")
+game_interface = NodePath("gui_component")
+room_manager = NodePath("room_manager")
 
 [node name="objPlayer" parent="." unique_id=1282361699 instance=ExtResource("9_h4fw4")]
 position = Vector2(868, 615)

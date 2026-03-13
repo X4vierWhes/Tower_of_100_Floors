@@ -8,8 +8,20 @@ const HEART_TEX = preload("res://Resources/images/player/Heart.png")
 @export var heart_container: HBoxContainer
 @onready var _elements: Array[TextureRect] = []
 
+func _update_hearts(_count: int) -> void:
+	if _elements.size() >= max_heart:
+		return
+	
+	if _count > 0:
+		for i in range(_count):
+			
+			if _elements.size() < max_heart:
+				_stack()
+			else:
+				break
+
 #Vai agir como uma pilha, onde ultimo sai
-func stack() -> void: #Empilhar
+func _stack() -> void: #Empilhar
 	if _elements.size() < max_heart:
 		var heart: TextureRect = TextureRect.new()
 		heart.texture = HEART_TEX
@@ -25,7 +37,7 @@ func stack() -> void: #Empilhar
 		print("Hearth full!")
 	
 
-func unstack() -> void: #Desempilhar
+func _unstack() -> void: #Desempilhar
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):

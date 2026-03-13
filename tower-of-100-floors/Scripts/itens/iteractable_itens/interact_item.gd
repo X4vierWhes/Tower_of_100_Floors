@@ -26,10 +26,11 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 	if ITEM_NAME == "null" && _search_item(ITEM_NAME):
 		return null
 	var dir: String = ITENS_DIR + ITEM_NAME + ".tscn"
-	var item = load(dir).instanciate() as Item
+	var item = load(dir)
 	
 	if item:
-		return item
+		var instance = item.instantiate() as Item
+		return instance
 	return null
 	
 

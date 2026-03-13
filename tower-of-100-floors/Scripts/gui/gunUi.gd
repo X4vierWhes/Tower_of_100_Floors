@@ -8,7 +8,16 @@ class_name GunComponent
 @onready var _elements: Array[TextureRect] = []
 const AMMO_TEX = preload("res://Resources/images/pistol/Ammo.png")
 
-func stack() -> void:
+func update_ammo(_count: int) -> void:
+	if _count > 0:
+		for i in range(_count):
+			_stack()
+	else:
+		_count *= -1
+		for i in range(_count):
+			_unstack()
+
+func _stack() -> void:
 	if _elements.size() < max_ammo:
 		var ammo: TextureRect = TextureRect.new()
 		ammo.texture = AMMO_TEX
@@ -22,8 +31,15 @@ func stack() -> void:
 	else:
 		print("Ammo full!")
 
-func unstack() -> void:
+func _unstack() -> void:
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):
 			last.queue_free()
+
+func _set_texture(texture: TextureRect) -> void:
+	texture.global_position = gun_location.global_position
+	texture.global_position.x -= 50.0
+	texture.global_position.y -= 50.0
+	gun_location.add_child(texture)
+	texture.use_parent_material = true
