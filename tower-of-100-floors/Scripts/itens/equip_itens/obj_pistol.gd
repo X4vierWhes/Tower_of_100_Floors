@@ -3,6 +3,7 @@ class_name Pistol
 
 const TEX_PISTOL: String = "res://Resources/images/pistol/Pistol_Solo.png"
 
+
 func _get_texture() -> TextureRect:
 	var tex = TextureRect.new()
 	tex.texture = load(TEX_PISTOL)

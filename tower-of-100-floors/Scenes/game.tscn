@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bsb4rfndty27l"]
 
 [ext_resource type="Script" uid="uid://dc3a3agx54c2a" path="res://Scripts/game.gd" id="1_i6g32"]
-[ext_resource type="PackedScene" uid="uid://wsal5fwceue7" path="res://Scenes/rooms/base_room.tscn" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://wsal5fwceue7" path="res://Scenes/rooms/room0.tscn" id="1_wrm1d"]
+[ext_resource type="Script" uid="uid://bo23esseomo07" path="res://Scripts/room/room_manager.gd" id="4_i6g32"]
 [ext_resource type="PackedScene" uid="uid://ce62llbkfs1vh" path="res://Scenes/itens/iteractable_itens/interact_pistol.tscn" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://ckisamdxmuhow" path="res://Scenes/characters/player/objPlayer.tscn" id="9_h4fw4"]
@@ -17,8 +18,9 @@ position = Vector2(868, 615)
 [node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("5_wowpa")]
 
 [node name="room_manager" type="Node" parent="." unique_id=1747045631]
+script = ExtResource("4_i6g32")
 
-[node name="base_room" parent="room_manager" unique_id=1428881972 instance=ExtResource("1_wrm1d")]
+[node name="room0" parent="room_manager" unique_id=1428881972 instance=ExtResource("1_wrm1d")]
 
 [node name="interact_pistol" parent="." unique_id=1082604604 instance=ExtResource("5_i6g32")]
 position = Vector2(879, 347)

@@ -5,6 +5,18 @@ class_name GUI
 @export var heart_component: HeartComponent
 @export var gun_component: GunComponent
 
+func gun_stack(gun: Pistol) -> void:
+	gun_component._stack()
+
+func gun_unstack(gun: Pistol) -> void:
+	gun_component._unstack()
+
+func heart_stack(player: Player) -> void:
+	heart_component._stack()
+
+func heart_unstack(player: Player) -> void:
+	heart_component._unstack()
+
 func update_player(player: Player) -> void:
 	_update_heart(player.health)
 	_update_itens(player.coins, player.bombs)
