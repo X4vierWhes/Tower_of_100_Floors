@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d2e40ym3i8tw5"]
+
+[ext_resource type="Script" uid="uid://do88t58qqiq2n" path="res://Scripts/itens/iteractable_itens/iteractable_item.gd" id="1_u2v43"]
+
+[node name="IteractableItem" type="StaticBody2D" unique_id=985248639]
+script = ExtResource("1_u2v43")
+ITEM_NAME = "pistol"

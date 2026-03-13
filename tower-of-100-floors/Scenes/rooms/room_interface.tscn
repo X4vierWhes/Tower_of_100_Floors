@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c7uqfvv6ydrla"]
+
+[ext_resource type="Script" uid="uid://byuffsjmaa3dv" path="res://Scripts/room/room_interface.gd" id="1_pl1u3"]
+
+[node name="room_interface" type="TileMapLayer" unique_id=747738401]
+script = ExtResource("1_pl1u3")

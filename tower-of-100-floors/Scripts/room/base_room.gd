@@ -1,5 +1,5 @@
-extends TileMapLayer
-class_name Room
+extends Room
+class_name BaseRoom
 
 @onready var floor: TileMapLayer = $floor
 @onready var roof: TileMapLayer = $roof

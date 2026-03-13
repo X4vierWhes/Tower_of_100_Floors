@@ -2,24 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dc3a3agx54c2a" path="res://Scripts/game.gd" id="1_i6g32"]
 [ext_resource type="PackedScene" uid="uid://wsal5fwceue7" path="res://Scenes/rooms/base_room.tscn" id="1_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b570itv381hel" path="res://Scenes/characters/player/guns/obj_pistol.tscn" id="5_i6g32"]
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://ckisamdxmuhow" path="res://Scenes/characters/player/objPlayer.tscn" id="9_h4fw4"]
-[ext_resource type="Script" uid="uid://bbmekswojnl5c" path="res://Scripts/constructors/map_constructor.gd" id="9_ldgsr"]
 
 [node name="game" type="Node2D" unique_id=1109737252]
 script = ExtResource("1_i6g32")
 
-[node name="base_room" parent="." unique_id=1428881972 instance=ExtResource("1_wrm1d")]
-
 [node name="objPlayer" parent="." unique_id=1282361699 instance=ExtResource("9_h4fw4")]
 position = Vector2(868, 615)
 collision_layer = 2
-
-[node name="map_constructor" type="Node" parent="." unique_id=1339081040]
-script = ExtResource("9_ldgsr")
+speed = 300.0
+health = 8
 
 [node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("5_wowpa")]
 
-[node name="objPistol" parent="." unique_id=820236886 instance=ExtResource("5_i6g32")]
-position = Vector2(881, 330)
+[node name="room_manager" type="Node" parent="." unique_id=1747045631]
+
+[node name="base_room" parent="room_manager" unique_id=1428881972 instance=ExtResource("1_wrm1d")]
