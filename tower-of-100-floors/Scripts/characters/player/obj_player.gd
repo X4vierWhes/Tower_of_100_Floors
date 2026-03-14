@@ -34,9 +34,13 @@ func _process(delta: float) -> void:
 func _equip(item: Item) -> void:
 	gun = item as Pistol
 	gun.global_position.x += 50.0
-	if gui_pointer:
-		gun._set_pointers(self, gui_pointer)
+	
 	guns_pivot.add_child(gun)
+	
+	if gui_pointer:
+		print("Passei ponteiros")
+		gun._set_pointers(self, gui_pointer)
+	gun.set_process(true)
 	if gun: 
 		print("Atualizar gun in player")
 		gui_pointer.update_gun(gun)

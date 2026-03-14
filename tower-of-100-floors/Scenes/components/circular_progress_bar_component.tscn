@@ -14,7 +14,6 @@ texture = NodePath("TextureProgressBar")
 texture_filter = 2
 offset_right = 300.0
 offset_bottom = 300.0
-scale = Vector2(0.5, 0.5)
 fill_mode = 4
 texture_under = SubResource("CompressedTexture2D_p55yf")
 texture_progress = ExtResource("2_w7i1s")

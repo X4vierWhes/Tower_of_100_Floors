@@ -27,15 +27,16 @@ func _stack() -> void:
 		ammo.custom_minimum_size = Vector2(4, 4)
 		ammo_container.add_child(ammo)
 		_elements.append(ammo)
-		print(_elements.size())
 	else:
 		print("Ammo full!")
 
-func _unstack() -> void:
+func _unstack() -> bool:
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):
 			last.queue_free()
+			return true
+	return false
 
 func _set_texture(texture: TextureRect) -> void:
 	texture.global_position = gun_location.global_position

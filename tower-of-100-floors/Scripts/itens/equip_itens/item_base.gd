@@ -6,11 +6,15 @@ class_name Item
 @export var damage: int = 2
 @export var max_ammo: int = 22
 @export var actual_clip: int = 22
-@onready var gui_pointer: GUI = null
-@onready var player_pointer: Player = null
+var gui_pointer: GUI = null
+var player_pointer: Player = null
 const DIR_DROP_ITEM: String = "res://Scenes/itens/iteractable_itens/"
 
+func _ready() -> void:
+	set_process(false)
+
 func _set_pointers(player: Player, gui: GUI) -> void:
+	print("Entrei na set pointers in ITEM")
 	player_pointer = player as Player
 	gui_pointer = gui as GUI
 

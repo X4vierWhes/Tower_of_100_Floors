@@ -14,7 +14,6 @@ func _update_hearts(_count: int) -> void:
 	
 	if _count > 0:
 		for i in range(_count):
-			
 			if _elements.size() < max_heart:
 				_stack()
 			else:
@@ -32,7 +31,6 @@ func _stack() -> void: #Empilhar
 		heart_container.add_child(heart)
 		heart.use_parent_material = true
 		_elements.append(heart)
-		print(_elements.size())
 	else:
 		print("Hearth full!")
 	

@@ -2,12 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bcl7esckclwa2" path="res://Scripts/itens/equip_itens/obj_pistol.gd" id="1_u8ahy"]
 [ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/pistol/Pistol_Solo.png" id="2_mrhsx"]
+[ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="3_mrhsx"]
 
 [node name="objPistol" type="CharacterBody2D" unique_id=577472924]
 script = ExtResource("1_u8ahy")
+shoot_delay = 0.4
 item_name = "pistol"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1101562816]
 texture_filter = 3
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_mrhsx")
+
+[node name="CircularProgressBarComponent" parent="." unique_id=897445385 node_paths=PackedStringArray("gun") instance=ExtResource("3_mrhsx")]
+loading_time = 1.8
+gun = NodePath("..")
