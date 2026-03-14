@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b03mdsyf70y87"]
+
+[node name="objDoor" type="CharacterBody2D" unique_id=247448901]
