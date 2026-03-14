@@ -13,6 +13,7 @@ var is_dashing: bool = false
 var dash_cooldown: float = 1.4
 var dash_duration: float = 0.4
 
+
 func _ready() -> void:
 	var parent = get_parent() as Game
 	if parent:
@@ -21,7 +22,10 @@ func _ready() -> void:
 		update_gui()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if is_dashing:
+		dashing_effect()
+	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash()
 	
@@ -46,6 +50,9 @@ func dash() -> void:
 	is_dashing = false
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
+
+func dashing_effect() -> void:
+	pass
 
 func _equip(item: Item) -> void:
 	gun = item as Pistol
