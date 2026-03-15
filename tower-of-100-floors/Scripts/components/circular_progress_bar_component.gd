@@ -19,6 +19,7 @@ func loading() -> void:
 		tween.kill()
 	texture.visible = true
 	texture.value = texture.min_value
+	texture.top_level = true
 	tween = create_tween()
 	
 	tween.tween_property(texture, "value", texture.max_value, loading_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

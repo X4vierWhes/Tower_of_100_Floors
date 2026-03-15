@@ -17,3 +17,6 @@ texture = ExtResource("2_mrhsx")
 [node name="CircularProgressBarComponent" parent="." unique_id=897445385 node_paths=PackedStringArray("gun") instance=ExtResource("3_mrhsx")]
 loading_time = 1.8
 gun = NodePath("..")
+
+[node name="shoot_point" type="Marker2D" parent="." unique_id=238629647]
+position = Vector2(15, -1)

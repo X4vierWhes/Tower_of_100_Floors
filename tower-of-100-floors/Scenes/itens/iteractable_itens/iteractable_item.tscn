@@ -6,3 +6,7 @@
 collision_layer = 8
 collision_mask = 23
 script = ExtResource("1_u2v43")
+ITEM_NAME = null
+action_name = null
+INTERACT_TEXT = null
+consumable_item = null

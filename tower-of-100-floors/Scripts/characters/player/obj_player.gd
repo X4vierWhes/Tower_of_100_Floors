@@ -13,7 +13,6 @@ var is_dashing: bool = false
 var dash_cooldown: float = 1.4
 var dash_duration: float = 0.4
 
-
 func _ready() -> void:
 	var parent = get_parent() as Game
 	if parent:
@@ -23,6 +22,8 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
+	guns_pivot_update()
+	
 	if is_dashing:
 		dashing_effect()
 	
@@ -43,6 +44,11 @@ func _process(_delta: float) -> void:
 		anim_player.flip_h = (direction.x < 0)
 	
 
+func guns_pivot_update() -> void:
+	guns_pivot.look_at(get_global_mouse_position())
+	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
+	
+
 func dash() -> void:
 	can_dash = false
 	is_dashing = true
@@ -61,18 +67,16 @@ func _equip(item: Item) -> void:
 	guns_pivot.add_child(gun)
 	
 	if gui_pointer:
-		print("Passei ponteiros")
 		gun._set_pointers(self, gui_pointer)
 	gun.set_process(true)
 	if gun: 
-		print("Atualizar gun in player")
 		gui_pointer.update_gun(gun)
+	
 
 func _get_stats() -> Vector3:
 	return Vector3(health, coins, bombs)
 
 func update_gui() -> void:
 	if gui_pointer:
-		print("Atualizei")
 		gui_pointer.update_player(self)
 	

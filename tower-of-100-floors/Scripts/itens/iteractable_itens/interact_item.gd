@@ -23,7 +23,7 @@ func _interact() -> void:
 		queue_free()
 
 func _get_item() -> Item: #Sobrescrever cenas que herdam
-	if ITEM_NAME == "null" && _search_item(ITEM_NAME):
+	if ITEM_NAME == "null" && Scripts._search_item(ITENS_DIR, ITEM_NAME):
 		return null
 	var dir: String = ITENS_DIR + ITEM_NAME + ".tscn"
 	var item = load(dir)
@@ -33,23 +33,6 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 		return instance
 	return null
 	
-
-func _search_item(item_name: String) -> bool:
-	var dir = DirAccess.open(ITENS_DIR)
-	print("Entrei")
-	if dir:
-		dir.list_dir_begin()
-		var archive_name = dir.get_next()
-		while archive_name != "":
-			if not dir.current_is_dir():
-				print("Arquivo encontrado: " + archive_name)
-				if archive_name.contains(item_name):
-					return true
-			archive_name = dir.get_next()
-		dir.list_dir_end()
-	else:
-		return false
-	return false
 
 func _get_interact_label_text(item: IteractableItem) -> RichTextLabel:
 	var label: RichTextLabel = RichTextLabel.new()
