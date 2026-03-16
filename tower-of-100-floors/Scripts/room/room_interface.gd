@@ -6,5 +6,6 @@ class_name Room
 @onready var enemies_list: Array
 signal change_room
 
+
 func _get_next_room() -> Room:
 	return null

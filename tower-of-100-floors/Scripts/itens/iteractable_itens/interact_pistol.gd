@@ -3,6 +3,7 @@ class_name InteractablePistol
 
 @onready var richText: RichTextLabel = _get_interact_label_text(self)
 @onready var sprite_2d: Sprite2D = $Sprite2D
+const CROSSHAIR_2 = preload("uid://blwpequck270v")
 
 func _ready() -> void:
 	top_level = true
