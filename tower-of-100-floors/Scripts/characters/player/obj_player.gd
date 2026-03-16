@@ -22,10 +22,11 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
+	guns_pivot_update()
+	
 	if actual_health < 0:
 		death = true;
 		print("Player morreu")
-	guns_pivot_update()
 	
 	if is_dashing:
 		dashing_effect()
