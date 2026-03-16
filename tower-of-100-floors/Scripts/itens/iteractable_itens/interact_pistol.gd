@@ -4,6 +4,7 @@ class_name InteractablePistol
 @onready var richText: RichTextLabel = _get_interact_label_text(self)
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+
 func _ready() -> void:
 	top_level = true
 	richText.hide()

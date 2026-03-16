@@ -2,7 +2,7 @@ extends Node
 class_name RoomManager
 
 @export var initial_room: int = 0
-const DIR: String = "res://Scenes/rooms/"
+const DIR: String = "res://Scenes/rooms/room"
 
 var actual_room: Room = null
 
