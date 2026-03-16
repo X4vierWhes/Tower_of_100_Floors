@@ -73,6 +73,10 @@ func _equip(item: Item) -> void:
 		gui_pointer.update_gun(gun)
 	
 
+func _take_damage(damage: int) -> void:
+	if !god_mode:
+		pass
+
 func _get_stats() -> Vector3:
 	return Vector3(health, coins, bombs)
 
