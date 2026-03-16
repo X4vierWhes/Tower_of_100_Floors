@@ -84,7 +84,7 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = false
 	
 	gui_pointer.player_take_damage(damage, self)
-	_create_damage_label(damage)
+	_create_damage_label()
 	
 	await get_tree().create_timer(0.7).timeout
 	can_take_damage = true

@@ -15,3 +15,6 @@ func _del_enemie(enemie: CharacterInterface) -> void:
 	if enemie:
 		_enemiesList.erase(enemie)
 		enemie.queue_free()
+	
+	if _enemiesList.is_empty():
+		emit_signal("enemies_empty")

@@ -15,7 +15,6 @@ class_name CharacterInterface
 
 var death: bool = false
 
-
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
@@ -25,7 +24,7 @@ func enemie_control() -> void:
 func _take_damage(damage: int) -> void:
 	pass
 
-func _create_damage_label(damage_amount: int) -> void:
+func _create_damage_label() -> void:
 	var label = RichTextLabel.new()
 	var font_label = load("res://Resources/font/Daydream DEMO.otf")
 	label.add_theme_color_override("font_outline_color", Color.BLACK)

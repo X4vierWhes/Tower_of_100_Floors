@@ -17,5 +17,5 @@ func _set_pointers(player: Player, gui: GUI) -> void:
 	player_pointer = player as Player
 	gui_pointer = gui as GUI
 
-func _get_drop_item(throw_direction: Vector2) -> IteractableItem:
+func _get_drop_item(_throw_direction: Vector2) -> IteractableItem:
 	return null

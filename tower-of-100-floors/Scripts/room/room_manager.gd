@@ -8,12 +8,12 @@ const DIR: String = "res://Scenes/rooms/room"
 var actual_room: Room = null
 
 func init_game() -> void:
-	get_room(initial_room)
+	change_room(initial_room)
 
 func change_actual_room() -> void:
 	print("Mudei de sala")
 
-func get_room(room_to_open: String) -> void:
+func change_room(room_to_open: String) -> void:
 	if actual_room:
 		actual_room.queue_free()
 	
@@ -23,3 +23,6 @@ func get_room(room_to_open: String) -> void:
 		add_child(actual_room)
 		actual_room.change_room.connect(change_actual_room)
 		game._spawn_player()
+
+func get_next_room(actual: Room) -> String:
+	return actual._get_next_room()

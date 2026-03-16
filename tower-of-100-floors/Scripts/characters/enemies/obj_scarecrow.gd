@@ -21,7 +21,7 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = false
 	tween = create_tween()
 	animated_sprite_2d.play("hurt")
-	_create_damage_label(damage)
+	_create_damage_label()
 	
 	var shader_setter = func(value: float):
 		animated_sprite_2d.material.set_shader_parameter("hit_effect", value)

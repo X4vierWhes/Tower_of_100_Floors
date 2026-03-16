@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ccw4x3u7hx50e" path="res://Scripts/itens/iteractable_itens/easter_egg.gd" id="1_e5r36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5r36"]
-size = Vector2(56, 20)
+size = Vector2(70, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o31wb"]
 size = Vector2(84.3076, 30.090813)

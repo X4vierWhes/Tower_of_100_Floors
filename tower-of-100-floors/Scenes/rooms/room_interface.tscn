@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://byuffsjmaa3dv" path="res://Scripts/room/room_interface.gd" id="1_pl1u3"]
 
-[node name="room_interface" type="TileMapLayer" unique_id=747738401]
+[node name="room_interface" type="Node2D" unique_id=1181416154]
 script = ExtResource("1_pl1u3")
