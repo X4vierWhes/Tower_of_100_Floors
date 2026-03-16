@@ -3,7 +3,7 @@ class_name CharacterInterface
 
 @export_category("Parameters")
 @export var speed: float = 300.0
-@export var health: int = 8
+@export var max_health: int = 8
 @export var dash_force: float = 1.5
 @export var heal: int = 0
 @export var coins: int = 0
@@ -11,8 +11,10 @@ class_name CharacterInterface
 @export var god_mode: bool = false
 
 @onready var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
+@onready var actual_health = max_health
 
 var death: bool = false
+
 
 func _ready() -> void:
 	if get_parent() && get_parent() is EnemiesControl:

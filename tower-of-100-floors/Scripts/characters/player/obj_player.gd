@@ -10,18 +10,21 @@ class_name Player
 var has_gun: bool = false
 var can_dash: bool = true
 var is_dashing: bool = false
+var can_take_damage: bool = true
 var dash_cooldown: float = 1.4
 var dash_duration: float = 0.4
 
 func _ready() -> void:
 	var parent = get_parent() as Game
 	if parent:
-		print("Peguei")
 		gui_pointer = parent._get_gui()
 		update_gui()
 	
 
 func _process(_delta: float) -> void:
+	if actual_health < 0:
+		death = true;
+		print("Player morreu")
 	guns_pivot_update()
 	
 	if is_dashing:
@@ -74,11 +77,20 @@ func _equip(item: Item) -> void:
 	
 
 func _take_damage(damage: int) -> void:
-	if !god_mode:
+	if !god_mode || can_take_damage || actual_health < 0:
 		pass
+	
+	can_take_damage = false
+	
+	gui_pointer.player_take_damage(damage, self)
+	_create_damage_label(damage)
+	
+	await get_tree().create_timer(0.7).timeout
+	can_take_damage = true
+
 
 func _get_stats() -> Vector3:
-	return Vector3(health, coins, bombs)
+	return Vector3(actual_health, coins, bombs)
 
 func update_gui() -> void:
 	if gui_pointer:

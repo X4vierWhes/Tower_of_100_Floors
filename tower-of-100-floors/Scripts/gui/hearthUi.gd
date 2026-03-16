@@ -6,18 +6,14 @@ const HEART_TEX = preload("res://Resources/images/player/Heart.png")
 @export_category("Configurações")
 @export var max_heart: int = 8
 @export var heart_container: HBoxContainer
-@onready var _elements: Array[TextureRect] = []
+var _elements: Array[TextureRect] = []
 
 func _update_hearts(_count: int) -> void:
-	if _elements.size() >= max_heart:
-		return
+	while _elements.size() < _count and _elements.size() < max_heart:
+		_stack()
 	
-	if _count > 0:
-		for i in range(_count):
-			if _elements.size() < max_heart:
-				_stack()
-			else:
-				break
+	while _elements.size() > _count:
+		_unstack()
 
 #Vai agir como uma pilha, onde ultimo sai
 func _stack() -> void: #Empilhar
@@ -35,9 +31,18 @@ func _stack() -> void: #Empilhar
 		print("Hearth full!")
 	
 
-func _unstack() -> void: #Desempilhar
+func _unstack() -> void:
+	print("Tentando desempilhar... Tamanho do array: ", _elements.size())
+	print("Filhos reais no HBox: ", heart_container.get_child_count())
+	
+	if _elements.is_empty():
+		# Se entrar aqui, vamos tentar recuperar os filhos na marra
+		print("Array vazio! Tentando recuperar filhos do container...")
+		for child in heart_container.get_children():
+			_elements.append(child)
+			
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):
 			last.queue_free()
-	
+			print("Coração removido!")

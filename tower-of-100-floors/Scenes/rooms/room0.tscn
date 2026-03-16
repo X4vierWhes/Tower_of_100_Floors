@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ce62llbkfs1vh" path="res://Scenes/itens/iteractable_itens/interact_pistol.tscn" id="11_mavcf"]
 [ext_resource type="Script" uid="uid://dk4e3ldqvau6m" path="res://Scripts/room/enemies_control_component.gd" id="11_ttrfn"]
 [ext_resource type="PackedScene" uid="uid://c6f2bt6b2exsi" path="res://Scenes/characters/enemies/obj_scarecrow.tscn" id="12_lmoeq"]
+[ext_resource type="PackedScene" uid="uid://b2kcnn4bp2kqj" path="res://Scenes/characters/enemies/obj_trap.tscn" id="13_6jmvu"]
 [ext_resource type="PackedScene" uid="uid://crfygq0kybjsb" path="res://Scenes/rooms/obj_door.tscn" id="13_lmoeq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
@@ -182,6 +183,12 @@ position = Vector2(557, 119)
 
 [node name="obj_scarecrow2" parent="enemies_control_component" unique_id=991827022 instance=ExtResource("12_lmoeq")]
 position = Vector2(1168, 113)
+
+[node name="objTrap" parent="enemies_control_component" unique_id=255404683 instance=ExtResource("13_6jmvu")]
+position = Vector2(848, 176)
+
+[node name="objTrap2" parent="enemies_control_component" unique_id=1974018707 instance=ExtResource("13_6jmvu")]
+position = Vector2(879, 176)
 
 [node name="door_and_plates" type="Node" parent="." unique_id=1314398933]
 

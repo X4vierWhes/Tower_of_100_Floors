@@ -43,18 +43,36 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gruo"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y18f0"]
+size = Vector2(24, 24)
 
 [node name="objTrap" type="CharacterBody2D" unique_id=255404683]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_y18f0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1745165199]
 texture_filter = 3
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v6ypg")
-animation = &"attack"
+animation = &"preparing"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=919409845]
+[node name="collision_area" type="Area2D" parent="." unique_id=919409845]
+collision_layer = 4
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=626448392]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_area" unique_id=626448392]
 shape = SubResource("RectangleShape2D_7gruo")
+debug_color = Color(2.2140146e-06, 0.64134073, 0.3408001, 0.41960785)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="attack_area" type="Area2D" parent="." unique_id=1360538979]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1468716148]
+shape = SubResource("RectangleShape2D_y18f0")
+
+[connection signal="body_entered" from="collision_area" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

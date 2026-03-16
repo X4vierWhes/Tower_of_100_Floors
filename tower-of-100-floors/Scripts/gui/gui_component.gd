@@ -22,17 +22,24 @@ func gun_shoot(gun: Pistol) -> void:
 		gun.actual_clip -= 1
 
 func player_take_damage(damage: int, player: Player) -> void:
+	
 	for i in range(damage):
-		_heart_unstack(player)
+		_heart_unstack()
+		print("Entrei for take damage na gui component")
+	
+	player.actual_health -= damage
 
-func _heart_stack(player: Player) -> void:
+func player_heal(heal: int, player: Player) -> void:
+	pass
+
+func _heart_stack() -> void:
 	heart_component._stack()
 
-func _heart_unstack(player: Player) -> void:
+func _heart_unstack() -> void:
 	heart_component._unstack()
 
 func update_player(player: Player) -> void:
-	_update_heart(player.health)
+	_update_heart(player.actual_health)
 	_update_itens(player.coins, player.bombs)
 
 func update_gun(gun: Pistol) -> void:
