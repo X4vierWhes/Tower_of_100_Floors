@@ -25,9 +25,14 @@ func _take_damage(damage: int) -> void:
 
 func _create_damage_label(damage_amount: int) -> void:
 	var label = RichTextLabel.new()
+	var font_label = load("res://Resources/font/Daydream DEMO.otf")
+	label.add_theme_color_override("font_outline_color", Color.BLACK)
+	label.add_theme_constant_override("outline_size", 4)
+	label.add_theme_font_size_override("normal_font_size", 8)
+	label.add_theme_font_override("normal_font", font_label)
 	hurt_phrases.shuffle()
 	label.bbcode_enabled = true
-	label.text = "[center][color=red]" + hurt_phrases.get(0) + "[/color][/center]" 
+	label.text = "[center][color=RED]" + hurt_phrases.get(0) + "[/color][/center]" 
 	label.custom_minimum_size = Vector2(100, 50)
 	
 	get_parent().add_child(label)

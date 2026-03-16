@@ -36,11 +36,16 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 
 func _get_interact_label_text(item: IteractableItem) -> RichTextLabel:
 	var label: RichTextLabel = RichTextLabel.new()
+	var font_label = load("res://Resources/font/Daydream DEMO.otf")
+
+	label.add_theme_font_size_override("normal_font_size", 8)
+	
+	label.add_theme_font_override("normal_font", font_label)
 	label.custom_minimum_size = Vector2(200.0, 40.0)
 	label.global_position = item.global_position
 	label.global_position.x -= 45.0
 	label.global_position.y -= 50.0
-	label.text = "[shake]" + INTERACT_TEXT + action_name + "[/shake]"
+	label.text = "[shake][color=9ff4e5]" + INTERACT_TEXT + action_name + "[/color][/shake]"
 	label.bbcode_enabled = true
 	label.top_level = true
 	return label

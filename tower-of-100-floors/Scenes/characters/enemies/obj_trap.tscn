@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b2kcnn4bp2kqj"]
+
+[ext_resource type="Texture2D" uid="uid://cdwx8itkuq2x4" path="res://Resources/images/enemies/Trap.png" id="1_olbn3"]
+[ext_resource type="Script" uid="uid://d0rpqshss4x48" path="res://Scripts/characters/enemies/obj_trap.gd" id="1_y18f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y18f0"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0x6c"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxtpd"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6ypg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y18f0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0x6c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxtpd")
+}],
+"loop": true,
+"name": &"preparing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gruo"]
+
+[node name="objTrap" type="CharacterBody2D" unique_id=255404683]
+script = ExtResource("1_y18f0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1745165199]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_v6ypg")
+animation = &"attack"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=919409845]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=626448392]
+shape = SubResource("RectangleShape2D_7gruo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
