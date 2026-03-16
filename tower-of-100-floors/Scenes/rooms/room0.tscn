@@ -190,15 +190,15 @@ position = Vector2(848, 176)
 [node name="objTrap2" parent="enemies_control_component" unique_id=1974018707 instance=ExtResource("13_6jmvu")]
 position = Vector2(879, 176)
 
-[node name="door_and_plates" type="Node" parent="." unique_id=1314398933]
+[node name="door_and_plates_component" type="Node" parent="." unique_id=1314398933]
 
-[node name="obj_door" parent="door_and_plates" unique_id=517954813 instance=ExtResource("13_lmoeq")]
+[node name="obj_door" parent="door_and_plates_component" unique_id=517954813 instance=ExtResource("13_lmoeq")]
 position = Vector2(860, 721)
 
-[node name="obj_door2" parent="door_and_plates" unique_id=1141426910 instance=ExtResource("13_lmoeq")]
+[node name="obj_door2" parent="door_and_plates_component" unique_id=1141426910 instance=ExtResource("13_lmoeq")]
 position = Vector2(864, 41)
 
-[node name="itens_control" type="Node" parent="." unique_id=1647297357]
+[node name="itens_control_component" type="Node" parent="." unique_id=1647297357]
 
-[node name="interact_pistol" parent="itens_control" unique_id=1082604604 groups=["Itens"] instance=ExtResource("11_mavcf")]
+[node name="interact_pistol" parent="itens_control_component" unique_id=1082604604 groups=["Itens"] instance=ExtResource("11_mavcf")]
 position = Vector2(863, 397)

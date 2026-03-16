@@ -32,17 +32,17 @@ func _stack() -> void: #Empilhar
 	
 
 func _unstack() -> void:
-	print("Tentando desempilhar... Tamanho do array: ", _elements.size())
-	print("Filhos reais no HBox: ", heart_container.get_child_count())
+	#print("Tentando desempilhar... Tamanho do array: ", _elements.size())
+	#print("Filhos reais no HBox: ", heart_container.get_child_count())
 	
 	if _elements.is_empty():
-		# Se entrar aqui, vamos tentar recuperar os filhos na marra
-		print("Array vazio! Tentando recuperar filhos do container...")
 		for child in heart_container.get_children():
 			_elements.append(child)
 			
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):
+			var tween: Tween = create_tween()
+			
 			last.queue_free()
-			print("Coração removido!")
+		

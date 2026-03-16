@@ -59,7 +59,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v6ypg")
 animation = &"preparing"
 
-[node name="collision_area" type="Area2D" parent="." unique_id=919409845]
+[node name="collision_area" type="Area2D" parent="." unique_id=919409845 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 2
 
