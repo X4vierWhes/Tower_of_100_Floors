@@ -3,6 +3,8 @@ class_name EnemiesControl
 
 @onready var _enemiesList: Array[CharacterInterface] = []
 
+signal enemies_empty
+
 func _append_enemie(enemie: CharacterInterface) -> void:
 	if enemie:
 		print("Adicionei inimigo na enemie control")

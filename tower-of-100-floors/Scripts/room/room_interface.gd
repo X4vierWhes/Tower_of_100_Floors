@@ -6,6 +6,9 @@ class_name Room
 @onready var enemies_list: Array
 signal change_room
 
+func _ready() -> void:
+	if get_parent() && get_parent() is RoomManager:
+		pass
 
 func _get_next_room() -> Room:
 	return null

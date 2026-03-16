@@ -4,6 +4,7 @@ class_name Trap
 @onready var attack_area: Area2D = $attack_area
 @onready var damage: int = 2
 @onready var state: String = "idle"
+
 func _ready() -> void:
 	animated_sprite_2d.play(state)
 	attack_area.monitoring = false

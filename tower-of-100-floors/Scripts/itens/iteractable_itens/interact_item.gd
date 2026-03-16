@@ -12,6 +12,8 @@ class_name IteractableItem
 
 const ITENS_DIR: String = "res://Scenes/itens/equip_itens/obj_"
 
+var item_component: ItensControlComponent = null
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && is_player_in_area:
@@ -20,6 +22,9 @@ func _input(event: InputEvent) -> void:
 func _interact() -> void:
 	if is_player_in_area && player_pointer && consumable_item:
 		player_pointer._equip(_get_item())
+		if item_component:
+			item_component.itens_collected.emit()
+			print("Emiti sinal em interactItem")
 		queue_free()
 
 func _get_item() -> Item: #Sobrescrever cenas que herdam

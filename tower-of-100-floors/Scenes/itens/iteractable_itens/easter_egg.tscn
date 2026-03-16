@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dmb3ba5e17p3d"]
+
+[ext_resource type="Script" uid="uid://ccw4x3u7hx50e" path="res://Scripts/itens/iteractable_itens/easter_egg.gd" id="1_e5r36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5r36"]
+size = Vector2(56, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o31wb"]
+size = Vector2(84.3076, 30.090813)
+
+[node name="easter_egg" type="CharacterBody2D" unique_id=137566444]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_e5r36")
+ITEM_NAME = "easter_egg"
+action_name = ""
+INTERACT_TEXT = "Are you running away?"
+consumable_item = false
+metadata/_custom_type_script = "uid://b3qrcn8s2hb6p"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2047161689]
+shape = SubResource("RectangleShape2D_e5r36")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=883488997]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=49871428]
+position = Vector2(-0.49094605, -4.5)
+scale = Vector2(1.1270407, 1.495473)
+shape = SubResource("RectangleShape2D_o31wb")
+debug_color = Color(0.8342653, 0.0013284087, 0.9372449, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

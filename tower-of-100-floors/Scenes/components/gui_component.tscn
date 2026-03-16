@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://vogy4qmmle12" path="res://Scripts/gui/itensUi.gd" id="2_jawp2"]
 [ext_resource type="Script" uid="uid://bxbnqt18srrqs" path="res://Scripts/gui/hearthUi.gd" id="3_2ecj8"]
 [ext_resource type="Script" uid="uid://tpop2ishxrwn" path="res://Scripts/gui/gunUi.gd" id="5_adgjo"]
+[ext_resource type="FontFile" uid="uid://bsp438tl0ck0e" path="res://Resources/font/Daydream DEMO.otf" id="5_vbk55"]
 [ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://shaders/shine.gdshader" id="6_10gr5"]
 
 [sub_resource type="Shader" id="Shader_jawp2"]
@@ -712,11 +713,13 @@ texture = ExtResource("2_2ecj8")
 
 [node name="coinsCount" type="RichTextLabel" parent="CanvasLayer/itens_component/coins" unique_id=1350903393]
 material = SubResource("ShaderMaterial_rdmnq")
+custom_minimum_size = Vector2(10, 10)
 offset_left = 8.936172
 offset_top = -1.5686263
-offset_right = 86.382996
-offset_bottom = 79.99998
-theme_override_font_sizes/normal_font_size = 44
+offset_right = 74.468094
+offset_bottom = 70.588234
+theme_override_fonts/normal_font = ExtResource("5_vbk55")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "0
 "
@@ -730,14 +733,16 @@ position = Vector2(223, 654)
 texture = SubResource("CompressedTexture2D_jawp2")
 
 [node name="bombsCount" type="RichTextLabel" parent="CanvasLayer/itens_component/bombs" unique_id=1817707819]
+custom_minimum_size = Vector2(10, 10)
 anchors_preset = -1
 anchor_top = 0.25800002
 anchor_bottom = 0.25800002
-offset_left = 10.0
-offset_top = -14.512001
+offset_left = 8.0
+offset_top = -22.512001
 offset_right = 56.0
-offset_bottom = 33.488
-theme_override_font_sizes/normal_font_size = 27
+offset_bottom = 30.487999
+theme_override_fonts/normal_font = ExtResource("5_vbk55")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "0
 "

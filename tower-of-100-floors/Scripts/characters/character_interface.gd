@@ -16,7 +16,7 @@ class_name CharacterInterface
 var death: bool = false
 
 
-func _ready() -> void:
+func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
 		parent._append_enemie(self)

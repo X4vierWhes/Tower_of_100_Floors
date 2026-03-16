@@ -1,8 +1,8 @@
 extends IteractableItem
-class_name InteractablePistol
+class_name EasterEgg
+
 
 @onready var richText: RichTextLabel = _get_interact_label_text(self)
-@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	if get_parent() && get_parent() is ItensControlComponent:
