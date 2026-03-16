@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c6f2bt6b2exsi"]
+
+[ext_resource type="Script" uid="uid://dx8kqbrwvc4a4" path="res://Scripts/characters/enemies/obj_scarecrow.gd" id="1_ktcrj"]
+[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="1_xovho"]
+[ext_resource type="Texture2D" uid="uid://be1v0tyq6cxf6" path="res://Resources/images/enemies/Scarecrow1.png" id="2_xovho"]
+[ext_resource type="Texture2D" uid="uid://d22fm0rri2rf1" path="res://Resources/images/enemies/Scarecrow2.png" id="3_twgtx"]
+[ext_resource type="Texture2D" uid="uid://cunltvptg3ekc" path="res://Resources/images/enemies/Scarecrow3.png" id="4_iu0m4"]
+[ext_resource type="Texture2D" uid="uid://ufbmwymhjwoi" path="res://Resources/images/enemies/Scarecrow4.png" id="5_g1qoa"]
+[ext_resource type="Texture2D" uid="uid://cpbpss8m7wfbf" path="res://Resources/images/enemies/Scarecrow5.png" id="6_fvu2x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twgtx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xovho"]
+shader = ExtResource("1_xovho")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa4pi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xovho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_twgtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iu0m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g1qoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fvu2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tmco"]
+size = Vector2(27, 30)
+
+[node name="obj_scarecrow" type="CharacterBody2D" unique_id=1561227057 groups=["Enemies"]]
+material = SubResource("ShaderMaterial_twgtx")
+script = ExtResource("1_ktcrj")
+health = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1459375792]
+texture_filter = 3
+material = SubResource("ShaderMaterial_xovho")
+sprite_frames = SubResource("SpriteFrames_wa4pi")
+frame_progress = 0.61686575
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187931200]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_8tmco")

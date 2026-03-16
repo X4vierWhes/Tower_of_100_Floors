@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://uy71c1b3cb13"]
 
+[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="1_2sjch"]
+[ext_resource type="Script" uid="uid://b5yqk78qeygl0" path="res://Scripts/itens/usable_itens/obj_bullet.gd" id="1_ajj33"]
+[ext_resource type="Texture2D" uid="uid://bhfvtiil0pxan" path="res://Resources/images/pistol/Bullet.png" id="2_ajj33"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tb62s"]
+shader = ExtResource("1_2sjch")
+shader_parameter/hit_effect = 0.050000002375
+shader_parameter/shake_intensity = 5.0
+shader_parameter/flash_speed = 300.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b55e1"]
+size = Vector2(10, 8)
+
 [node name="objBullet" type="Node2D" unique_id=1954637572]
+top_level = true
+script = ExtResource("1_ajj33")
+item_name = "bullet"
+throwable = true
+
+[node name="bulletArea" type="Area2D" parent="." unique_id=438633548]
+collision_layer = 16
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="bulletArea" unique_id=1426774487]
+texture_filter = 3
+material = SubResource("ShaderMaterial_tb62s")
+texture = ExtResource("2_ajj33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bulletArea" unique_id=355303361]
+shape = SubResource("RectangleShape2D_b55e1")
+debug_color = Color(0.9014332, 0.00016248942, 0.7611681, 0.41960785)
+
+[connection signal="body_entered" from="bulletArea" to="." method="_on_bullet_area_body_entered"]

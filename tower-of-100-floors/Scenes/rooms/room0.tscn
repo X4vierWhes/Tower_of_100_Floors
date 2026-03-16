@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bfxrrgqkvy7b3" path="res://Resources/images/obstacles/Fence_Wall.png" id="9_rkthm"]
 [ext_resource type="Texture2D" uid="uid://dfpila2pjee2a" path="res://Resources/images/obstacles/Obstacle2.png" id="10_dr0h8"]
 [ext_resource type="PackedScene" uid="uid://ce62llbkfs1vh" path="res://Scenes/itens/iteractable_itens/interact_pistol.tscn" id="11_mavcf"]
+[ext_resource type="Script" uid="uid://dk4e3ldqvau6m" path="res://Scripts/room/enemies_control_component.gd" id="11_ttrfn"]
+[ext_resource type="PackedScene" uid="uid://c6f2bt6b2exsi" path="res://Scenes/characters/enemies/obj_scarecrow.tscn" id="12_lmoeq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -171,7 +173,14 @@ tile_map_data = PackedByteArray("AAAWAAIAAgAAAAAAAAAWAAMAAgAAAAAAAAAWAAQAAgAAAAA
 tile_set = SubResource("TileSet_ghhrj")
 collision_visibility_mode = 1
 
-[node name="enemies_control" type="Node" parent="." unique_id=1235353930]
+[node name="enemies_control_component" type="Node" parent="." unique_id=1235353930]
+script = ExtResource("11_ttrfn")
+
+[node name="obj_scarecrow" parent="enemies_control_component" unique_id=1561227057 instance=ExtResource("12_lmoeq")]
+position = Vector2(511, 95)
+
+[node name="obj_scarecrow2" parent="enemies_control_component" unique_id=991827022 instance=ExtResource("12_lmoeq")]
+position = Vector2(1204, 92)
 
 [node name="door_and_plates" type="Node" parent="." unique_id=1314398933]
 

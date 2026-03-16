@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dopsnmgh7v4kp"
-path="res://.godot/imported/crosshair3.png-f23625c6c7c2fab366e7f78123a49257.ctex"
+uid="uid://cunltvptg3ekc"
+path="res://.godot/imported/Scarecrow3.png-4ad1e8b8f5f9d166f58837f05b329b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/images/pistol/crosshair3.png"
-dest_files=["res://.godot/imported/crosshair3.png-f23625c6c7c2fab366e7f78123a49257.ctex"]
+source_file="res://Resources/images/enemies/Scarecrow3.png"
+dest_files=["res://.godot/imported/Scarecrow3.png-4ad1e8b8f5f9d166f58837f05b329b39.ctex"]
 
 [params]
 

@@ -80,3 +80,6 @@ func update_gui() -> void:
 	if gui_pointer:
 		gui_pointer.update_player(self)
 	
+
+func _get_gun() -> Item:
+	return gun

@@ -14,9 +14,8 @@ func _ready() -> void:
 	set_process(false)
 
 func _set_pointers(player: Player, gui: GUI) -> void:
-	print("Entrei na set pointers in ITEM")
 	player_pointer = player as Player
 	gui_pointer = gui as GUI
 
-func _get_drop_item() -> IteractableItem:
+func _get_drop_item(throw_direction: Vector2) -> IteractableItem:
 	return null
