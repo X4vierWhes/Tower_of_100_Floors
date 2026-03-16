@@ -6,8 +6,10 @@ class_name Scarecrow
 var tween: Tween
 
 func _ready() -> void:
-	animated_sprite_2d.play("default")
-	animated_sprite_2d.self_modulate = Color("00a2ad")
+	if animated_sprite_2d.material:
+		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
+	animated_sprite_2d.play("idle")
+
 
 func _take_damage(damage: int) -> void:
 	if !can_take_damage: return
@@ -17,6 +19,7 @@ func _take_damage(damage: int) -> void:
 	
 	can_take_damage = false
 	tween = create_tween()
+	animated_sprite_2d.play("hurt")
 	
 	var shader_setter = func(value: float):
 		animated_sprite_2d.material.set_shader_parameter("hit_effect", value)
@@ -25,3 +28,4 @@ func _take_damage(damage: int) -> void:
 	
 	await tween.finished
 	can_take_damage = true
+	animated_sprite_2d.play("idle")

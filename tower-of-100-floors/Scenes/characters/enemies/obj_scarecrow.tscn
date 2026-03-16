@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c6f2bt6b2exsi"]
 
 [ext_resource type="Script" uid="uid://dx8kqbrwvc4a4" path="res://Scripts/characters/enemies/obj_scarecrow.gd" id="1_ktcrj"]
-[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="1_xovho"]
 [ext_resource type="Texture2D" uid="uid://be1v0tyq6cxf6" path="res://Resources/images/enemies/Scarecrow1.png" id="2_xovho"]
 [ext_resource type="Texture2D" uid="uid://d22fm0rri2rf1" path="res://Resources/images/enemies/Scarecrow2.png" id="3_twgtx"]
 [ext_resource type="Texture2D" uid="uid://cunltvptg3ekc" path="res://Resources/images/enemies/Scarecrow3.png" id="4_iu0m4"]
@@ -10,8 +9,48 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twgtx"]
 
+[sub_resource type="Shader" id="Shader_ktcrj"]
+code = "shader_type canvas_item;
+// Link shader: https://godotshaders.com/shader/simple-2d-random-shake-＆-flash/
+uniform float hit_effect : hint_range(0,1) = 0.0;
+uniform float shake_intensity = 10.0;
+uniform float flash_speed = 30.0;
+uniform vec4 flash_color : source_color = vec4(1.0, 0.0, 0.0, 1.0);
+
+float rand(vec2 co) {
+    return fract(sin(dot(co, vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void vertex() {
+    if (hit_effect > 0.0) {
+        float time = TIME * 30.0;
+        vec2 random_offset = vec2(
+            rand(vec2(time, 0.0)) * 2.0 - 1.0,
+            rand(vec2(time, 10.0)) * 2.0 - 1.0
+        );
+        VERTEX += random_offset * shake_intensity * hit_effect;
+    }
+}
+
+void fragment() {
+    vec4 original_color = texture(TEXTURE, UV);
+    
+    if (hit_effect > 0.0) {
+        float flash = sin(TIME * flash_speed) * 0.5 + 0.5;
+        flash *= original_color.a; 
+        
+        vec4 final_color = mix(original_color, flash_color, flash);
+        final_color = mix(original_color, final_color, hit_effect);
+        final_color.a = original_color.a; 
+        
+        COLOR = final_color;
+    } else {
+        COLOR = original_color;
+    }
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xovho"]
-shader = ExtResource("1_xovho")
+shader = SubResource("Shader_ktcrj")
 shader_parameter/hit_effect = 0.0
 shader_parameter/shake_intensity = 10.0
 shader_parameter/flash_speed = 30.0
@@ -21,13 +60,18 @@ shader_parameter/flash_color = Color(1, 0, 0, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xovho")
-}, {
-"duration": 1.0,
 "texture": ExtResource("3_twgtx")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_iu0m4")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xovho")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_g1qoa")
@@ -36,7 +80,7 @@ animations = [{
 "texture": ExtResource("6_fvu2x")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -45,6 +89,7 @@ size = Vector2(27, 30)
 
 [node name="obj_scarecrow" type="CharacterBody2D" unique_id=1561227057 groups=["Enemies"]]
 material = SubResource("ShaderMaterial_twgtx")
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ktcrj")
 health = 0
 
@@ -52,7 +97,7 @@ health = 0
 texture_filter = 3
 material = SubResource("ShaderMaterial_xovho")
 sprite_frames = SubResource("SpriteFrames_wa4pi")
-frame_progress = 0.61686575
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187931200]
 position = Vector2(-0.5, 5)
