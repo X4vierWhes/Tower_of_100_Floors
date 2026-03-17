@@ -35,6 +35,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxk6r"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4pnr"]
+radius = 15.524175
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x14lq"]
 radius = 206.0
 
@@ -51,7 +54,7 @@ texture_filter = 3
 material = SubResource("ShaderMaterial_4gv8m")
 sprite_frames = SubResource("SpriteFrames_wmh3r")
 animation = &"idle"
-frame_progress = 0.6902564
+frame_progress = 0.46879566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188610216]
 top_level = true
@@ -59,6 +62,14 @@ light_mask = 8
 visibility_layer = 23
 shape = SubResource("RectangleShape2D_jxk6r")
 debug_color = Color(0.85126096, 0.11866807, 0.85153913, 0.41960785)
+
+[node name="attack_area" type="Area2D" parent="." unique_id=1282848072]
+collision_layer = 4
+collision_mask = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1977439987]
+shape = SubResource("CircleShape2D_b4pnr")
+debug_color = Color(0.8748489, 0.00043837487, 0.8386524, 0.41960785)
 
 [node name="range_area" type="Area2D" parent="." unique_id=901980917]
 light_mask = 8
@@ -78,6 +89,7 @@ path_postprocessing = 1
 [node name="navigation_timer" type="Timer" parent="." unique_id=237579820]
 wait_time = 0.2
 
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
 [connection signal="body_exited" from="range_area" to="." method="_on_range_area_body_exited"]
 [connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]

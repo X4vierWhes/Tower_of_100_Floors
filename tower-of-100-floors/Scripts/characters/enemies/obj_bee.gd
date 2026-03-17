@@ -68,7 +68,7 @@ func _on_range_area_body_entered(body: Node2D) -> void:
 
 
 func _on_range_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	pass
 
 
 func _on_navigation_timer_timeout() -> void:
@@ -76,3 +76,8 @@ func _on_navigation_timer_timeout() -> void:
 		if navigation_agent_2d.target_position != player_pointer.global_position:
 			navigation_agent_2d.target_position = player_pointer.global_position
 	navigation_timer.start()
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body._take_damage(1)
