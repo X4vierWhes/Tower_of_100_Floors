@@ -685,6 +685,7 @@ shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
 [node name="gui_component" type="Node2D" unique_id=963733602 node_paths=PackedStringArray("itens_component", "heart_component", "gun_component")]
+show_behind_parent = true
 script = ExtResource("1_rdmnq")
 itens_component = NodePath("CanvasLayer/itens_component")
 heart_component = NodePath("CanvasLayer/heart_component")

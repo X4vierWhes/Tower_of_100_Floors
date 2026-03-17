@@ -9,7 +9,6 @@ const DIR: String = "res://Scenes/rooms/room"
 var actual_room: Room = null
 
 func init_game() -> void:
-	
 	change_room(initial_room)
 
 func change_actual_room() -> void:

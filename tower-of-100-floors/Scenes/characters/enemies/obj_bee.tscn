@@ -42,7 +42,7 @@ radius = 206.0
 collision_layer = 4
 collision_mask = 27
 script = ExtResource("1_ku6g8")
-speed = 600.0
+speed = 150.0
 max_health = 20
 coins = 5
 
@@ -51,7 +51,7 @@ texture_filter = 3
 material = SubResource("ShaderMaterial_4gv8m")
 sprite_frames = SubResource("SpriteFrames_wmh3r")
 animation = &"idle"
-frame_progress = 0.8739388
+frame_progress = 0.6902564
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188610216]
 top_level = true
@@ -63,10 +63,21 @@ debug_color = Color(0.85126096, 0.11866807, 0.85153913, 0.41960785)
 [node name="range_area" type="Area2D" parent="." unique_id=901980917]
 light_mask = 8
 visibility_layer = 23
+collision_layer = 4
+collision_mask = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range_area" unique_id=1102341870]
+light_mask = 9
+visibility_layer = 23
 shape = SubResource("CircleShape2D_x14lq")
 debug_color = Color(0.36569506, 0.4794855, 1, 0.41960785)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1362342426]
+path_postprocessing = 1
+
+[node name="navigation_timer" type="Timer" parent="." unique_id=237579820]
+wait_time = 0.2
+
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
 [connection signal="body_exited" from="range_area" to="." method="_on_range_area_body_exited"]
+[connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]

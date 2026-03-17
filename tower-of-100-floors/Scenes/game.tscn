@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
 
 [node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("game_interface", "room_manager", "player_loader")]
+z_index = 99
 script = ExtResource("1_i6g32")
 game_interface = NodePath("gui_component")
 room_manager = NodePath("room_manager")
@@ -16,6 +17,7 @@ player_loader = NodePath("player_stats_loader")
 
 [node name="room_manager" type="Node" parent="." unique_id=1747045631 node_paths=PackedStringArray("game", "transition")]
 script = ExtResource("4_i6g32")
+initial_room = "_init_room"
 game = NodePath("..")
 transition = NodePath("../transition_component")
 

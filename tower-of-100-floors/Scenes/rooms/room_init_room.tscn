@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c8rdbbskhxjqu"]
+
+[ext_resource type="Script" uid="uid://cjc58dtrp1iha" path="res://Scripts/room/init_room.gd" id="1_nun6i"]
+[ext_resource type="Texture2D" uid="uid://c6vw4bh1pjrkv" path="res://Resources/images/uis/Menu_Screen.png" id="2_todjf"]
+[ext_resource type="FontFile" uid="uid://bsp438tl0ck0e" path="res://Resources/font/Daydream DEMO.otf" id="3_4q5fq"]
+
+[node name="init_room" type="Node2D" unique_id=339098498]
+script = ExtResource("1_nun6i")
+room_id = "init_room"
+next_room = "0"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568519424]
+layer = 99
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=821815072]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1427910472]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_todjf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=2017379704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -20.0
+offset_right = 155.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_4q5fq")
+bbcode_enabled = true
+text = "[wave] Press any button to play[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
