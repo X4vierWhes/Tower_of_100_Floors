@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bbd4th5b6xdrf"]
 
-[ext_resource type="Script" uid="uid://buvhc4544djw1" path="res://Scripts/room/room0.gd" id="1_qmiov"]
+[ext_resource type="Script" uid="uid://dnxvnuai8be6f" path="res://Scripts/room/room1.gd" id="1_riabp"]
 [ext_resource type="Texture2D" uid="uid://0j8bhttt5av0" path="res://Resources/images/rooms/Floor1.png" id="2_4nd1n"]
 [ext_resource type="Texture2D" uid="uid://hgnmck6efxu6" path="res://Resources/images/rooms/Floor2.png" id="3_fcgfc"]
 [ext_resource type="Texture2D" uid="uid://p22fjrs5ykui" path="res://Resources/images/rooms/Floor3.png" id="4_oiagc"]
@@ -155,9 +155,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(485, 70, 485, 70, 482, 
 agent_radius = 5.0
 
 [node name="room1" type="Node2D" unique_id=977451492]
-script = ExtResource("1_qmiov")
-room_id = "1"
-next_room = "2"
+script = ExtResource("1_riabp")
 
 [node name="room_principal_layer" type="TileMapLayer" parent="." unique_id=1280141711]
 
@@ -198,7 +196,7 @@ position = Vector2(1177, 89)
 position = Vector2(597, 335)
 
 [node name="objBee4" parent="enemies_control_component" unique_id=1163479497 instance=ExtResource("12_riabp")]
-position = Vector2(1021, 491)
+position = Vector2(1047, 272)
 
 [node name="door_and_plates_component" type="Node" parent="." unique_id=1314398933]
 script = ExtResource("14_qhj2y")

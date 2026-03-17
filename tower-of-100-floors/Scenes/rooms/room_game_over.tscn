@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ds4fjx6vx00wm"]
+
+[ext_resource type="Script" uid="uid://bs5hwdd8k4xt6" path="res://Scripts/room/room_game_over.gd" id="1_7j5j6"]
+[ext_resource type="Texture2D" uid="uid://88cmtttp7my4" path="res://Resources/images/uis/GameOverTitle.png" id="2_7j5j6"]
+[ext_resource type="FontFile" uid="uid://bsp438tl0ck0e" path="res://Resources/font/Daydream DEMO.otf" id="3_4gsje"]
+
+[node name="game_over_room" type="Node2D" unique_id=339098498]
+script = ExtResource("1_7j5j6")
+room_id = "GameOver"
+next_room = "0"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568519424]
+layer = 99
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=821815072]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1843911166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1427910472]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = 183.0
+offset_right = -109.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7j5j6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=727891524]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -82.0
+offset_right = 246.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_4gsje")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave] Press any key to restart[/wave]"

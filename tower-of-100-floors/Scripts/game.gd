@@ -5,6 +5,7 @@ class_name Game
 @export var game_interface: GUI
 @export var room_manager: RoomManager
 @export var player_loader: PlayerLoader
+@export var transition_component: TransitionComponent
 
 @onready var player_spawn: Marker2D = $player_spawn
 
@@ -22,14 +23,21 @@ func _get_player_stats() -> void:
 
 func _spawn_player() -> void:
 	if !player_in_scene:
-		var player = load(PLAYER_SCENE)
-		player = player.instantiate() as Player
-		if player:
-			player_in_scene = player
+		var player_scene_resource = load(PLAYER_SCENE) as PackedScene
+		var player_instance = player_scene_resource.instantiate() as Player
+		
+		if player_instance:
+			player_in_scene = player_instance
 			add_child(player_in_scene)
 			_set_player_location()
-	else: #Player ja criado
+			
+			if not player_in_scene.is_death.is_connected(_player_is_death):
+				player_in_scene.is_death.connect(_player_is_death)
+	else:
 		_set_player_location()
 
 func _set_player_location() -> void:
 	player_in_scene.global_position = player_spawn.global_position
+
+func _player_is_death() -> void:
+	room_manager.change_room("_game_over")

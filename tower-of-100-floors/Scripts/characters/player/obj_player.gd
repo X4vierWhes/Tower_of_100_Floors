@@ -22,11 +22,11 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
+	if !death:
+		_update()
+
+func _update() -> void:
 	guns_pivot_update()
-	
-	if actual_health < 0:
-		death = true;
-		print("Player morreu")
 	
 	if is_dashing:
 		dashing_effect()
@@ -78,13 +78,18 @@ func _equip(item: Item) -> void:
 	
 
 func _take_damage(damage: int) -> void:
-	if !god_mode || can_take_damage || actual_health < 0:
+	if god_mode || can_take_damage || actual_health < 0:
 		pass
 	
 	can_take_damage = false
-	
+	actual_health -= damage
 	gui_pointer.player_take_damage(damage, self)
 	_create_damage_label()
+	if actual_health <= 0:
+		anim_player.play("death")
+		death = true
+		await get_tree().create_timer(1.0).timeout
+		is_death.emit()
 	
 	await get_tree().create_timer(0.7).timeout
 	can_take_damage = true

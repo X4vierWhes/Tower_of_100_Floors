@@ -5,6 +5,15 @@ class_name GUI
 @export var heart_component: HeartComponent
 @export var gun_component: GunComponent
 
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var coins: Sprite2D = $CanvasLayer/itens_component/coins
+@onready var bombs: Sprite2D = $CanvasLayer/itens_component/bombs
+
+func change_visibilty() -> void:
+	canvas_layer.visible = !canvas_layer.visible
+	coins.visible = !coins.visible
+	bombs.visible = !bombs.visible
+
 func gun_reload(gun: Pistol) -> void:
 	if !gun:
 		return
@@ -22,12 +31,9 @@ func gun_shoot(gun: Pistol) -> void:
 		gun.actual_clip -= 1
 
 func player_take_damage(damage: int, player: Player) -> void:
-	
 	for i in range(damage):
 		_heart_unstack()
-		print("Entrei for take damage na gui component")
 	
-	player.actual_health -= damage
 
 func player_heal(heal: int, player: Player) -> void:
 	pass

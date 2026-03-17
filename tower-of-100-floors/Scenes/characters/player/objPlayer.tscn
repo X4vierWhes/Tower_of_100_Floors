@@ -86,7 +86,7 @@ bombs = 3
 [node name="animPlayer" type="AnimatedSprite2D" parent="." unique_id=1673899738]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_uj71w")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718082496]
