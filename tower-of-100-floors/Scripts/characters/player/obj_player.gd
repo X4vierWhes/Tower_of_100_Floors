@@ -4,7 +4,7 @@ class_name Player
 @onready var anim_player: AnimatedSprite2D = $animPlayer
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
-@onready var gui_pointer: GUI = null
+var gui_pointer: GUI
 @onready var gun: Pistol = null
 
 var has_gun: bool = false

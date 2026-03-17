@@ -15,6 +15,8 @@ class_name CharacterInterface
 
 var death: bool = false
 
+signal is_death
+
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
@@ -36,7 +38,7 @@ func _create_damage_label() -> void:
 	label.text = "[center][color=RED]" + hurt_phrases.get(0) + "[/color][/center]" 
 	label.custom_minimum_size = Vector2(100, 50)
 	
-	get_parent().add_child(label)
+	add_child(label)
 	
 	label.global_position = global_position + Vector2(-50, -40)
 	

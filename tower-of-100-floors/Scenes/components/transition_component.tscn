@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvgc62o86iong"]
+
+[ext_resource type="Shader" uid="uid://cb6y2iyaohry" path="res://shaders/transition_component.gdshader" id="1_0q0qk"]
+[ext_resource type="Script" uid="uid://dvr451rwdekcf" path="res://Scripts/components/transition_component.gd" id="1_dbdic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbdic"]
+shader = ExtResource("1_0q0qk")
+shader_parameter/spacing = 25.0
+shader_parameter/animation_progress = 0.0
+shader_parameter/dot_size = 1.0
+shader_parameter/dot_color = Color(0, 0, 0, 1)
+
+[node name="transition_component" type="Node" unique_id=1868355065 node_paths=PackedStringArray("background")]
+script = ExtResource("1_dbdic")
+background = NodePath("CanvasLayer/ColorRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=974180866]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=664104247]
+material = SubResource("ShaderMaterial_dbdic")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

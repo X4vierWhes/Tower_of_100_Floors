@@ -1,14 +1,14 @@
 extends Node
 class_name EnemiesControl
 
-@onready var _enemiesList: Array[CharacterInterface] = []
+var _enemiesList: Array[CharacterInterface] = []
 
 signal enemies_empty
 
 func _append_enemie(enemie: CharacterInterface) -> void:
 	if enemie:
-		print("Adicionei inimigo na enemie control")
 		_enemiesList.append(enemie)
+		enemie.is_death.connect(_del_enemie.bind(enemie))
 	
 
 func _del_enemie(enemie: CharacterInterface) -> void:

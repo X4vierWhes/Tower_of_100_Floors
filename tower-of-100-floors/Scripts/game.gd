@@ -21,6 +21,15 @@ func _get_player_stats() -> void:
 	pass
 
 func _spawn_player() -> void:
-	var player = load(PLAYER_SCENE)
-	if player:
-		print("Peguei player")
+	if !player_in_scene:
+		var player = load(PLAYER_SCENE)
+		player = player.instantiate() as Player
+		if player:
+			player_in_scene = player
+			add_child(player_in_scene)
+			_set_player_location()
+	else: #Player ja criado
+		_set_player_location()
+
+func _set_player_location() -> void:
+	player_in_scene.global_position = player_spawn.global_position

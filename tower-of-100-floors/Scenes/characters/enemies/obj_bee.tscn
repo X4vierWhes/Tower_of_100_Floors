@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://qh4ukgb3eujb"]
+
+[ext_resource type="Script" uid="uid://wth4gwy8t7og" path="res://Scripts/characters/enemies/obj_bee.gd" id="1_ku6g8"]
+[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="2_b4pnr"]
+[ext_resource type="Texture2D" uid="uid://c06farg8efcd4" path="res://Resources/images/enemies/Bee.png" id="2_x14lq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gv8m"]
+shader = ExtResource("2_b4pnr")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pnr"]
+atlas = ExtResource("2_x14lq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gv8m"]
+atlas = ExtResource("2_x14lq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmh3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gv8m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxk6r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x14lq"]
+radius = 206.0
+
+[node name="objBee" type="CharacterBody2D" unique_id=1994341278 groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_ku6g8")
+speed = 600.0
+max_health = 20
+coins = 5
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1261333191]
+texture_filter = 3
+material = SubResource("ShaderMaterial_4gv8m")
+sprite_frames = SubResource("SpriteFrames_wmh3r")
+animation = &"idle"
+frame_progress = 0.8739388
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188610216]
+top_level = true
+light_mask = 8
+visibility_layer = 23
+shape = SubResource("RectangleShape2D_jxk6r")
+debug_color = Color(0.85126096, 0.11866807, 0.85153913, 0.41960785)
+
+[node name="range_area" type="Area2D" parent="." unique_id=901980917]
+light_mask = 8
+visibility_layer = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_area" unique_id=1102341870]
+shape = SubResource("CircleShape2D_x14lq")
+debug_color = Color(0.36569506, 0.4794855, 1, 0.41960785)
+
+[connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
+[connection signal="body_exited" from="range_area" to="." method="_on_range_area_body_exited"]

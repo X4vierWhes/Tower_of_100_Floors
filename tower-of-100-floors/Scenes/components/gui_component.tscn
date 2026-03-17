@@ -691,7 +691,7 @@ heart_component = NodePath("CanvasLayer/heart_component")
 gun_component = NodePath("CanvasLayer/gun_component")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1063729661]
-layer = 99
+layer = 4
 follow_viewport_enabled = true
 
 [node name="gui" type="Sprite2D" parent="CanvasLayer" unique_id=171659471]
