@@ -1,5 +1,6 @@
 extends CharacterInterface
 class_name Trap
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_area: Area2D = $attack_area
 @onready var damage: int = 2
@@ -28,5 +29,4 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.has_method("_take_damage"):
-		print("dei dano objtrap")
 		body._take_damage(damage)

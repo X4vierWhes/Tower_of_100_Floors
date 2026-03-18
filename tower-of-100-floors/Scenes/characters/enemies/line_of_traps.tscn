@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rafxmb4wogua"]
+
+[ext_resource type="PackedScene" uid="uid://b2kcnn4bp2kqj" path="res://Scenes/characters/enemies/obj_trap.tscn" id="1_8nbap"]
+
+[node name="line_of_traps" type="Node2D" unique_id=462671050]
+show_behind_parent = true
+visibility_layer = 2
+z_index = -1
+
+[node name="objTrap" parent="." unique_id=255404683 instance=ExtResource("1_8nbap")]
+show_behind_parent = true
+
+[node name="objTrap2" parent="." unique_id=1927166356 instance=ExtResource("1_8nbap")]
+show_behind_parent = true
+position = Vector2(32, 0)
+
+[node name="objTrap3" parent="." unique_id=1917924312 instance=ExtResource("1_8nbap")]
+show_behind_parent = true
+position = Vector2(64, 0)
+
+[node name="objTrap4" parent="." unique_id=2015554421 instance=ExtResource("1_8nbap")]
+position = Vector2(96, 0)

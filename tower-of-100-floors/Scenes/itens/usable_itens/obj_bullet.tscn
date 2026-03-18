@@ -14,7 +14,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b55e1"]
 size = Vector2(10, 8)
 
-[node name="objBullet" type="Node2D" unique_id=1954637572]
+[node name="objBullet" type="Node2D" unique_id=1954637572 groups=["Itens"]]
 top_level = true
 script = ExtResource("1_ajj33")
 item_name = "bullet"

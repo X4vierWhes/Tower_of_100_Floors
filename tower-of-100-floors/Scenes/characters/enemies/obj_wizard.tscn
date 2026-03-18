@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cv1sxil8h4ogp"]
+
+[ext_resource type="Script" uid="uid://yy4l0wtu36gb" path="res://Scripts/characters/enemies/obj_wizard.gd" id="1_j7iff"]
+[ext_resource type="Texture2D" uid="uid://b4unoykjum56" path="res://Resources/images/enemies/Mage.png" id="1_vhvwi"]
+[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="2_gte70"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmwhi"]
+shader = ExtResource("2_gte70")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7iff"]
+atlas = ExtResource("1_vhvwi")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gte70"]
+atlas = ExtResource("1_vhvwi")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmwhi"]
+atlas = ExtResource("1_vhvwi")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1shec"]
+atlas = ExtResource("1_vhvwi")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir72n"]
+atlas = ExtResource("1_vhvwi")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80r8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7iff")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gte70")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmwhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1shec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir72n")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2ue2"]
+size = Vector2(21, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gte70"]
+radius = 348.11636
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7iff"]
+radius = 537.7034
+
+[node name="objWizard" type="CharacterBody2D" unique_id=1839842117 groups=["Enemies"]]
+top_level = true
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_j7iff")
+max_health = 30
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096245209]
+texture_filter = 3
+material = SubResource("ShaderMaterial_tmwhi")
+sprite_frames = SubResource("SpriteFrames_80r8l")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1820167377]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_s2ue2")
+debug_color = Color(0.21521151, 0.55318654, 0.858033, 0.41960785)
+
+[node name="attack_area" type="Area2D" parent="." unique_id=628748981]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1901305463]
+shape = SubResource("CircleShape2D_gte70")
+debug_color = Color(0.27869576, 0.6318729, 0, 0.41960785)
+
+[node name="range_area" type="Area2D" parent="." unique_id=895410010]
+collision_layer = 4
+collision_mask = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_area" unique_id=1872075621]
+visible = false
+shape = SubResource("CircleShape2D_j7iff")
+debug_color = Color(0.8886243, 0.00027261258, 0.8000676, 0.41960785)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=825126360]
+
+[node name="navigation_timer" type="Timer" parent="." unique_id=192153552]
+wait_time = 1.2
+
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
+[connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]

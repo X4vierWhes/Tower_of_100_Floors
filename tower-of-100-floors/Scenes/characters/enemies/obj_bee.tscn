@@ -42,6 +42,7 @@ radius = 15.524175
 radius = 206.0
 
 [node name="objBee" type="CharacterBody2D" unique_id=1994341278 groups=["Enemies"]]
+top_level = true
 collision_layer = 4
 collision_mask = 27
 script = ExtResource("1_ku6g8")
@@ -54,7 +55,7 @@ texture_filter = 3
 material = SubResource("ShaderMaterial_4gv8m")
 sprite_frames = SubResource("SpriteFrames_wmh3r")
 animation = &"idle"
-frame_progress = 0.46879566
+frame_progress = 0.11592686
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188610216]
 top_level = true

@@ -156,6 +156,8 @@ agent_radius = 5.0
 
 [node name="room1" type="Node2D" unique_id=977451492]
 script = ExtResource("1_riabp")
+room_id = "1"
+next_room = "2"
 
 [node name="room_principal_layer" type="TileMapLayer" parent="." unique_id=1280141711]
 
