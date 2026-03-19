@@ -7,8 +7,6 @@ class_name UsableItem
 @export var consumable: bool = false
 @export var throw_count: int = 1
 
-var player_pointer: Player = null
-
 func _ready() -> void:
 	set_process(false)
 
@@ -18,6 +16,3 @@ func _apply_consumable_effect() -> void:
 func _throw_item(t_count: int = 1) -> void:
 	throw_count = t_count
 	set_process(true)
-
-func _set_player(p: Player) -> void:
-	player_pointer = p as Player

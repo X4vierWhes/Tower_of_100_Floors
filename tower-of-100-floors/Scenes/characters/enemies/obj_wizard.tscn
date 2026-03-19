@@ -74,17 +74,20 @@ radius = 348.11636
 radius = 537.7034
 
 [node name="objWizard" type="CharacterBody2D" unique_id=1839842117 groups=["Enemies"]]
-top_level = true
+light_mask = 8
+visibility_layer = 23
+z_index = 1
 collision_layer = 4
 collision_mask = 27
 script = ExtResource("1_j7iff")
-max_health = 30
+speed = 75.0
+max_health = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096245209]
 texture_filter = 3
 material = SubResource("ShaderMaterial_tmwhi")
 sprite_frames = SubResource("SpriteFrames_80r8l")
-animation = &"run"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1820167377]
 position = Vector2(0.5, 0)
@@ -92,6 +95,8 @@ shape = SubResource("RectangleShape2D_s2ue2")
 debug_color = Color(0.21521151, 0.55318654, 0.858033, 0.41960785)
 
 [node name="attack_area" type="Area2D" parent="." unique_id=628748981]
+collision_layer = 4
+collision_mask = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1901305463]
 shape = SubResource("CircleShape2D_gte70")
@@ -102,7 +107,6 @@ collision_layer = 4
 collision_mask = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range_area" unique_id=1872075621]
-visible = false
 shape = SubResource("CircleShape2D_j7iff")
 debug_color = Color(0.8886243, 0.00027261258, 0.8000676, 0.41960785)
 
@@ -110,6 +114,9 @@ debug_color = Color(0.8886243, 0.00027261258, 0.8000676, 0.41960785)
 
 [node name="navigation_timer" type="Timer" parent="." unique_id=192153552]
 wait_time = 1.2
+
+[node name="magic_point" type="Marker2D" parent="." unique_id=192926903]
+position = Vector2(0, -24)
 
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]

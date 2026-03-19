@@ -32,9 +32,6 @@ func _stack() -> void: #Empilhar
 	
 
 func _unstack() -> void:
-	#print("Tentando desempilhar... Tamanho do array: ", _elements.size())
-	#print("Filhos reais no HBox: ", heart_container.get_child_count())
-	
 	if _elements.is_empty():
 		for child in heart_container.get_children():
 			_elements.append(child)
@@ -44,5 +41,11 @@ func _unstack() -> void:
 		if is_instance_valid(last):
 			var tween: Tween = create_tween()
 			
-			last.queue_free()
+			tween.set_parallel(true)
+			tween.tween_property(last, "scale", Vector2.ZERO, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_property(last, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			
+			await tween.finished
+			if last:
+				last.queue_free()
 		

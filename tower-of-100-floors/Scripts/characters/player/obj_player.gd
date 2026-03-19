@@ -66,7 +66,7 @@ func dashing_effect() -> void:
 
 func _equip(item: Item) -> void:
 	gun = item as Pistol
-	gun.global_position.x += 50.0
+	gun.global_position.x += 10.0
 	
 	guns_pivot.add_child(gun)
 	
@@ -78,8 +78,8 @@ func _equip(item: Item) -> void:
 	
 
 func _take_damage(damage: int) -> void:
-	if god_mode || can_take_damage || actual_health < 0:
-		pass
+	if god_mode || !can_take_damage || actual_health < 0:
+		return
 	
 	can_take_damage = false
 	actual_health -= damage

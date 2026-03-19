@@ -12,9 +12,6 @@ func _ready() -> void:
 	tween = create_tween()
 	canvas_layer.layer = 5
 
-func _total_background(seconds: float = 1.0) -> void:
-	shader_material.set_shader_parameter("animation_progress", 1.0)
-
 func fade_in(seconds: float = 1.0) -> void:
 	_check_tween()
 	canvas_layer.layer = 5

@@ -23,7 +23,7 @@ func enemie_control() -> void:
 		parent._append_enemie(self)
 	
 
-func _take_damage(damage: int) -> void:
+func _take_damage(_damage: int) -> void:
 	pass
 
 func _create_damage_label() -> void:

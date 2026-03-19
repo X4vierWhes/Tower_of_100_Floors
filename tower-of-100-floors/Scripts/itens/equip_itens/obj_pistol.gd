@@ -10,6 +10,8 @@ class_name Pistol
 const OBJ_BULLET = preload("uid://uy71c1b3cb13")
 const TEX_PISTOL: String = "res://Resources/images/pistol/Pistol_Solo.png"
 
+var tween: Tween
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") && actual_clip > 0 && can_shoot:
 		shoot()

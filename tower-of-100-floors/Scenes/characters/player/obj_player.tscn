@@ -1,35 +1,35 @@
 [gd_scene format=3 uid="uid://ckisamdxmuhow"]
 
-[ext_resource type="Script" uid="uid://dsqr2npcoh8jo" path="res://Scripts/characters/player/obj_player.gd" id="1_sd3sm"]
-[ext_resource type="Texture2D" uid="uid://btesdh688wrsn" path="res://Resources/images/player/Player.png" id="2_wphea"]
-[ext_resource type="Texture2D" uid="uid://c1r841o1x0mce" path="res://Resources/images/player/Player_Shadow.png" id="3_wphea"]
+[ext_resource type="Script" uid="uid://dsqr2npcoh8jo" path="res://Scripts/characters/player/obj_player.gd" id="1_5ecnf"]
+[ext_resource type="Texture2D" uid="uid://btesdh688wrsn" path="res://Resources/images/player/Player.png" id="2_lk5yj"]
+[ext_resource type="Texture2D" uid="uid://c1r841o1x0mce" path="res://Resources/images/player/Player_Shadow.png" id="3_eccdn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nlmi"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sd3sm"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wphea"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sexaj"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mri17"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wxfo"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u1xe"]
-atlas = ExtResource("2_wphea")
+atlas = ExtResource("2_lk5yj")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj71w"]
@@ -74,20 +74,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
 size = Vector2(20, 26)
 
-[node name="objPlayer" type="CharacterBody2D" unique_id=1282361699 groups=["Player"]]
+[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 groups=["Player"]]
 light_mask = 2
 visibility_layer = 23
 z_index = 1
 collision_layer = 2
 collision_mask = 13
-script = ExtResource("1_sd3sm")
+script = ExtResource("1_5ecnf")
 bombs = 3
 
 [node name="animPlayer" type="AnimatedSprite2D" parent="." unique_id=1673899738]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_uj71w")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.93602496
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718082496]
 show_behind_parent = true
@@ -100,6 +101,6 @@ shape = SubResource("RectangleShape2D_eoce3")
 [node name="shadow" type="Sprite2D" parent="." unique_id=1670224409]
 z_index = -1
 position = Vector2(-1, 14)
-texture = ExtResource("3_wphea")
+texture = ExtResource("3_eccdn")
 
 [node name="guns_pivot" type="Marker2D" parent="." unique_id=617503045]

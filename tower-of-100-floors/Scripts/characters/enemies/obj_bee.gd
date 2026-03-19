@@ -7,7 +7,7 @@ class_name Bee
 @onready var navigation_timer: Timer = $navigation_timer
 @onready var can_take_damage: bool = true
 
-var searching_goal: Vector2 = Vector2(10, 5)
+var searching_goal: Vector2 = Vector2(10, 1)
 var tween: Tween
 var state: String = "searching"
 
@@ -65,7 +65,6 @@ func _calc_damage(damage: int) -> void:
 
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("Player entrou na bee")
 		player_pointer = body as Player
 		navigation_timer.start()
 

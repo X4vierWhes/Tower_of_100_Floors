@@ -12,7 +12,7 @@ var direction: Vector2 = Vector2.ZERO
 func _process(delta: float) -> void:
 	
 	direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * bullet_speed * delta
+	global_position += direction * bullet_speed * delta
 	travelled_distance += bullet_speed * delta
 	
 	if travelled_distance >= range_distance:

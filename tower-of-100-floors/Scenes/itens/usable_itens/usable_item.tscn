@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://b12jcfuplhsk1" path="res://Scripts/itens/usable_itens/usable_item.gd" id="1_m4sf5"]
 
 [node name="usable_item" type="Node2D" unique_id=305489136]
+z_index = 4
 script = ExtResource("1_m4sf5")
