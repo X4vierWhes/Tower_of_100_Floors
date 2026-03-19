@@ -7,6 +7,7 @@
 size = Vector2(12.25, 8)
 
 [node name="obj_magic" type="Node2D" unique_id=1818706552 groups=["Enemies"]]
+top_level = true
 light_mask = 8
 visibility_layer = 23
 z_index = 5
