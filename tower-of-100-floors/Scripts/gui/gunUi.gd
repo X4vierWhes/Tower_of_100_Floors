@@ -6,7 +6,7 @@ class_name GunComponent
 @export var ammo_container: HBoxContainer
 @export var max_ammo: int = 22
 var _elements: Array[TextureRect] = []
-const AMMO_TEX = preload("res://Resources/images/pistol/Ammo.png")
+const AMMO_TEX = preload("res://Resources/images/guns/Ammo.png")
 
 func update_ammo(_count: int) -> void:
 	if _count > 0:

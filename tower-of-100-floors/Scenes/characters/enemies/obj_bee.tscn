@@ -49,6 +49,7 @@ script = ExtResource("1_ku6g8")
 speed = 150.0
 max_health = 20
 coins = 5
+hurt_phrases = Array[String](["bzzzzz!!!"])
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1261333191]
 texture_filter = 3

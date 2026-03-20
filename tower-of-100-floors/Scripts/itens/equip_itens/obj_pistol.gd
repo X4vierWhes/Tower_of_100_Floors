@@ -1,14 +1,10 @@
-extends Item
+extends GunBase
 class_name Pistol
 
-@export var shoot_delay: float = 0.6
-
-@onready var can_shoot: bool = true
 @onready var circular_progress_bar_component: CircularProgressBar = $CircularProgressBarComponent
 @onready var shoot_point: Marker2D = $shoot_point
 
-const OBJ_BULLET = preload("uid://uy71c1b3cb13")
-const TEX_PISTOL: String = "res://Resources/images/pistol/Pistol_Solo.png"
+const TEX_PISTOL: String = "res://Resources/images/guns/Pistol_Solo.png"
 
 var tween: Tween
 
@@ -26,7 +22,6 @@ func reload() -> void:
 	circular_progress_bar_component.set_scale(Vector2(0.1,0.1))
 	circular_progress_bar_component.loading()
 	await circular_progress_bar_component.animation_end
-	#print("Sinal recebido em objPistol")
 	gui_pointer.gun_reload(self)
 	can_shoot = true
 	
@@ -46,6 +41,7 @@ func _create_bullet() -> void:
 	var new_bullet = OBJ_BULLET.instantiate() as Bullet
 	new_bullet.global_position = shoot_point.global_position
 	new_bullet.global_rotation = shoot_point.global_rotation
+	new_bullet.set_damage(damage)
 	shoot_point.add_child(new_bullet)
 	new_bullet._throw_item(1)
 

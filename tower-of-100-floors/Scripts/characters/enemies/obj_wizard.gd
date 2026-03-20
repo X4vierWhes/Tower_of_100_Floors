@@ -21,16 +21,10 @@ func _ready() -> void:
 	enemie_control()
 
 func _process(_delta: float) -> void:
-	#if player_pointer:
-	#	_update_pivot()
-	
 	anim.play(state)
 	if state == "run":
 		_chase_player()
 	
-
-func _update_pivot() -> void:
-	magic_point.look_at(player_pointer.global_position)
 
 func _chase_player() -> void:
 	if !navigation_agent_2d.is_target_reached():
@@ -73,9 +67,6 @@ func _calc_damage(damage: int) -> void:
 func _shoot() -> void:
 	if !player_pointer or actual_health <= 0:
 		return
-	print("Player global position wizard shoot: " + str(player_pointer.global_position) + 
-	" Wizard global position: " + str(global_position)
-	)
 	state = "attack"
 	
 	var magic_scene = preload(MAGIC_SCENE)
@@ -85,7 +76,6 @@ func _shoot() -> void:
 	
 	magic_projectile.global_position = magic_point.global_position
 	var dir_to_player = magic_point.global_position.direction_to(player_pointer.global_position)
-	print(" Dir to Player: " + str(dir_to_player))
 	magic_projectile.launch(dir_to_player)
 	
 	magic_projectile._throw_item(1)

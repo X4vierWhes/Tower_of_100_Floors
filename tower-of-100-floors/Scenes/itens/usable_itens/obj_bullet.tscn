@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="1_2sjch"]
 [ext_resource type="Script" uid="uid://b5yqk78qeygl0" path="res://Scripts/itens/usable_itens/obj_bullet.gd" id="1_ajj33"]
-[ext_resource type="Texture2D" uid="uid://bhfvtiil0pxan" path="res://Resources/images/pistol/Bullet.png" id="2_ajj33"]
+[ext_resource type="Texture2D" uid="uid://bhfvtiil0pxan" path="res://Resources/images/guns/Bullet.png" id="2_ajj33"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tb62s"]
 shader = ExtResource("1_2sjch")

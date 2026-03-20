@@ -9,8 +9,8 @@ class_name CharacterInterface
 @export var coins: int = 0
 @export var bombs: int = 0
 @export var god_mode: bool = false
+@export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
 
-@onready var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
 @onready var actual_health = max_health
 
 var death: bool = false
@@ -24,6 +24,15 @@ func enemie_control() -> void:
 	
 
 func _take_damage(_damage: int) -> void:
+	pass
+
+func _death() -> void:
+	pass
+
+func _drop_itens() -> void:
+	pass
+
+func _drop_coins() -> void:
 	pass
 
 func _create_damage_label() -> void:

@@ -30,13 +30,14 @@ func gun_shoot(gun: Pistol) -> void:
 	if gun_component._unstack():
 		gun.actual_clip -= 1
 
-func player_take_damage(damage: int, player: Player) -> void:
+func player_take_damage(damage: int) -> void:
 	for i in range(damage):
 		_heart_unstack()
 	
 
-func player_heal(heal: int, player: Player) -> void:
-	pass
+func player_heal(heal: int) -> void:
+	for i in range(heal):
+		_heart_stack()
 
 func _heart_stack() -> void:
 	heart_component._stack()
@@ -55,15 +56,12 @@ func update_gun(gun: Pistol) -> void:
 
 func _update_heart(_count) -> void:
 	if heart_component:
-		print("Entrei na update heart")
 		heart_component._update_hearts(_count)
 
 func _update_ammo(_count) -> void:
 	if gun_component:
-		print("Entrei na update ammo")
 		gun_component.update_ammo(_count)
 
 func _update_itens(_coins: int, _bombs: int) -> void:
 	if itens_component:
-		print("entrei na update itens")
 		itens_component._update(_coins, _bombs)

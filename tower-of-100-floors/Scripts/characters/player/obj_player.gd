@@ -5,7 +5,7 @@ class_name Player
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
 var gui_pointer: GUI
-@onready var gun: Pistol = null
+var gun: Pistol = null
 
 var has_gun: bool = false
 var can_dash: bool = true
@@ -27,7 +27,10 @@ func _process(_delta: float) -> void:
 
 func _update() -> void:
 	guns_pivot_update()
+	movement_update()
 	
+
+func movement_update() -> void:
 	if is_dashing:
 		dashing_effect()
 	
@@ -64,8 +67,8 @@ func dash() -> void:
 func dashing_effect() -> void:
 	pass
 
-func _equip(item: Item) -> void:
-	gun = item as Pistol
+func _equip(item: GunBase) -> void:
+	gun = item as GunBase
 	gun.global_position.x += 10.0
 	
 	guns_pivot.add_child(gun)
@@ -83,7 +86,7 @@ func _take_damage(damage: int) -> void:
 	
 	can_take_damage = false
 	actual_health -= damage
-	gui_pointer.player_take_damage(damage, self)
+	gui_pointer.player_take_damage(damage)
 	_create_damage_label()
 	if actual_health <= 0:
 		anim_player.play("death")
@@ -94,6 +97,9 @@ func _take_damage(damage: int) -> void:
 	await get_tree().create_timer(0.7).timeout
 	can_take_damage = true
 
+
+func _heal(heal_count: int) -> void:
+	gui_pointer.player_heal(heal_count)
 
 func _get_stats() -> Vector3:
 	return Vector3(actual_health, coins, bombs)

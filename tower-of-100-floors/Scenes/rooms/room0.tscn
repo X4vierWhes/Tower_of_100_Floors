@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dvmdmfyq1e3fi" path="res://Scripts/room/door_and_plates_component.gd" id="14_lc30s"]
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://Scripts/room/itens_control_component.gd" id="15_jarua"]
 [ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable_itens/easter_egg.tscn" id="18_jm5yb"]
+[ext_resource type="PackedScene" uid="uid://d24pw4fjpp15b" path="res://Scenes/itens/iteractable_itens/interact_heart.tscn" id="19_uacyk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -214,6 +215,9 @@ position = Vector2(863, 397)
 [node name="easter_egg" parent="itens_control_component" unique_id=137566444 instance=ExtResource("18_jm5yb")]
 position = Vector2(862, 693)
 action_name = "  are you a weak?"
+
+[node name="interact_heart" parent="itens_control_component" unique_id=124265973 instance=ExtResource("19_uacyk")]
+position = Vector2(607, 395)
 
 [node name="next_room_exit" type="Node" parent="." unique_id=1757532730]
 
