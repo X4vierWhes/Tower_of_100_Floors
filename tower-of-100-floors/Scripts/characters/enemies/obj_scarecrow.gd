@@ -12,7 +12,7 @@ func _ready() -> void:
 	enemie_control()
 
 
-func _take_damage(damage: int) -> void:
+func _take_damage(_damage: int) -> void:
 	if !can_take_damage: return
 	
 	if tween && tween.is_running():

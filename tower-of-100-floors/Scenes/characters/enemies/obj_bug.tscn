@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://2ca0j7pppba3"]
+
+[ext_resource type="Texture2D" uid="uid://byhgdo11fj2w0" path="res://Resources/images/enemies/Bug.png" id="1_xfwq2"]
+[ext_resource type="Texture2D" uid="uid://bb0aq2m3uxf5e" path="res://Resources/images/enemies/Bug_Hole.png" id="2_esmmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n53j7"]
+atlas = ExtResource("1_xfwq2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp456"]
+atlas = ExtResource("1_xfwq2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gus0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n53j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp456")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vjqv"]
+atlas = ExtResource("2_esmmy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tij4c"]
+atlas = ExtResource("2_esmmy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45kh4"]
+atlas = ExtResource("2_esmmy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr6tr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vjqv")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tij4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45kh4")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbdii"]
+
+[node name="obj_bug" type="CharacterBody2D" unique_id=366718663]
+
+[node name="anim_bug" type="AnimatedSprite2D" parent="." unique_id=576506855]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gus0s")
+animation = &"idle"
+frame_progress = 0.085734025
+
+[node name="anim_hole" type="AnimatedSprite2D" parent="." unique_id=1466907793]
+texture_filter = 1
+position = Vector2(0, 34)
+sprite_frames = SubResource("SpriteFrames_mr6tr")
+animation = &"running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1681104407]
+shape = SubResource("RectangleShape2D_kbdii")

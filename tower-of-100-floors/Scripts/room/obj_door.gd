@@ -13,7 +13,7 @@ func _ready() -> void:
 		var parent = get_parent() as DoorAndPlatesComponent
 		parent.append_doors(self)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	animated_sprite_2d.play(state)
 	if state == "open":
 		collision_shape_2d.disabled = true

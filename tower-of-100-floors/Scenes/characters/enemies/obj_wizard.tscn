@@ -82,6 +82,7 @@ collision_mask = 27
 script = ExtResource("1_j7iff")
 speed = 75.0
 max_health = 40
+hurt_phrases = Array[String](["my magic never dies!!!", "oh, no!", "wizard!!!", "no sense."])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096245209]
 texture_filter = 3

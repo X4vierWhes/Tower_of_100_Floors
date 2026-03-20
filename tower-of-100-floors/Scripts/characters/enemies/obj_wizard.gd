@@ -79,12 +79,13 @@ func _shoot() -> void:
 	magic_projectile.launch(dir_to_player)
 	
 	magic_projectile._throw_item(1)
-	await get_tree().create_timer(1.0).timeout 
+	await get_tree().create_timer(.8).timeout 
 	
 	if actual_health > 0:
 		state = "run"
 	
-	attack_area.monitoring = true
+	await  get_tree().create_timer(.8).timeout
+	_shoot()
 
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

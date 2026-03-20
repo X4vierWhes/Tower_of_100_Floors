@@ -10,10 +10,8 @@ const range_distance: float = 1200.0
 var direction: Vector2 = Vector2.ZERO
 
 func launch(dir: Vector2) -> void:
-	print("Ativei magia")
 	direction = dir.normalized()
 	rotation = direction.angle()
-	print("Direction: " + str(direction) + " Rotation: " + str(rotation))
 
 func _process(delta: float) -> void:
 	global_position += direction * bullet_speed * delta
@@ -28,5 +26,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.has_method("_take_damage"):
 			body._take_damage(damage)
 			
+	
 	if !body.is_in_group("Enemies"):
 		queue_free()

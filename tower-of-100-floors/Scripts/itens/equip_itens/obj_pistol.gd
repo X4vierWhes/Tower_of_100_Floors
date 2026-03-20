@@ -28,8 +28,8 @@ func reload() -> void:
 
 func shoot() -> void:
 	if !gui_pointer:
-		print("GUI POINTER NULL IN PISTOL")
 		return
+	
 	can_shoot = false
 	gui_pointer.gun_shoot(self)
 	_create_bullet()
