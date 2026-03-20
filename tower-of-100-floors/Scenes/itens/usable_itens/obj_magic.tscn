@@ -17,7 +17,6 @@ item_name = "Magic"
 throwable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=118012932]
-top_level = true
 light_mask = 8
 visibility_layer = 23
 z_index = 5
