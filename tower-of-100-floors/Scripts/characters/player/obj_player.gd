@@ -4,7 +4,7 @@ class_name Player
 @export_category("Parameters")
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
-
+@export var gui_pointer: GUI
 
 const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
 const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
@@ -13,7 +13,6 @@ const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
 
-@export var gui_pointer: GUI
 var gun: GunBase = null
 var has_gun: bool = false
 var can_dash: bool = true
@@ -23,7 +22,6 @@ var can_take_damage: bool = true
 func _ready() -> void:
 	update_gui()
 
-
 func _process(_delta: float) -> void:
 	if !death:
 		_update()
@@ -31,7 +29,6 @@ func _process(_delta: float) -> void:
 func _update() -> void:
 	guns_pivot_update()
 	movement_update()
-
 
 func guns_pivot_update() -> void:
 	guns_pivot.look_at(get_global_mouse_position())

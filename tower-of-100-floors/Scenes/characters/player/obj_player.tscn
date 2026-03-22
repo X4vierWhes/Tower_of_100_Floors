@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
-size = Vector2(20, 26)
+size = Vector2(20, 21)
 
 [node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("gui_pointer") groups=["Player"]]
 light_mask = 2
@@ -99,7 +99,7 @@ show_behind_parent = true
 top_level = true
 light_mask = 6
 visibility_layer = 23
-position = Vector2(0, 3)
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_eoce3")
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=1670224409]

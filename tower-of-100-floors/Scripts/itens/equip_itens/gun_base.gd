@@ -10,6 +10,12 @@ class_name GunBase
 
 const OBJ_BULLET = preload("uid://uy71c1b3cb13")
 
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot:
+		shoot()
+	elif Input.is_action_pressed("attack") && actual_clip == 0 && can_shoot || Input.is_action_pressed("reload") && can_shoot:
+		reload()
+
 func shoot() -> void:
 	pass
 

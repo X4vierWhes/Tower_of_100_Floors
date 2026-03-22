@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ccng2qebsn0c4"]
+
+[ext_resource type="Script" uid="uid://b7fxmqj7wo4hf" path="res://Scripts/itens/usable_itens/obj_bomb.gd" id="1_wkar6"]
+
+[node name="obj_bomb" type="Node2D" unique_id=325447550]
+script = ExtResource("1_wkar6")
+item_name = "bomb"

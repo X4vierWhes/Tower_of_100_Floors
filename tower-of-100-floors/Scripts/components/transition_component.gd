@@ -2,14 +2,13 @@ extends Node
 class_name TransitionComponent
 
 @export var background: ColorRect
-@onready var tween: Tween = create_tween()
+@onready var tween: Tween
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 signal on_transition_end
 var shader_material: ShaderMaterial
 
 func _ready() -> void:
 	shader_material = background.material as ShaderMaterial
-	tween = create_tween()
 	canvas_layer.layer = 5
 
 func fade_in(seconds: float = 1.0) -> void:
@@ -34,7 +33,8 @@ func fade_out(seconds: float = 1.0) -> void:
 func _check_tween() -> void:
 	if tween:
 		tween.kill()
-		tween = create_tween()
+	
+	tween = create_tween()
 
 func _update_animation_progress(value: float) -> void:
 	shader_material.set_shader_parameter("animation_progress", value)

@@ -6,7 +6,7 @@
 
 [node name="objPistol" type="CharacterBody2D" unique_id=577472924]
 script = ExtResource("1_u8ahy")
-shoot_delay = 0.4
+drop_item_name = "interact_pistol"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1101562816]
 texture_filter = 3

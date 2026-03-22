@@ -8,12 +8,6 @@ const TEX_PISTOL: String = "res://Resources/images/guns/Pistol_Solo.png"
 
 var tween: Tween
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") && actual_clip > 0 && can_shoot:
-		shoot()
-	elif event.is_action_pressed("attack") && actual_clip == 0 && can_shoot || event.is_action_pressed("reload") && can_shoot:
-		reload()
-
 func reload() -> void:
 	if !gui_pointer:
 		return

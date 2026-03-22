@@ -6,12 +6,14 @@
 [ext_resource type="Script" uid="uid://cp5rfie3i18ef" path="res://Scripts/room/player_stats_loader.gd" id="5_i6g32"]
 
 [node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("room_manager", "player_loader", "transition_component")]
+process_mode = 3
 script = ExtResource("1_i6g32")
 room_manager = NodePath("room_manager")
 player_loader = NodePath("player_stats_loader")
 transition_component = NodePath("transition_component")
 
 [node name="room_manager" type="Node" parent="." unique_id=1747045631 node_paths=PackedStringArray("game", "transition")]
+process_mode = 1
 script = ExtResource("4_i6g32")
 initial_room = "_init_room"
 game = NodePath("..")

@@ -84,7 +84,7 @@ func _shoot() -> void:
 	if actual_health > 0:
 		state = "run"
 	
-	await  get_tree().create_timer(1.2).timeout
+	await  get_tree().create_timer(1.4).timeout
 	_shoot()
 
 func _on_range_area_body_entered(body: Node2D) -> void:
@@ -98,7 +98,6 @@ func _on_range_area_body_entered(body: Node2D) -> void:
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and player_pointer and state != "attack":
-		print("Iniciando ataque do Wizard")
 		attack_area.monitoring = false
 		_shoot()
 
