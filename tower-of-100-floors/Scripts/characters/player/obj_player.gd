@@ -57,13 +57,17 @@ func movement_update() -> void:
 	
 
 func _verify_dashing_collision() -> void:
-	if get_slide_collision_count():
-		for i in get_slide_collision_count():
-			if is_instance_valid(i):
-				if !get_slide_collision(i).get_collider().is_in_group("Player") && is_dashing:
-					is_dashing = false
-					return
-				
+	if !is_dashing || get_slide_collision_count() == 0:
+		return
+	
+	for i in get_slide_collision_count():
+		var slide = get_slide_collision(i)
+		if is_instance_valid(slide):
+			if !slide.get_collider().is_in_group("Player") && is_dashing:
+				is_dashing = false
+				#Posso fazer efeito de impacto com algo, estilo screen shake
+				return
+			
 
 func guns_pivot_update() -> void:
 	guns_pivot.look_at(get_global_mouse_position())
