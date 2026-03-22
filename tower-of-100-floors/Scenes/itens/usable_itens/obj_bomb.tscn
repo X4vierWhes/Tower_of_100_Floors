@@ -5,3 +5,9 @@
 [node name="obj_bomb" type="Node2D" unique_id=325447550]
 script = ExtResource("1_wkar6")
 item_name = "bomb"
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1205479311]
+texture_filter = 1
+position = Vector2(147, 65)
+region_enabled = true
+region_rect = Rect2(4.4797974, 65.417175, 30.110924, 20.780777)
