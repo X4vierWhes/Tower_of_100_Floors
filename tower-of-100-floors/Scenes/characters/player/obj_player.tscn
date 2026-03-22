@@ -69,7 +69,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
@@ -91,9 +91,8 @@ bombs = 3
 [node name="animPlayer" type="AnimatedSprite2D" parent="." unique_id=1673899738]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_uj71w")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.93602496
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718082496]
 show_behind_parent = true

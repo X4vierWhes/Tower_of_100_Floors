@@ -84,7 +84,7 @@ func _shoot() -> void:
 	if actual_health > 0:
 		state = "run"
 	
-	await  get_tree().create_timer(.8).timeout
+	await  get_tree().create_timer(1.2).timeout
 	_shoot()
 
 func _on_range_area_body_entered(body: Node2D) -> void:

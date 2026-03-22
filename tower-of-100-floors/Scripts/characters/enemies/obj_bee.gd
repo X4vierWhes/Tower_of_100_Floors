@@ -7,7 +7,7 @@ class_name Bee
 @onready var navigation_timer: Timer = $navigation_timer
 @onready var can_take_damage: bool = true
 
-var searching_goal: Vector2 = Vector2(10, 1)
+var searching_goal: Vector2 = Vector2(10, 0)
 var tween: Tween
 var state: String = "searching"
 
@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 	if !player_pointer:
 		velocity = searching_goal.normalized() * speed
 		move_and_slide()
+		_verify_collision()
 	else:
 		_chase_player()
 
@@ -35,6 +36,18 @@ func _chase_player() -> void:
 		move_and_slide()
 		
 		anim.flip_h = velocity.x < 0
+
+func _verify_collision() -> void:
+	if get_slide_collision_count() == 0:
+		return
+	
+	for i in get_slide_collision_count():
+		var slide = get_slide_collision(i)
+		if is_instance_valid(slide):
+			print("Searching goal: " + str(searching_goal))
+			searching_goal *= -1
+			print("Searching goal * -1: " + str(searching_goal))
+			return
 
 func _take_damage(damage: int) -> void:
 	if !can_take_damage: return
@@ -62,23 +75,16 @@ func _calc_damage(damage: int) -> void:
 		set_process(false)
 		emit_signal("is_death")
 
-
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_pointer = body as Player
 		navigation_timer.start()
-
-
-func _on_range_area_body_exited(body: Node2D) -> void:
-	pass
-
 
 func _on_navigation_timer_timeout() -> void:
 	if player_pointer:
 		if navigation_agent_2d.target_position != player_pointer.global_position:
 			navigation_agent_2d.target_position = player_pointer.global_position
 	navigation_timer.start()
-
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

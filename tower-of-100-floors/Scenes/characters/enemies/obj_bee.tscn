@@ -93,5 +93,4 @@ wait_time = 0.2
 
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
-[connection signal="body_exited" from="range_area" to="." method="_on_range_area_body_exited"]
 [connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]

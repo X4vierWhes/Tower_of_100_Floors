@@ -21,11 +21,8 @@ var is_dashing: bool = false
 var can_take_damage: bool = true
 
 func _ready() -> void:
-	#var parent = get_parent() as Game
-	#if parent:
-	#	gui_pointer = parent._get_gui()
-		update_gui()
-	
+	update_gui()
+
 
 func _process(_delta: float) -> void:
 	if !death:
@@ -34,7 +31,11 @@ func _process(_delta: float) -> void:
 func _update() -> void:
 	guns_pivot_update()
 	movement_update()
-	
+
+
+func guns_pivot_update() -> void:
+	guns_pivot.look_at(get_global_mouse_position())
+	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
 
 func movement_update() -> void:
 	_verify_dashing_collision()
@@ -68,11 +69,6 @@ func _verify_dashing_collision() -> void:
 				#Posso fazer efeito de impacto com algo, estilo screen shake
 				return
 			
-
-func guns_pivot_update() -> void:
-	guns_pivot.look_at(get_global_mouse_position())
-	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
-	
 
 func dash() -> void:
 	can_dash = false
