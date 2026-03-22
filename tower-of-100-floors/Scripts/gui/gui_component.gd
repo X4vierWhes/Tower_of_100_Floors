@@ -14,7 +14,7 @@ func change_visibilty() -> void:
 	coins.visible = !coins.visible
 	bombs.visible = !bombs.visible
 
-func gun_reload(gun: Pistol) -> void:
+func gun_reload(gun: GunBase) -> void:
 	if !gun:
 		return
 	var mod: int = gun.max_ammo - gun.actual_clip
@@ -24,11 +24,14 @@ func gun_reload(gun: Pistol) -> void:
 		await get_tree().create_timer(.05).timeout
 	gun.actual_clip = gun.max_ammo
 
-func gun_shoot(gun: Pistol) -> void:
+func gun_shoot(gun: GunBase) -> void:
 	if !gun:
 		return
 	if gun_component._unstack():
 		gun.actual_clip -= 1
+
+func gun_drop() -> void:
+	return
 
 func player_take_damage(damage: int) -> void:
 	for i in range(damage):
@@ -49,7 +52,7 @@ func update_player(player: Player) -> void:
 	_update_heart(player.actual_health)
 	_update_itens(player.coins, player.bombs)
 
-func update_gun(gun: Pistol) -> void:
+func update_gun(gun: GunBase) -> void:
 	if gun_component:
 		gun_component.update_ammo(gun._get_stats())
 		gun_component._set_texture(gun._get_texture())

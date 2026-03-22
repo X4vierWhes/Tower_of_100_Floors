@@ -5,6 +5,7 @@ class_name GunComponent
 @export var gun_location: Marker2D
 @export var ammo_container: HBoxContainer
 @export var max_ammo: int = 22
+var gun_texture: TextureRect = null
 var _elements: Array[TextureRect] = []
 const AMMO_TEX = preload("res://Resources/images/guns/Ammo.png")
 
@@ -16,6 +17,13 @@ func update_ammo(_count: int) -> void:
 		_count *= -1
 		for i in range(_count):
 			_unstack()
+
+func drop_gun() -> void:
+	for i in _elements: #retirando munições
+		_unstack()
+	
+	gun_texture.queue_free()
+	gun_texture = null
 
 func _stack() -> void:
 	if _elements.size() < max_ammo:
@@ -39,8 +47,9 @@ func _unstack() -> bool:
 	return false
 
 func _set_texture(texture: TextureRect) -> void:
-	texture.global_position = gun_location.global_position
-	texture.global_position.x -= 50.0
-	texture.global_position.y -= 50.0
-	gun_location.add_child(texture)
-	texture.use_parent_material = true
+	gun_texture = texture
+	gun_texture.global_position = gun_location.global_position
+	gun_texture.global_position.x -= 50.0
+	gun_texture.global_position.y -= 50.0
+	gun_location.add_child(gun_texture)
+	gun_texture.material = gun_location.material.duplicate()

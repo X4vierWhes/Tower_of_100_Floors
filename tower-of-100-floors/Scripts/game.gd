@@ -2,7 +2,6 @@ extends Node2D
 class_name Game
 
 @export_category("Pivos")
-@export var game_interface: GUI
 @export var room_manager: RoomManager
 @export var player_loader: PlayerLoader
 @export var transition_component: TransitionComponent
@@ -14,9 +13,6 @@ var player_in_scene: Player = null
 
 func _ready() -> void:
 	room_manager.init_game()
-
-func _get_gui() -> GUI:
-	return game_interface
 
 func _get_player_stats() -> void:
 	pass

@@ -4,23 +4,18 @@
 [ext_resource type="Script" uid="uid://bo23esseomo07" path="res://Scripts/room/room_manager.gd" id="4_i6g32"]
 [ext_resource type="PackedScene" uid="uid://cvgc62o86iong" path="res://Scenes/components/transition_component.tscn" id="5_1l0tm"]
 [ext_resource type="Script" uid="uid://cp5rfie3i18ef" path="res://Scripts/room/player_stats_loader.gd" id="5_i6g32"]
-[ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="5_wowpa"]
 
-[node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("game_interface", "room_manager", "player_loader", "transition_component")]
+[node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("room_manager", "player_loader", "transition_component")]
 script = ExtResource("1_i6g32")
-game_interface = NodePath("gui_component")
 room_manager = NodePath("room_manager")
 player_loader = NodePath("player_stats_loader")
 transition_component = NodePath("transition_component")
 
-[node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("5_wowpa")]
-
-[node name="room_manager" type="Node" parent="." unique_id=1747045631 node_paths=PackedStringArray("game", "transition", "gui")]
+[node name="room_manager" type="Node" parent="." unique_id=1747045631 node_paths=PackedStringArray("game", "transition")]
 script = ExtResource("4_i6g32")
 initial_room = "_init_room"
 game = NodePath("..")
 transition = NodePath("../transition_component")
-gui = NodePath("../gui_component")
 
 [node name="player_stats_loader" type="Node" parent="." unique_id=790723719]
 script = ExtResource("5_i6g32")

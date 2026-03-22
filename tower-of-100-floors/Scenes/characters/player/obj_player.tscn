@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dsqr2npcoh8jo" path="res://Scripts/characters/player/obj_player.gd" id="1_5ecnf"]
 [ext_resource type="Texture2D" uid="uid://btesdh688wrsn" path="res://Resources/images/player/Player.png" id="2_lk5yj"]
 [ext_resource type="Texture2D" uid="uid://c1r841o1x0mce" path="res://Resources/images/player/Player_Shadow.png" id="3_eccdn"]
+[ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="4_lk5yj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nlmi"]
 atlas = ExtResource("2_lk5yj")
@@ -74,13 +75,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
 size = Vector2(20, 26)
 
-[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 groups=["Player"]]
+[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("gui_pointer") groups=["Player"]]
 light_mask = 2
 visibility_layer = 23
 z_index = 1
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_5ecnf")
+dash_cooldown = 1.8
+dash_duration = 0.6
+gui_pointer = NodePath("gui_component")
+dash_force = 3.5
 bombs = 3
 
 [node name="animPlayer" type="AnimatedSprite2D" parent="." unique_id=1673899738]
@@ -104,3 +109,5 @@ position = Vector2(-1, 14)
 texture = ExtResource("3_eccdn")
 
 [node name="guns_pivot" type="Marker2D" parent="." unique_id=617503045]
+
+[node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("4_lk5yj")]
