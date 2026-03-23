@@ -6,6 +6,10 @@ class_name UsableItem
 @export var throwable: bool = false
 @export var consumable: bool = false
 @export var throw_count: int = 1
+@export var range_distance: float = 1200.0
+
+var travelled_distance: float = 0.0
+var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	set_process(false)

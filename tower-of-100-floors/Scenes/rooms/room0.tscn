@@ -218,6 +218,7 @@ action_name = "  are you a weak?"
 
 [node name="interact_heart" parent="itens_control_component" unique_id=124265973 instance=ExtResource("19_uacyk")]
 position = Vector2(607, 395)
+consumable_item = false
 
 [node name="next_room_exit" type="Node" parent="." unique_id=1757532730]
 

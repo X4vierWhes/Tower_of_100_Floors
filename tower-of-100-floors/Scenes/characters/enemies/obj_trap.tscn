@@ -70,7 +70,7 @@ debug_color = Color(2.2140146e-06, 0.64134073, 0.3408001, 0.41960785)
 
 [node name="attack_area" type="Area2D" parent="." unique_id=1360538979]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1468716148]
 shape = SubResource("RectangleShape2D_y18f0")

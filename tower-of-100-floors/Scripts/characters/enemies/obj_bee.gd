@@ -6,6 +6,7 @@ class_name Bee
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var navigation_timer: Timer = $navigation_timer
 @onready var can_take_damage: bool = true
+@onready var attack_area: Area2D = $attack_area
 
 var searching_goal: Vector2 = Vector2(10, 0)
 var tween: Tween
@@ -89,3 +90,7 @@ func _on_navigation_timer_timeout() -> void:
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body._take_damage(1)
+		attack_area.set_deferred("monitoring", false)
+		await get_tree().create_timer(0.2).timeout
+		attack_area.set_deferred("monitoring", true)
+	

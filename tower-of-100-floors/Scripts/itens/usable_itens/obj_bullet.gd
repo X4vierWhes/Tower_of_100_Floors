@@ -5,10 +5,6 @@ class_name Bullet
 @export var damage: int = 10
 @export var bullet_speed: float = 1000.0
 
-var travelled_distance: float = 0.0
-const range_distance: float = 1200.0
-var direction: Vector2 = Vector2.ZERO
-
 func _process(delta: float) -> void:
 	direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * bullet_speed * delta

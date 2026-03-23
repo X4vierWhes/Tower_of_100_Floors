@@ -16,11 +16,11 @@ func _process(_delta: float) -> void:
 		await get_tree().create_timer(2.0).timeout
 		state = "attack"
 	elif state == "attack":
-		attack_area.monitoring = true
+		attack_area.set_deferred("monitoring", true)
 		await get_tree().create_timer(1.0).timeout
 		state = "idle"
 	else:
-		attack_area.monitoring = false
+		attack_area.set_deferred("monitoring", false)
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

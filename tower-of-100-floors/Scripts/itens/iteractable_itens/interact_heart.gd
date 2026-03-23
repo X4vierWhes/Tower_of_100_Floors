@@ -12,8 +12,10 @@ func _ready() -> void:
 	add_child(richText)
 
 func _interact() -> void: #Sobrescrever metodo
-	if player_pointer && is_player_in_area && consumable_item:
+	if player_pointer && is_player_in_area:
 		player_pointer._heal(player_pointer.max_health)
+		if consumable_item:
+			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

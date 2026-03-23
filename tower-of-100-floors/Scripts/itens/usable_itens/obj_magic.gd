@@ -5,10 +5,6 @@ class_name Magic
 @export var damage: int = 1
 @export var bullet_speed: float = 500.0
 
-var travelled_distance: float = 0.0
-const range_distance: float = 1200.0
-var direction: Vector2 = Vector2.ZERO
-
 func launch(dir: Vector2) -> void:
 	direction = dir.normalized()
 	rotation = direction.angle()

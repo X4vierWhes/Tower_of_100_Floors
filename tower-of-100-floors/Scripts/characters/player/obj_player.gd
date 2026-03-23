@@ -6,6 +6,7 @@ class_name Player
 @export var dash_duration: float = 0.5
 @export var gui_pointer: GUI
 
+const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
 const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
 const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
 
@@ -28,7 +29,15 @@ func _process(_delta: float) -> void:
 
 func _update() -> void:
 	guns_pivot_update()
+	input_update()
 	movement_update()
+
+func input_update() -> void:
+	if Input.is_action_just_pressed("throw"):
+		throw_item()
+	
+	if Input.is_action_just_pressed("heal"):
+		return
 
 func guns_pivot_update() -> void:
 	guns_pivot.look_at(get_global_mouse_position())
@@ -99,7 +108,26 @@ func _dashing_effect() -> void:
 		
 		await get_tree().create_timer(0.03).timeout
 
+func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar futuros itens em desenvolvimento
+	if bombs <= 0:
+		return
+	
+	var item_instance: UsableItem = BOMB_SCENE.instantiate() as UsableItem
+	
+	get_parent().add_child(item_instance)
+	
+	item_instance.global_position = global_position
+	var throw_dir = global_position.direction_to(get_global_mouse_position())
+	item_instance.direction = throw_dir
+	item_instance.rotation = item_instance.direction.angle()
+	item_instance._throw_item()
+	bombs -= 1
+	gui_pointer.update_player(self)
+
 func _equip(item: GunBase) -> void:
+	if has_gun: #Fazer logica de dropar arma atual para trocar por nova
+		return
+	
 	gun = item as GunBase
 	gun.global_position.x += 10.0
 	
@@ -110,7 +138,7 @@ func _equip(item: GunBase) -> void:
 	gun.set_process(true)
 	if gun: 
 		gui_pointer.update_gun(gun)
-	
+	has_gun = true
 
 func _take_damage(damage: int) -> void:
 	if god_mode || !can_take_damage || is_dashing || actual_health < 0:
@@ -144,7 +172,6 @@ func _damage_effect() -> void:
 			mat.set_shader_parameter("hit_effect", value)
 	
 	tween.tween_method(shader_setter, 0.55, 0.0, 0.2)
-	
 
 func _heal(heal_count: int) -> void:
 	gui_pointer.player_heal(heal_count)
