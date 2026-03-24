@@ -7,13 +7,14 @@ class_name GunBase
 @export var actual_clip: int = 22
 @export var shoot_delay: float = 0.6
 @onready var can_shoot: bool = true
+@onready var is_reloading: bool = false
 
 const OBJ_BULLET = preload("uid://uy71c1b3cb13")
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot:
+	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot && !is_reloading:
 		shoot()
-	elif Input.is_action_pressed("attack") && actual_clip == 0 && can_shoot || Input.is_action_pressed("reload") && can_shoot:
+	elif Input.is_action_pressed("attack") && actual_clip == 0 && can_shoot && !is_reloading || Input.is_action_pressed("reload") && can_shoot && actual_clip != max_ammo && !is_reloading:
 		reload()
 
 func shoot() -> void:

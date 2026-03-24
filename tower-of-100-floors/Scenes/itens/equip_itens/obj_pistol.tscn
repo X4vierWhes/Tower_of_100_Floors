@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/guns/Pistol_Solo.png" id="2_mrhsx"]
 [ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="3_mrhsx"]
 
-[node name="objPistol" type="CharacterBody2D" unique_id=577472924]
+[node name="objPistol" type="Node2D" unique_id=459385302]
 script = ExtResource("1_u8ahy")
 drop_item_name = "interact_pistol"
 

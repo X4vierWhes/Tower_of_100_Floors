@@ -4,14 +4,14 @@ class_name CircularProgressBar
 @export_category("Configurações")
 @export var texture: TextureProgressBar
 @export var loading_time: float = 3.0
-@export var gun: Item
+@export var gun: GunBase
 var tween: Tween
 signal animation_end
 
 func _ready() -> void:
 	texture.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_position(gun.global_position)
 
 func loading() -> void:

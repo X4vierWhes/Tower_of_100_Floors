@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cqas66o2icv8h" path="res://Scripts/itens/equip_itens/gun_base.gd" id="1_umbh3"]
 
-[node name="gun_base" type="CharacterBody2D" unique_id=1539977278]
+[node name="gun_base" type="Node2D" unique_id=943006944]
 script = ExtResource("1_umbh3")
