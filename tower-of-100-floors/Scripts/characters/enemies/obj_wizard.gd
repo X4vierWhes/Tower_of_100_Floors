@@ -93,15 +93,13 @@ func _on_range_area_body_entered(body: Node2D) -> void:
 		player_pointer = body as Player
 		state = "run"
 		navigation_timer.start()
-		range_area.call_deferred("set", "monitoring", false)
-		#range_area.monitoring = false
+		range_area.set_deferred("monitoring", false)
 
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and player_pointer and state != "attack":
-		range_area.call_deferred("set", "monitoring", false)
-		#attack_area.monitoring = false
+		range_area.set_deferred("monitoring", false)
 		_shoot()
 
 func _on_navigation_timer_timeout() -> void:
