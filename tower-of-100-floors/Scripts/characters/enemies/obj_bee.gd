@@ -6,7 +6,6 @@ class_name Bee
 @onready var navigation_timer: Timer = $navigation_timer
 
 var searching_goal: Vector2 = Vector2(10, 0)
-var tween: Tween
 
 func _ready() -> void:
 	super._ready()
@@ -46,32 +45,6 @@ func _verify_collision() -> void:
 			searching_goal *= -1
 			print("Searching goal * -1: " + str(searching_goal))
 			return
-
-func _take_damage(damage: int) -> void:
-	if !can_take_damage: return
-	
-	if tween && tween.is_running():
-		tween.kill()
-	
-	can_take_damage = false
-	tween = create_tween()
-	_create_damage_label()
-	
-	var shader_setter = func(value: float):
-		anim.material.set_shader_parameter("hit_effect", value)
-	
-	tween.tween_method(shader_setter, 0.55, 0.0, 0.2)
-	
-	await tween.finished
-	_calc_damage(damage)
-
-func _calc_damage(damage: int) -> void:
-	actual_health -= damage
-	if actual_health > 0:
-		can_take_damage = true
-	else:
-		set_process(false)
-		emit_signal("is_death")
 
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

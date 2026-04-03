@@ -2,7 +2,6 @@ extends CharacterInterface
 class_name Scarecrow
 # Link sprite scarecrow: https://otsoga.itch.io/scarecrow
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-var tween: Tween
 
 func _ready() -> void:
 	if animated_sprite_2d.material:
@@ -19,6 +18,7 @@ func _take_damage(_damage: int) -> void:
 	
 	can_take_damage = false
 	tween = create_tween()
+	_create_damage_label()
 	animated_sprite_2d.play("hurt")
 	_create_damage_label()
 	
