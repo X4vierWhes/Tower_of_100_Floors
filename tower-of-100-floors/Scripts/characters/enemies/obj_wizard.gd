@@ -1,8 +1,6 @@
 extends EnemyInterface
 class_name Wizard
 
-@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-@onready var navigation_timer: Timer = $navigation_timer
 @onready var player_pointer: Player = null
 @onready var magic_point: Marker2D = $magic_point
 @onready var range_area: Area2D = $range_area
@@ -23,8 +21,8 @@ func _process(_delta: float) -> void:
 	
 
 func _chase_player() -> void:
-	if !navigation_agent_2d.is_target_reached():
-		var next_path_pos = navigation_agent_2d.get_next_path_position()
+	if !navigation_agent.is_target_reached():
+		var next_path_pos = navigation_agent.get_next_path_position()
 		var direction = global_position.direction_to(next_path_pos)
 		velocity = direction * speed
 		move_and_slide()
@@ -69,6 +67,6 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 
 func _on_navigation_timer_timeout() -> void:
 	if player_pointer:
-		if navigation_agent_2d.target_position != player_pointer.global_position:
-			navigation_agent_2d.target_position = player_pointer.global_position
+		if navigation_agent.target_position != player_pointer.global_position:
+			navigation_agent.target_position = player_pointer.global_position
 	navigation_timer.start()
