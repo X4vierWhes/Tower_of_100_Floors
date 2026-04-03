@@ -98,6 +98,12 @@ material = SubResource("ShaderMaterial_xovho")
 sprite_frames = SubResource("SpriteFrames_wa4pi")
 animation = &"hurt"
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=2107225779]
+texture_filter = 3
+material = SubResource("ShaderMaterial_xovho")
+sprite_frames = SubResource("SpriteFrames_wa4pi")
+animation = &"hurt"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187931200]
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_8tmco")

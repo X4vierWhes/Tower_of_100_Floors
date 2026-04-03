@@ -1,18 +1,15 @@
-extends CharacterInterface
+extends EnemyInterface
 class_name Bee
 
-@onready var anim: AnimatedSprite2D = $anim
 @onready var player_pointer: Player = null
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var navigation_timer: Timer = $navigation_timer
-@onready var can_take_damage: bool = true
-@onready var attack_area: Area2D = $attack_area
 
 var searching_goal: Vector2 = Vector2(10, 0)
 var tween: Tween
-var state: String = "searching"
 
 func _ready() -> void:
+	super._ready()
 	if anim.material:
 		anim.material = anim.material.duplicate()
 	anim.play("idle")
@@ -86,11 +83,3 @@ func _on_navigation_timer_timeout() -> void:
 		if navigation_agent_2d.target_position != player_pointer.global_position:
 			navigation_agent_2d.target_position = player_pointer.global_position
 	navigation_timer.start()
-
-func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		body._take_damage(1)
-		attack_area.set_deferred("monitoring", false)
-		await get_tree().create_timer(0.2).timeout
-		attack_area.set_deferred("monitoring", true)
-	

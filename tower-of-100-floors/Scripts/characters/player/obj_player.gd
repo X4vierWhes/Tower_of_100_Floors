@@ -2,6 +2,7 @@ extends CharacterInterface
 class_name Player
 
 @export_category("Parameters")
+@export var dash_force:float = 3.0
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
 @export var gui_pointer: GUI
@@ -10,7 +11,6 @@ const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
 const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
 const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
 
-@onready var anim_player: AnimatedSprite2D = $animPlayer
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
 
@@ -18,9 +18,9 @@ var gun: GunBase = null
 var has_gun: bool = false
 var can_dash: bool = true
 var is_dashing: bool = false
-var can_take_damage: bool = true
 
 func _ready() -> void:
+	super._ready()
 	update_gui()
 
 func _process(_delta: float) -> void:
@@ -55,12 +55,12 @@ func movement_update() -> void:
 	move_and_slide()
 	
 	if velocity.x != 0:
-		anim_player.play("run")
+		anim.play("run")
 	else:
-		anim_player.play("idle")
+		anim.play("idle")
 	
 	if direction.x != 0:
-		anim_player.flip_h = (direction.x < 0)
+		anim.flip_h = (direction.x < 0)
 	
 
 func _verify_dashing_collision() -> void:
@@ -87,7 +87,7 @@ func dash() -> void:
 
 func _dashing_effect() -> void:
 	while is_dashing:
-		var ghost: AnimatedSprite2D = anim_player.duplicate()
+		var ghost: AnimatedSprite2D = anim.duplicate()
 		
 		ghost.material = ShaderMaterial.new()
 		ghost.material.shader = GHOST_MATERIAL
@@ -97,9 +97,9 @@ func _dashing_effect() -> void:
 		ghost.material.set_shader_parameter("noise_intensity", 0.8)
 		get_parent().add_child(ghost)
 		ghost.global_position = global_position
-		ghost.flip_h = anim_player.flip_h
-		ghost.play(anim_player.animation)
-		ghost.frame = anim_player.frame
+		ghost.flip_h = anim.flip_h
+		ghost.play(anim.animation)
+		ghost.frame = anim.frame
 		ghost.stop()
 		
 		var tween = create_tween()
@@ -149,7 +149,7 @@ func _take_damage(damage: int) -> void:
 	gui_pointer.player_take_damage(damage)
 	_create_damage_label()
 	if actual_health <= 0:
-		anim_player.play("death")
+		anim.play("death")
 		death = true
 		await get_tree().create_timer(1.0).timeout
 		is_death.emit()
@@ -159,13 +159,13 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = true
 
 func _damage_effect() -> void:
-	if anim_player.material == null:
-		anim_player.material = ShaderMaterial.new()
-		anim_player.material.shader = DAMAGE_MATERIAL
+	if anim.material == null:
+		anim.material = ShaderMaterial.new()
+		anim.material.shader = DAMAGE_MATERIAL
 
 	var tween: Tween = create_tween()
 	
-	var mat = anim_player.material
+	var mat = anim.material
 	
 	var shader_setter = func(value: float):
 		if mat:

@@ -51,7 +51,7 @@ max_health = 20
 coins = 5
 hurt_phrases = Array[String](["bzzzzz!!!"])
 
-[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1261333191]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1261333191]
 texture_filter = 3
 material = SubResource("ShaderMaterial_4gv8m")
 sprite_frames = SubResource("SpriteFrames_wmh3r")
@@ -91,6 +91,6 @@ path_postprocessing = 1
 [node name="navigation_timer" type="Timer" parent="." unique_id=237579820]
 wait_time = 0.2
 
-[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="attack_area" to="." method="_do_damage"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]
 [connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]

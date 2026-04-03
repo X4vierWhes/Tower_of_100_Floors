@@ -1,15 +1,11 @@
-extends CharacterInterface
+extends EnemyInterface
 class_name Wizard
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var navigation_timer: Timer = $navigation_timer
 @onready var player_pointer: Player = null
-@onready var state: String = "idle"
-@onready var can_take_damage: bool = true
 @onready var magic_point: Marker2D = $magic_point
 @onready var range_area: Area2D = $range_area
-@onready var attack_area: Area2D = $attack_area
 
 var can_attack: bool = true
 var searching_goal: Vector2 = Vector2(10, 5)
@@ -17,6 +13,7 @@ var tween: Tween
 const MAGIC_SCENE: String = "uid://krmikpan11be"
 
 func _ready() -> void:
+	super._ready()
 	anim.play(state)
 	enemie_control()
 
