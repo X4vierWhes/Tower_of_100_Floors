@@ -1,21 +1,25 @@
 extends CharacterBody2D
 class_name CharacterInterface
 
-@export_category("Parameters")
+signal is_death
+
+var death: bool = false
+var can_take_damage: bool = true
+var anim:AnimatedSprite2D
+@export_category("Base Stats")
 @export var speed: float = 300.0
 @export var max_health: int = 8
-@export var dash_force: float = 1.5
 @export var heal: int = 0
 @export var coins: int = 0
 @export var bombs: int = 0
 @export var god_mode: bool = false
 @export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
+@onready var actual_health:int = max_health
 
-@onready var actual_health = max_health
 
-var death: bool = false
 
-signal is_death
+func _ready() -> void:
+	anim = $AnimatedSprite2D
 
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
@@ -26,14 +30,11 @@ func enemie_control() -> void:
 func _take_damage(_damage: int) -> void:
 	pass
 
-func _death() -> void:
+func _heal(_amount: int) -> void:
 	pass
 
-func _drop_itens() -> void:
-	pass
-
-func _drop_coins() -> void:
-	pass
+func _move(_direction:Vector2) -> void:
+	pass #TODO
 
 func _create_damage_label() -> void:
 	var label = RichTextLabel.new()
