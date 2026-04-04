@@ -85,6 +85,7 @@ max_health = 40
 hurt_phrases = Array[String](["my magic never dies!!!", "oh, no!", "wizard!!!", "no sense."])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096245209]
+unique_name_in_owner = true
 texture_filter = 3
 material = SubResource("ShaderMaterial_tmwhi")
 sprite_frames = SubResource("SpriteFrames_80r8l")
@@ -96,6 +97,7 @@ shape = SubResource("RectangleShape2D_s2ue2")
 debug_color = Color(0.21521151, 0.55318654, 0.858033, 0.41960785)
 
 [node name="attack_area" type="Area2D" parent="." unique_id=628748981]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 27
 
@@ -112,8 +114,10 @@ shape = SubResource("CircleShape2D_j7iff")
 debug_color = Color(0.8886243, 0.00027261258, 0.8000676, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=825126360]
+unique_name_in_owner = true
 
 [node name="navigation_timer" type="Timer" parent="." unique_id=192153552]
+unique_name_in_owner = true
 wait_time = 1.2
 
 [node name="magic_point" type="Marker2D" parent="." unique_id=192926903]

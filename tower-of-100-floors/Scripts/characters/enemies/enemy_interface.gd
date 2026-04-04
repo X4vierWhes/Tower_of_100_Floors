@@ -2,16 +2,10 @@ extends CharacterInterface
 class_name EnemyInterface
 
 var state:String = "idle"
-var navigation_agent:NavigationAgent2D
-var navigation_timer:Timer
+@onready var navigation_agent:NavigationAgent2D = %NavigationAgent2D
+@onready var navigation_timer:Timer = %navigation_timer
+@onready var attack_area:Area2D = %attack_area
 var attack_damage:int = 1
-var attack_area:Area2D
-
-func _ready() -> void:
-	super._ready()
-	navigation_agent = $NavigationAgent2D
-	attack_area = $attack_area
-	navigation_timer = $navigation_timer
 
 func _chase_player() -> void:
 	pass

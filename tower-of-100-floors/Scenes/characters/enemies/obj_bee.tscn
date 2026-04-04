@@ -52,6 +52,7 @@ coins = 5
 hurt_phrases = Array[String](["bzzzzz!!!"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1261333191]
+unique_name_in_owner = true
 texture_filter = 3
 material = SubResource("ShaderMaterial_4gv8m")
 sprite_frames = SubResource("SpriteFrames_wmh3r")
@@ -66,6 +67,7 @@ shape = SubResource("RectangleShape2D_jxk6r")
 debug_color = Color(0.85126096, 0.11866807, 0.85153913, 0.41960785)
 
 [node name="attack_area" type="Area2D" parent="." unique_id=1282848072]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 27
 
@@ -86,9 +88,11 @@ shape = SubResource("CircleShape2D_x14lq")
 debug_color = Color(0.36569506, 0.4794855, 1, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1362342426]
+unique_name_in_owner = true
 path_postprocessing = 1
 
 [node name="navigation_timer" type="Timer" parent="." unique_id=237579820]
+unique_name_in_owner = true
 wait_time = 0.2
 
 [connection signal="body_entered" from="attack_area" to="." method="_do_damage"]

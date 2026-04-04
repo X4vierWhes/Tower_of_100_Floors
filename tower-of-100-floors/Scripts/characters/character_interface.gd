@@ -6,7 +6,6 @@ signal is_death
 var tween:Tween
 var death: bool = false
 var can_take_damage: bool = true
-var anim:AnimatedSprite2D
 @export_category("Base Stats")
 @export var speed: float = 300.0
 @export var max_health: int = 8
@@ -16,11 +15,7 @@ var anim:AnimatedSprite2D
 @export var god_mode: bool = false
 @export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
 @onready var actual_health:int = max_health
-
-
-
-func _ready() -> void:
-	anim = $AnimatedSprite2D
+@onready var anim:AnimatedSprite2D = %AnimatedSprite2D
 
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:

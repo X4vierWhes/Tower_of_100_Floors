@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dfpila2pjee2a" path="res://Resources/images/obstacles/Obstacle2.png" id="10_kskgu"]
 [ext_resource type="Script" uid="uid://dk4e3ldqvau6m" path="res://Scripts/room/enemies_control_component.gd" id="11_1ymco"]
 [ext_resource type="PackedScene" uid="uid://qh4ukgb3eujb" path="res://Scenes/characters/enemies/obj_bee.tscn" id="12_riabp"]
+[ext_resource type="PackedScene" uid="uid://2ca0j7pppba3" path="res://Scenes/characters/enemies/obj_bug.tscn" id="12_xne5u"]
 [ext_resource type="Script" uid="uid://dvmdmfyq1e3fi" path="res://Scripts/room/door_and_plates_component.gd" id="14_qhj2y"]
 [ext_resource type="PackedScene" uid="uid://crfygq0kybjsb" path="res://Scenes/rooms/obj_door.tscn" id="15_3alu1"]
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://Scripts/room/itens_control_component.gd" id="16_0hwqn"]
@@ -154,6 +155,9 @@ tile_set = SubResource("TileSet_ghhrj")
 
 [node name="enemies_control_component" type="Node" parent="." unique_id=1235353930]
 script = ExtResource("11_1ymco")
+
+[node name="obj_bug" parent="enemies_control_component" unique_id=366718663 instance=ExtResource("12_xne5u")]
+position = Vector2(840, 386)
 
 [node name="objBee" parent="enemies_control_component" unique_id=1994341278 instance=ExtResource("12_riabp")]
 position = Vector2(544, 98)

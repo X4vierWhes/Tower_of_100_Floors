@@ -20,7 +20,6 @@ var can_dash: bool = true
 var is_dashing: bool = false
 
 func _ready() -> void:
-	super._ready()
 	update_gui()
 
 func _process(_delta: float) -> void:

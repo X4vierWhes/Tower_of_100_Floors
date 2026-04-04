@@ -10,7 +10,6 @@ var searching_goal: Vector2 = Vector2(10, 5)
 const MAGIC_SCENE: String = "uid://krmikpan11be"
 
 func _ready() -> void:
-	super._ready()
 	anim.play(state)
 	enemie_control()
 

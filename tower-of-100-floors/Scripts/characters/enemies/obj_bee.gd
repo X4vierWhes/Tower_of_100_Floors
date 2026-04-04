@@ -6,7 +6,6 @@ class_name Bee
 var searching_goal: Vector2 = Vector2(10, 0)
 
 func _ready() -> void:
-	super._ready()
 	if anim.material:
 		anim.material = anim.material.duplicate()
 	anim.play("idle")
