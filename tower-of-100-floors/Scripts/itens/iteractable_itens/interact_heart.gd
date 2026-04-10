@@ -1,4 +1,4 @@
-extends IteractableItem
+extends InteractableItem
 class_name InteractableHeart
 
 @onready var richText: RichTextLabel = _get_interact_label_text(self)

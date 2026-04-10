@@ -28,3 +28,15 @@ func _get_texture() -> TextureRect:
 
 func apply_upgrade() -> void:
 	pass
+
+func get_actual_clip() -> int:
+	return actual_clip
+
+func _drop_item(_throw_direction: Vector2) -> InteractableItem:
+	var stats: ItemStats = ItemStats.new()
+	var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
+	stats.set_item_stats(my_stats)
+	
+	var interact_item: InteractableItem
+	
+	return null

@@ -1,5 +1,5 @@
-extends CharacterBody2D
-class_name IteractableItem
+extends Node2D
+class_name InteractableItem
 
 @export_category("Configurações")
 @export var ITEM_NAME: String = "null"
@@ -13,6 +13,7 @@ class_name IteractableItem
 const ITENS_DIR: String = "res://Scenes/itens/equip_itens/obj_"
 
 var item_component: ItensControlComponent = null
+var stats: ItemStats = null
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && is_player_in_area:
@@ -33,11 +34,11 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 	
 	if item:
 		var instance = item.instantiate() as Item
+		instance.set_item_stats(stats)
 		return instance
 	return null
-	
 
-func _get_interact_label_text(item: IteractableItem) -> RichTextLabel:
+func _get_interact_label_text(item: InteractableItem) -> RichTextLabel:
 	var label: RichTextLabel = RichTextLabel.new()
 	var font_label = load("res://Resources/font/Daydream DEMO.otf")
 
@@ -52,3 +53,9 @@ func _get_interact_label_text(item: IteractableItem) -> RichTextLabel:
 	label.bbcode_enabled = true
 	label.top_level = true
 	return label
+
+func _set_drop_item_stats(new_stats: ItemStats) -> void:
+	stats = new_stats
+
+func _get_drop_item_stats() -> ItemStats:
+	return stats

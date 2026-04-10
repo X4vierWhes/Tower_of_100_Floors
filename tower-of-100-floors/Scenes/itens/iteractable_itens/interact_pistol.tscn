@@ -220,12 +220,10 @@ shader_parameter/Wiggle_Angle = false
 shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrsnj"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeg44"]
 size = Vector2(218, 187)
 
-[node name="interact_pistol" type="CharacterBody2D" unique_id=1082604604]
+[node name="interact_pistol" type="Node2D" unique_id=1781216947]
 light_mask = 4
 visibility_layer = 27
 script = ExtResource("1_yeg44")
@@ -239,12 +237,6 @@ texture_filter = 3
 material = SubResource("ShaderMaterial_qrsnj")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qrsnj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=144096089]
-show_behind_parent = true
-light_mask = 4
-visibility_layer = 11
-shape = SubResource("RectangleShape2D_qrsnj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=739929886]
 show_behind_parent = true

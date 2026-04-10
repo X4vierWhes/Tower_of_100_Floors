@@ -27,8 +27,7 @@ func gun_reload(gun: GunBase) -> void:
 func gun_shoot(gun: GunBase) -> void:
 	if !gun:
 		return
-	if gun_component._unstack():
-		gun.actual_clip -= 1
+	gun_component._unstack()
 
 func gun_drop() -> void:
 	return
@@ -54,7 +53,7 @@ func update_player(player: Player) -> void:
 
 func update_gun(gun: GunBase) -> void:
 	if gun_component:
-		gun_component.update_ammo(gun._get_stats())
+		gun_component.update_ammo(gun.get_actual_clip())
 		gun_component._set_texture(gun._get_texture())
 
 func _update_heart(_count) -> void:

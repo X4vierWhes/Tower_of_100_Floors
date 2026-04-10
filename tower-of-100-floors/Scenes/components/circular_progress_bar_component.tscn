@@ -6,7 +6,10 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p55yf"]
 load_path = "res://.godot/imported/CircularProgressBar.png-2740c414ed9748016b5e6c56e7a21b74.ctex"
 
-[node name="CircularProgressBarComponent" type="Node" unique_id=897445385 node_paths=PackedStringArray("texture")]
+[node name="CircularProgressBarComponent" type="Node2D" unique_id=1154130359 node_paths=PackedStringArray("texture")]
+top_level = true
+light_mask = 2
+visibility_layer = 29
 script = ExtResource("1_8n5lm")
 texture = NodePath("TextureProgressBar")
 

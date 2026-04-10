@@ -4,19 +4,13 @@ class_name Shotgun
 @onready var anim: AnimatedSprite2D = $anim
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var circular_progress_bar_component: CircularProgressBar = $CircularProgressBarComponent
+@onready var shoot_point: Marker2D = %shoot_point
 
-const SHOTGUN_TEX: String = "uid://bfxmua2j1ovg2"
-
-func _ready() -> void:
-	animation_player.play("idle")
+const SHOTGUN_TEX: String = "uid://qrw8xmgu32xh"
 
 func shoot() -> void:
-	print("Actual clip:", actual_clip)
-	actual_clip -= 1
-	animation_player.play("shooting")
-	await animation_player.animation_finished
-	animation_player.play("idle")
-	print("Actual clip before:", actual_clip)
+	if !gui_pointer:
+		return
 
 func reload() -> void:
 	if !gui_pointer:
@@ -34,21 +28,11 @@ func reload() -> void:
 func _get_texture() -> TextureRect:
 	var tex = TextureRect.new()
 	tex.texture = load(SHOTGUN_TEX)
-	tex.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	tex.custom_minimum_size = Vector2(32, 32)
+	tex.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	tex.custom_minimum_size = Vector2(128, 128)
+	#tex.scale = Vector2(1.5, 1.5)
 	tex.top_level = true
 	return tex
 
-func do_damage(body: CharacterInterface, damage_mult: int) -> void:
+func _create_bullet() -> void:
 	pass
-
-func _on_close_range_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_mid_range_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_far_range_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

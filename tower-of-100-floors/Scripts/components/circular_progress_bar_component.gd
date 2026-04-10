@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name CircularProgressBar
 
 @export_category("Configurações")
@@ -12,7 +12,7 @@ func _ready() -> void:
 	texture.visible = false
 
 func _process(_delta: float) -> void:
-	set_position(gun.global_position)
+	_set_position(gun.global_position)
 
 func loading() -> void:
 	if tween && tween.is_running():
@@ -31,12 +31,12 @@ func _invisible() -> void:
 	texture.value = texture.min_value
 	emit_signal("animation_end")
 
-func set_scale(scale: Vector2) -> void:
+func _set_scale(scale: Vector2) -> void:
 	texture.scale = scale
 
 func set_loading_time(time: float) -> void:
 	loading_time = time
 
-func set_position(pos: Vector2) -> void:
+func _set_position(pos: Vector2) -> void:
 	texture.global_position = pos
 	texture.global_position.x -= 15.0

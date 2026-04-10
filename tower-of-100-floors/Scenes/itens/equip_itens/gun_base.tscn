@@ -4,3 +4,8 @@
 
 [node name="gun_base" type="Node2D" unique_id=943006944]
 script = ExtResource("1_umbh3")
+damage = null
+max_ammo = null
+actual_clip = null
+shoot_delay = null
+drop_item_name = null

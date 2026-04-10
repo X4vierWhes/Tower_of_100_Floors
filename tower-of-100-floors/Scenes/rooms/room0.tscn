@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://Scripts/room/itens_control_component.gd" id="15_jarua"]
 [ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable_itens/easter_egg.tscn" id="18_jm5yb"]
 [ext_resource type="PackedScene" uid="uid://d24pw4fjpp15b" path="res://Scenes/itens/iteractable_itens/interact_heart.tscn" id="19_uacyk"]
+[ext_resource type="PackedScene" uid="uid://dercmwq6ndfhy" path="res://Scenes/itens/iteractable_itens/interact_shotgun.tscn" id="20_432qi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -184,6 +185,9 @@ script = ExtResource("15_jarua")
 
 [node name="interact_pistol" parent="itens_control_component" unique_id=1082604604 groups=["Itens"] instance=ExtResource("11_mavcf")]
 position = Vector2(863, 397)
+action_name = "Interact"
+INTERACT_TEXT = "Press [F] to "
+consumable_item = true
 
 [node name="easter_egg" parent="itens_control_component" unique_id=137566444 instance=ExtResource("18_jm5yb")]
 position = Vector2(862, 693)
@@ -192,6 +196,9 @@ action_name = "  are you a weak?"
 [node name="interact_heart" parent="itens_control_component" unique_id=124265973 instance=ExtResource("19_uacyk")]
 position = Vector2(607, 395)
 consumable_item = false
+
+[node name="interact_shotgun" parent="itens_control_component" unique_id=1847583771 instance=ExtResource("20_432qi")]
+position = Vector2(1116, 391)
 
 [node name="next_room_exit" type="Node" parent="." unique_id=1757532730]
 

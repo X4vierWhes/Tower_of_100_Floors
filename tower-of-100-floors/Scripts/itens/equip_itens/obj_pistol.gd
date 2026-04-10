@@ -13,11 +13,11 @@ func reload() -> void:
 		return
 	can_shoot = false
 	is_reloading = true
-	circular_progress_bar_component.set_position(player_pointer.global_position)
-	circular_progress_bar_component.set_scale(Vector2(0.1,0.1))
+	#circular_progress_bar_component.set_position(player_pointer.global_position)
+	circular_progress_bar_component._set_scale(Vector2(0.1,0.1))
 	circular_progress_bar_component.loading()
-	await circular_progress_bar_component.animation_end
 	gui_pointer.gun_reload(self)
+	await circular_progress_bar_component.animation_end
 	can_shoot = true
 	is_reloading = false
 
@@ -27,6 +27,7 @@ func shoot() -> void:
 	
 	can_shoot = false
 	gui_pointer.gun_shoot(self)
+	actual_clip -= 1
 	_create_bullet()
 	await get_tree().create_timer(shoot_delay).timeout
 	can_shoot = true
@@ -46,6 +47,3 @@ func _get_texture() -> TextureRect:
 	tex.custom_minimum_size = Vector2(32, 32)
 	tex.top_level = true
 	return tex
-
-func _get_stats() -> int:
-	return actual_clip
