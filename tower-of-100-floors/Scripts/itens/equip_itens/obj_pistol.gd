@@ -1,44 +1,8 @@
 extends GunBase
 class_name Pistol
 
-@onready var circular_progress_bar_component: CircularProgressBar = $CircularProgressBarComponent
-@onready var shoot_point: Marker2D = $shoot_point
-
 const TEX_PISTOL: String = "uid://dbl7y7c7gwiif"
-
 var tween: Tween
-
-func reload() -> void:
-	if !gui_pointer:
-		return
-	can_shoot = false
-	is_reloading = true
-	#circular_progress_bar_component.set_position(player_pointer.global_position)
-	circular_progress_bar_component._set_scale(Vector2(0.1,0.1))
-	circular_progress_bar_component.loading()
-	gui_pointer.gun_reload(self)
-	await circular_progress_bar_component.animation_end
-	can_shoot = true
-	is_reloading = false
-
-func shoot() -> void:
-	if !gui_pointer:
-		return
-	
-	can_shoot = false
-	gui_pointer.gun_shoot(self)
-	actual_clip -= 1
-	_create_bullet()
-	await get_tree().create_timer(shoot_delay).timeout
-	can_shoot = true
-
-func _create_bullet() -> void:
-	var new_bullet = OBJ_BULLET.instantiate() as Bullet
-	new_bullet.global_position = shoot_point.global_position
-	new_bullet.global_rotation = shoot_point.global_rotation
-	new_bullet.set_damage(damage)
-	shoot_point.add_child(new_bullet)
-	new_bullet._throw_item(1)
 
 func _get_texture() -> TextureRect:
 	var tex = TextureRect.new()

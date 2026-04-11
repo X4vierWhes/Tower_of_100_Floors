@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://w4powii73d15"]
 
 [ext_resource type="Script" uid="uid://dwxfly76kts7l" path="res://Scripts/itens/equip_itens/obj_shotgun.gd" id="1_tv81w"]
+[ext_resource type="PackedScene" uid="uid://uy71c1b3cb13" path="res://Scenes/itens/usable_itens/obj_bullet.tscn" id="2_8bc81"]
 [ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://shaders/shine.gdshader" id="2_ypodp"]
 [ext_resource type="Texture2D" uid="uid://qrw8xmgu32xh" path="res://Resources/images/guns/Shotgun01.png" id="3_ypodp"]
 [ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="9_0ere1"]
@@ -27,15 +28,22 @@ shader_parameter/Wiggle_Angle = false
 shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
-[node name="obj_shotgun" type="Node2D" unique_id=802700861 groups=["Itens"]]
+[node name="obj_shotgun" type="Node2D" unique_id=802700861 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component") groups=["Itens"]]
 script = ExtResource("1_tv81w")
-damage = 40
+damage = 20
+bullet_count = 2
 shoot_delay = 0.8
+arc = 5.0
+reload_time = 1.2000000000000002
+OBJ_BULLET = ExtResource("2_8bc81")
+shoot_point = NodePath("shoot_point")
+circular_progress_bar_component = NodePath("CircularProgressBarComponent")
 drop_item_name = "interact_shotgun"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069252441]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8bc81")
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ypodp")
 
 [node name="CircularProgressBarComponent" parent="." unique_id=897445385 node_paths=PackedStringArray("gun") instance=ExtResource("9_0ere1")]

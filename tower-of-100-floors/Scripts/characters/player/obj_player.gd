@@ -173,7 +173,7 @@ func _damage_effect() -> void:
 	tween.tween_method(shader_setter, 0.55, 0.0, 0.2)
 
 func _heal(heal_count: int) -> void:
-	gui_pointer.player_heal(heal_count)
+	gui_pointer.player_heal(self, heal_count)
 	actual_health = max_health
 
 func _get_stats() -> Vector3:

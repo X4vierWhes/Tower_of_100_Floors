@@ -7,8 +7,6 @@ func _ready() -> void:
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 	animated_sprite_2d.play("idle")
-	enemie_control()
-
 
 func _take_damage(_damage: int) -> void:
 	if !can_take_damage: return

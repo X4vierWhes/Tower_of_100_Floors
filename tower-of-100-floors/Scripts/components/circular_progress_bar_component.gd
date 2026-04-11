@@ -31,8 +31,8 @@ func _invisible() -> void:
 	texture.value = texture.min_value
 	emit_signal("animation_end")
 
-func _set_scale(scale: Vector2) -> void:
-	texture.scale = scale
+func _set_texture_scale(texture_scale: Vector2) -> void:
+	texture.scale = texture_scale
 
 func set_loading_time(time: float) -> void:
 	loading_time = time

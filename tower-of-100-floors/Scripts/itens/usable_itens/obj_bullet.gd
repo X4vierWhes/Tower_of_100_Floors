@@ -4,6 +4,7 @@ class_name Bullet
 @export_category("Configurações")
 @export var damage: int = 10
 @export var bullet_speed: float = 1000.0
+@onready var bullet_area: Area2D = $bulletArea
 
 func _process(delta: float) -> void:
 	direction = Vector2.RIGHT.rotated(rotation)
@@ -14,6 +15,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_bullet_area_body_entered(body: Node2D) -> void:
+	bullet_area.set_deferred("monitoring", false)
 	if body.is_in_group("Enemies") && body.has_method("_take_damage"):
 		body._take_damage(damage)
 	queue_free()

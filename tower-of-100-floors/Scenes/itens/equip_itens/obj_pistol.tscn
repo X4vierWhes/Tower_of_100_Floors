@@ -2,10 +2,41 @@
 
 [ext_resource type="Script" uid="uid://bcl7esckclwa2" path="res://Scripts/itens/equip_itens/obj_pistol.gd" id="1_u8ahy"]
 [ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/guns/Pistol_Solo.png" id="2_mrhsx"]
+[ext_resource type="Script" uid="uid://b5yqk78qeygl0" path="res://Scripts/itens/usable_itens/obj_bullet.gd" id="2_xf767"]
+[ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="3_m4tmw"]
 [ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="3_mrhsx"]
+[ext_resource type="Texture2D" uid="uid://bhfvtiil0pxan" path="res://Resources/images/guns/Bullet.png" id="4_ysfv2"]
 
-[node name="objPistol" type="Node2D" unique_id=459385302]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tb62s"]
+shader = ExtResource("3_m4tmw")
+shader_parameter/hit_effect = 0.050000002375
+shader_parameter/shake_intensity = 5.0
+shader_parameter/flash_speed = 300.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b55e1"]
+size = Vector2(10, 8)
+
+[sub_resource type="PackedScene" id="PackedScene_744nk"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 21, 20, 2, 0, 0),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("objBullet", "Node2D", "Itens", "top_level", "script", "item_name", "throwable", "bulletArea", "Area2D", "collision_layer", "collision_mask", "Sprite2D", "Sprite2D", "texture_filter", "material", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "debug_color", "_on_bullet_area_body_entered", "body_entered"),
+"node_count": 4,
+"node_ids": PackedInt32Array(1954637572, 438633548, 1426774487, 355303361),
+"node_paths": [NodePath("."), NodePath("./bulletArea"), NodePath("./bulletArea"), NodePath("."), NodePath("bulletArea")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 3, 0, 4, 1, 5, 2, 6, 3, 1, 2, 1073741824, 0, 8, 7, -1, 2, 9, 4, 10, 5, 0, 1073741825, 0, 12, 11, -1, 3, 13, 6, 14, 7, 15, 8, 0, 1073741826, 0, 17, 16, -1, 2, 18, 9, 19, 10, 0),
+"variants": [true, ExtResource("2_xf767"), "bullet", true, 16, 5, 3, SubResource("ShaderMaterial_tb62s"), ExtResource("4_ysfv2"), SubResource("RectangleShape2D_b55e1"), Color(0.9014332, 0.00016248942, 0.7611681, 0.41960785)],
+"version": 3
+}
+
+[node name="objPistol" type="Node2D" unique_id=459385302 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component")]
 script = ExtResource("1_u8ahy")
+OBJ_BULLET = SubResource("PackedScene_744nk")
+shoot_point = NodePath("shoot_point")
+circular_progress_bar_component = NodePath("CircularProgressBarComponent")
 drop_item_name = "interact_pistol"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1101562816]

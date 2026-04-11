@@ -5,7 +5,6 @@ class_name UsableItem
 @export var item_name: String = "null"
 @export var throwable: bool = false
 @export var consumable: bool = false
-@export var throw_count: int = 1
 @export var range_distance: float = 1200.0
 
 var travelled_distance: float = 0.0
@@ -17,6 +16,5 @@ func _ready() -> void:
 func _apply_consumable_effect() -> void:
 	pass
 
-func _throw_item(t_count: int = 1) -> void:
-	throw_count = t_count
+func _activate_item() -> void:
 	set_process(true)

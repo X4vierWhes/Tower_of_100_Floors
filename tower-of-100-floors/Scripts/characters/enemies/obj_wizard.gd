@@ -40,7 +40,7 @@ func _shoot() -> void:
 	var dir_to_player = magic_point.global_position.direction_to(player_pointer.global_position)
 	magic_projectile.launch(dir_to_player)
 	
-	magic_projectile._throw_item()
+	magic_projectile._activate_item()
 	await get_tree().create_timer(.8).timeout 
 	
 	if actual_health > 0:

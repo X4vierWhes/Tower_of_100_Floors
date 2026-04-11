@@ -21,7 +21,7 @@ func gun_reload(gun: GunBase) -> void:
 	#print("MOD IN OBJPISTOL: " + str(mod))
 	for i in range(mod):
 		gun_component._stack()
-		await get_tree().create_timer(.05).timeout
+		await get_tree().create_timer(.04).timeout
 	gun.actual_clip = gun.max_ammo
 
 func gun_shoot(gun: GunBase) -> void:
@@ -37,8 +37,13 @@ func player_take_damage(damage: int) -> void:
 		_heart_unstack()
 	
 
-func player_heal(heal: int) -> void:
-	for i in range(heal):
+func player_heal(player: Player, heal_count: int = 0) -> void:
+	var mod: int
+	if heal_count == 0:
+		mod = player.max_health - player.actual_health
+	else:
+		mod = heal_count 
+	for i in mod:
 		_heart_stack()
 
 func _heart_stack() -> void:

@@ -16,6 +16,8 @@ size = Vector2(10, 8)
 
 [node name="objBullet" type="Node2D" unique_id=1954637572 groups=["Itens"]]
 top_level = true
+light_mask = 4
+visibility_layer = 27
 script = ExtResource("1_ajj33")
 item_name = "bullet"
 throwable = true

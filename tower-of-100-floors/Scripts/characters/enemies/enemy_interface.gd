@@ -10,6 +10,10 @@ var attack_damage:int = 1
 func _chase_player() -> void:
 	pass
 
+func enemie_control() -> void:
+	if get_parent() && get_parent() is EnemiesControl:
+		var parent = get_parent() as EnemiesControl
+		parent._append_enemie(self)
 
 func _take_damage(damage: int) -> void:
 	if !can_take_damage: return
