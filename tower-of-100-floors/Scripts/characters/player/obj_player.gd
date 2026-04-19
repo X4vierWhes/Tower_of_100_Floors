@@ -73,7 +73,9 @@ func _verify_dashing_collision() -> void:
 		if is_instance_valid(slide):
 			if !slide.get_collider().is_in_group("Player") && is_dashing:
 				is_dashing = false
-				#Posso fazer efeito de impacto com algo, estilo screen shake
+				var camera: GlobalCamera = Globals.global_camera
+				if camera.has_method("apply_shake"):
+					camera.apply_shake(1.5)
 				return
 			
 
