@@ -11,6 +11,11 @@ var stats: ItemStats = null
 
 func _ready() -> void:
 	set_process(false)
+	if stats:
+		_update_item_actual_stats()
+	
+	if gui_pointer:
+		gui_pointer.update_gun(self)
 
 func _set_pointers(player: Player, gui: GUI) -> void:
 	player_pointer = player as Player
@@ -19,13 +24,13 @@ func _set_pointers(player: Player, gui: GUI) -> void:
 func _get_drop_item() -> String:
 	return DIR_DROP_ITEM + drop_item_name + ".tscn"
 
-func _drop_item(_throw_direction: Vector2) -> InteractableItem:
+func _drop_item() -> InteractableItem:
 	return null
 
 func set_item_stats(new_stats: ItemStats) -> void:
 	stats = new_stats
 	if stats:
-		_update_item_actual_stats(stats)
+		_update_item_actual_stats()
 
-func _update_item_actual_stats(stats: ItemStats) -> void:
+func _update_item_actual_stats() -> void:
 	pass

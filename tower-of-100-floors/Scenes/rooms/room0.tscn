@@ -185,9 +185,6 @@ script = ExtResource("15_jarua")
 
 [node name="interact_pistol" parent="itens_control_component" unique_id=1082604604 groups=["Itens"] instance=ExtResource("11_mavcf")]
 position = Vector2(863, 397)
-action_name = "Interact"
-INTERACT_TEXT = "Press [F] to "
-consumable_item = true
 
 [node name="easter_egg" parent="itens_control_component" unique_id=137566444 instance=ExtResource("18_jm5yb")]
 position = Vector2(862, 693)

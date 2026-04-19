@@ -30,7 +30,7 @@ func gun_shoot(gun: GunBase) -> void:
 	gun_component._unstack()
 
 func gun_drop() -> void:
-	return
+	gun_component.drop_gun()
 
 func player_take_damage(damage: int) -> void:
 	for i in range(damage):

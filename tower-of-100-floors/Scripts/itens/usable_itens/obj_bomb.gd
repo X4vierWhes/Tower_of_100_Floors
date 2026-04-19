@@ -11,10 +11,9 @@ class_name Bomb
 
 func _ready() -> void:
 	super._ready()
+	print("Type item:", item_type)
 	explosion_area.set_deferred("monitoring", false)
 	explosion_particles.emitting = false
-	print(item_type)
-
 
 func _process(delta: float) -> void:
 	direction = Vector2.RIGHT.rotated(rotation)

@@ -86,11 +86,23 @@ func apply_upgrade() -> void:
 func get_actual_clip() -> int:
 	return actual_clip
 
-func _drop_item(_throw_direction: Vector2) -> InteractableItem:
+func _drop_item() -> InteractableItem:
 	var stats: ItemStats = ItemStats.new()
 	var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
 	stats.set_item_stats(my_stats)
+	var dir: String = DIR_DROP_ITEM + drop_item_name + ".tscn"
+	var interact_item = load(dir)
 	
-	var interact_item: InteractableItem
-	
-	return null
+	var item = interact_item.instantiate() as InteractableItem
+	item._set_drop_item_stats(stats)
+	return item
+
+func _update_item_actual_stats() -> void:
+	if !stats:
+		return
+	# var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
+	damage = stats.get_at(0)
+	actual_clip = stats.get_at(1)
+	max_ammo = stats.get_at(2)
+	shoot_delay = stats.get_at(3)
+	return

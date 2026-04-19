@@ -3,7 +3,7 @@ class_name UsableItem
 
 @export_category("Configurações")
 @export var item_name: String = "null"
-@export_enum("CONSUMABLE", "THROWABLE") var item_type: String = "THROWABLE"
+@export_enum("Consumable", "Throwable") var item_type: String
 @export var range_distance: float = 1200.0
 
 var travelled_distance: float = 0.0
@@ -13,10 +13,11 @@ func _ready() -> void:
 	set_process(false)
 
 func _activate_item() -> void:
+	print("Type item:", item_type)
 	match item_type:
-		"CONSUMABLE":
+		"Consumable":
 			_apply_consumable_effect()
-		"THROWABLE":
+		"Throwable":
 			set_process(true)
 
 func _apply_consumable_effect() -> void:

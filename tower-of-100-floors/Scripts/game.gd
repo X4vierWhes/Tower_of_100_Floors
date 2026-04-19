@@ -13,6 +13,7 @@ var player_in_scene: Player = null
 
 func _ready() -> void:
 	room_manager.init_game()
+	Globals.game = self
 
 func _get_player_stats() -> void:
 	pass
@@ -37,3 +38,6 @@ func _set_player_location() -> void:
 
 func _player_is_death() -> void:
 	room_manager.change_room("_game_over")
+
+func _drop_item(item: InteractableItem, throw_direction: Vector2) -> void:
+	room_manager._drop_item(item, throw_direction)

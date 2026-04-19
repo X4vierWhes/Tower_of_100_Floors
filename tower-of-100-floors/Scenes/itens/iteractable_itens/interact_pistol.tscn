@@ -228,9 +228,7 @@ light_mask = 4
 visibility_layer = 27
 script = ExtResource("1_yeg44")
 ITEM_NAME = "pistol"
-action_name = null
-INTERACT_TEXT = null
-consumable_item = null
+key_item = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1360728355]
 texture_filter = 3

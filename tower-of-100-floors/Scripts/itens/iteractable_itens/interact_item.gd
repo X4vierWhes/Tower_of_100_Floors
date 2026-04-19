@@ -6,6 +6,7 @@ class_name InteractableItem
 @export var action_name: String = "Interact"
 @export var INTERACT_TEXT: String = "Press [F] to "
 @export var consumable_item: bool = true
+@export var key_item: bool = false
 
 @onready var is_player_in_area: bool = false
 @onready var player_pointer: Player = null
@@ -22,7 +23,7 @@ func _input(event: InputEvent) -> void:
 func _interact() -> void:
 	if is_player_in_area && player_pointer && consumable_item:
 		player_pointer._equip(_get_item())
-		if item_component:
+		if item_component && key_item:
 			item_component.itens_collected.emit()
 		queue_free()
 

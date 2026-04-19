@@ -129,9 +129,14 @@ func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar f
 
 func _equip(item: GunBase) -> void:
 	if has_gun: #Fazer logica de dropar arma atual para trocar por nova
-		return
+		var drop_item: InteractableItem =  gun._drop_item()
+		Globals.game._drop_item(drop_item, global_position)
+		gui_pointer.gun_drop()
+		gun.queue_free()
+		gun = null
 	
 	gun = item as GunBase
+	#gun._update_item_actual_stats()
 	gun.global_position.x += 10.0
 	
 	guns_pivot.add_child(gun)
