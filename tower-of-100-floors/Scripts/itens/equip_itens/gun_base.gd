@@ -49,6 +49,7 @@ func _create_bullet() -> void:
 		get_tree().root.add_child(new_bullet)
 		bullets.append(new_bullet)
 	for i in bullets:
+		print(i.item_type)
 		i._activate_item()
 		actual_clip -= 1
 		gui_pointer.gun_shoot(self)

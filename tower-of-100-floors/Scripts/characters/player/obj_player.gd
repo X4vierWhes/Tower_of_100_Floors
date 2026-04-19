@@ -15,6 +15,7 @@ const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
 
+var camera: GlobalCamera = null
 var gun: GunBase = null
 var has_gun: bool = false
 var can_dash: bool = true
@@ -22,6 +23,7 @@ var is_dashing: bool = false
 
 func _ready() -> void:
 	update_gui()
+	camera = Globals.global_camera as GlobalCamera
 
 func _process(_delta: float) -> void:
 	if !death:
@@ -73,9 +75,7 @@ func _verify_dashing_collision() -> void:
 		if is_instance_valid(slide):
 			if !slide.get_collider().is_in_group("Player") && is_dashing:
 				is_dashing = false
-				var camera: GlobalCamera = Globals.global_camera
-				if camera.has_method("apply_shake"):
-					camera.apply_shake(1.5)
+				camera.apply_shake(1.2)
 				return
 			
 
@@ -123,7 +123,7 @@ func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar f
 	var throw_dir = global_position.direction_to(get_global_mouse_position())
 	item_instance.direction = throw_dir
 	item_instance.rotation = item_instance.direction.angle()
-	item_instance._throw_item()
+	item_instance._activate_item()
 	bombs -= 1
 	gui_pointer.update_player(self)
 

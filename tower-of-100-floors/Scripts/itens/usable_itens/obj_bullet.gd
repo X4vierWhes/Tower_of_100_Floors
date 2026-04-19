@@ -6,6 +6,10 @@ class_name Bullet
 @export var bullet_speed: float = 1000.0
 @onready var bullet_area: Area2D = $bulletArea
 
+func _ready() -> void:
+	super._ready()
+	print(item_type)
+
 func _process(delta: float) -> void:
 	direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * bullet_speed * delta

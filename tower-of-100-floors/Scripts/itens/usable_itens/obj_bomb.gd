@@ -13,6 +13,7 @@ func _ready() -> void:
 	super._ready()
 	explosion_area.set_deferred("monitoring", false)
 	explosion_particles.emitting = false
+	print(item_type)
 
 
 func _process(delta: float) -> void:

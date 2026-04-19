@@ -20,7 +20,7 @@ light_mask = 4
 visibility_layer = 27
 script = ExtResource("1_ajj33")
 item_name = "bullet"
-throwable = true
+item_type = "CONSUMABLE"
 
 [node name="bulletArea" type="Area2D" parent="." unique_id=438633548]
 collision_layer = 16

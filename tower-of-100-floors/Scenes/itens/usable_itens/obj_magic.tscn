@@ -14,7 +14,7 @@ z_index = 5
 script = ExtResource("1_241bk")
 damage = 2
 item_name = "Magic"
-throwable = true
+item_type = "THROWABLE"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=118012932]
 light_mask = 8
