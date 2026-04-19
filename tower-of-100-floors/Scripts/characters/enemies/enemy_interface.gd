@@ -5,6 +5,8 @@ var state:String = "idle"
 @onready var navigation_agent:NavigationAgent2D = %NavigationAgent2D
 @onready var navigation_timer:Timer = %navigation_timer
 @onready var attack_area:Area2D = %attack_area
+@onready var impact_component: ImpactComponent = $impact_component
+
 var attack_damage:int = 1
 
 func _chase_player() -> void:
@@ -23,6 +25,8 @@ func _take_damage(damage: int) -> void:
 	
 	can_take_damage = false
 	tween = create_tween()
+	if impact_component:
+		impact_component.play_impact(self)
 	_create_damage_label()
 		
 	var shader_setter = func(value: float):

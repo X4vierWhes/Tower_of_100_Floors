@@ -38,9 +38,7 @@ func _verify_collision() -> void:
 	for i in get_slide_collision_count():
 		var slide = get_slide_collision(i)
 		if is_instance_valid(slide):
-			print("Searching goal: " + str(searching_goal))
 			searching_goal *= -1
-			print("Searching goal * -1: " + str(searching_goal))
 			return
 
 func _on_range_area_body_entered(body: Node2D) -> void:

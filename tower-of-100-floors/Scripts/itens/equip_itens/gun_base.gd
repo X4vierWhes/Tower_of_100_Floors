@@ -32,6 +32,7 @@ func shoot() -> void:
 
 func _create_bullet() -> void:
 	var bullets: Array[Bullet] = []
+	
 	for i in bullet_count:
 		var new_bullet = OBJ_BULLET.instantiate() as Bullet
 		new_bullet.set_damage(damage)

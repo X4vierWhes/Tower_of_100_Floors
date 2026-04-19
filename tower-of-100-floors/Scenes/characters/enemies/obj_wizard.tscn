@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://yy4l0wtu36gb" path="res://Scripts/characters/enemies/obj_wizard.gd" id="1_j7iff"]
 [ext_resource type="Texture2D" uid="uid://b4unoykjum56" path="res://Resources/images/enemies/Mage.png" id="1_vhvwi"]
 [ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="2_gte70"]
+[ext_resource type="PackedScene" uid="uid://c5ha75tya3u2x" path="res://Scenes/components/impact_component.tscn" id="4_tmwhi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tmwhi"]
 shader = ExtResource("2_gte70")
@@ -122,6 +123,8 @@ wait_time = 1.2
 
 [node name="magic_point" type="Marker2D" parent="." unique_id=192926903]
 position = Vector2(0, -24)
+
+[node name="impact_component" parent="." unique_id=881552884 instance=ExtResource("4_tmwhi")]
 
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]

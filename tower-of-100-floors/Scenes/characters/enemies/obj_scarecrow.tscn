@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cunltvptg3ekc" path="res://Resources/images/enemies/Scarecrow3.png" id="4_iu0m4"]
 [ext_resource type="Texture2D" uid="uid://ufbmwymhjwoi" path="res://Resources/images/enemies/Scarecrow4.png" id="5_g1qoa"]
 [ext_resource type="Texture2D" uid="uid://cpbpss8m7wfbf" path="res://Resources/images/enemies/Scarecrow5.png" id="6_fvu2x"]
+[ext_resource type="PackedScene" uid="uid://c5ha75tya3u2x" path="res://Scenes/components/impact_component.tscn" id="7_xovho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twgtx"]
 
@@ -101,3 +102,5 @@ animation = &"hurt"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187931200]
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_8tmco")
+
+[node name="impact_component" parent="." unique_id=881552884 instance=ExtResource("7_xovho")]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wth4gwy8t7og" path="res://Scripts/characters/enemies/obj_bee.gd" id="1_ku6g8"]
 [ext_resource type="Shader" uid="uid://dfotrmxng7wiy" path="res://shaders/flash_and_random_shake.gdshader" id="2_b4pnr"]
 [ext_resource type="Texture2D" uid="uid://c06farg8efcd4" path="res://Resources/images/enemies/Bee.png" id="2_x14lq"]
+[ext_resource type="PackedScene" uid="uid://c5ha75tya3u2x" path="res://Scenes/components/impact_component.tscn" id="4_4gv8m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4gv8m"]
 shader = ExtResource("2_b4pnr")
@@ -94,6 +95,8 @@ path_postprocessing = 1
 [node name="navigation_timer" type="Timer" parent="." unique_id=237579820]
 unique_name_in_owner = true
 wait_time = 0.2
+
+[node name="impact_component" parent="." unique_id=881552884 instance=ExtResource("4_4gv8m")]
 
 [connection signal="body_entered" from="attack_area" to="." method="_do_damage"]
 [connection signal="body_entered" from="range_area" to="." method="_on_range_area_body_entered"]

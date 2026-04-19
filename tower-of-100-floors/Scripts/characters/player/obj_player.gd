@@ -6,6 +6,7 @@ class_name Player
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
 @export var gui_pointer: GUI
+@export var impact_component: ImpactComponent
 
 const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
 const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
@@ -50,6 +51,7 @@ func movement_update() -> void:
 	
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var speed_mult: float = dash_force if is_dashing else 1.0
+	
 	velocity = direction * (speed * speed_mult)
 	move_and_slide()
 	
@@ -146,6 +148,7 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = false
 	actual_health -= damage
 	gui_pointer.player_take_damage(damage)
+	impact_component.play_impact(self)
 	_create_damage_label()
 	if actual_health <= 0:
 		anim.play("death")
