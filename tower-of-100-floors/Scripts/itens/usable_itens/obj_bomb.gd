@@ -11,7 +11,6 @@ class_name Bomb
 
 func _ready() -> void:
 	super._ready()
-	print("Type item:", item_type)
 	explosion_area.set_deferred("monitoring", false)
 	explosion_particles.emitting = false
 

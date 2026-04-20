@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 	travelled_distance += bullet_speed * delta
 	
 	if travelled_distance >= range_distance:
-		print("Apaguei magia")
 		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

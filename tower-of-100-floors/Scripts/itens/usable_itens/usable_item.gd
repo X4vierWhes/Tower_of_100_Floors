@@ -13,7 +13,6 @@ func _ready() -> void:
 	set_process(false)
 
 func _activate_item() -> void:
-	print("Type item:", item_type)
 	match item_type:
 		"Consumable":
 			_apply_consumable_effect()

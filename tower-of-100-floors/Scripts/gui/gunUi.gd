@@ -9,7 +9,10 @@ var gun_texture: TextureRect = null
 var _elements: Array[TextureRect] = []
 const AMMO_TEX = preload("res://Resources/images/guns/Ammo.png")
 
-func update_ammo(_count: int) -> void:
+func _update_ammo(_actual_clip: int, _max_ammo: int) -> void:
+	return
+
+func _set_ammo(_count: int) -> void:
 	if _count > 0:
 		for i in range(_count):
 			_stack()

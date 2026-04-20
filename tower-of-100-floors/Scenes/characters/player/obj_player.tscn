@@ -76,7 +76,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
 size = Vector2(20, 21)
 
-[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("gui_pointer", "impact_component") groups=["Player"]]
+[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("impact_component") groups=["Player"]]
 light_mask = 2
 visibility_layer = 23
 z_index = 1
@@ -86,7 +86,6 @@ script = ExtResource("1_5ecnf")
 dash_force = 3.5
 dash_cooldown = 1.8
 dash_duration = 0.6
-gui_pointer = NodePath("gui_component")
 impact_component = NodePath("impact_component")
 bombs = 3
 

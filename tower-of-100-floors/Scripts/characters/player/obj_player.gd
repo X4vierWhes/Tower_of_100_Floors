@@ -5,7 +5,6 @@ class_name Player
 @export var dash_force:float = 3.0
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
-@export var gui_pointer: GUI
 @export var impact_component: ImpactComponent
 
 const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
@@ -21,8 +20,11 @@ var has_gun: bool = false
 var can_dash: bool = true
 var is_dashing: bool = false
 
+signal damage(damage_count: int)
+signal heal_player(heal_count: int)
+signal equipped_gun(new_gun: GunBase)
+
 func _ready() -> void:
-	update_gui()
 	camera = Globals.global_camera as GlobalCamera
 
 func _process(_delta: float) -> void:
@@ -125,13 +127,11 @@ func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar f
 	item_instance.rotation = item_instance.direction.angle()
 	item_instance._activate_item()
 	bombs -= 1
-	gui_pointer.update_player(self)
 
 func _equip(item: GunBase) -> void:
 	if has_gun: #Fazer logica de dropar arma atual para trocar por nova
 		var drop_item: InteractableItem =  gun._drop_item()
 		Globals.game._drop_item(drop_item, global_position)
-		gui_pointer.gun_drop()
 		gun.queue_free()
 		gun = null
 	
@@ -141,11 +141,8 @@ func _equip(item: GunBase) -> void:
 	
 	guns_pivot.add_child(gun)
 	
-	if gui_pointer:
-		gun._set_pointers(self, gui_pointer)
 	gun.set_process(true)
-	if gun: 
-		gui_pointer.update_gun(gun)
+	equipped_gun.emit(item)
 	has_gun = true
 
 func _take_damage(damage: int) -> void:
@@ -154,7 +151,6 @@ func _take_damage(damage: int) -> void:
 	
 	can_take_damage = false
 	actual_health -= damage
-	gui_pointer.player_take_damage(damage)
 	impact_component.play_impact(self)
 	_create_damage_label()
 	if actual_health <= 0:
@@ -183,15 +179,10 @@ func _damage_effect() -> void:
 	tween.tween_method(shader_setter, 0.55, 0.0, 0.2)
 
 func _heal(heal_count: int) -> void:
-	gui_pointer.player_heal(self, heal_count)
-	actual_health = max_health
+	actual_health += heal_count
 
 func _get_stats() -> Vector3:
 	return Vector3(actual_health, coins, bombs)
-
-func update_gui() -> void:
-	if gui_pointer:
-		gui_pointer.update_player(self)
 
 func _get_gun() -> GunBase:
 	return gun
