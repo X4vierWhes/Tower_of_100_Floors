@@ -19,4 +19,3 @@ func _drop_item(item: InteractableItem, throw_direction: Vector2) -> void:
 		return
 	
 	itens_control._drop_item(item, throw_direction)
-	

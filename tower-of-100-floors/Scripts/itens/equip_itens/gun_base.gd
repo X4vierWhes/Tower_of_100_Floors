@@ -18,8 +18,9 @@ var can_shoot: bool = true
 var is_reloading: bool = false
 const bullet_reload_time: float = 0.04
 
-signal gun_reload(gun: GunBase)
+signal gun_reload
 signal gun_shoot
+signal gun_drop
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot && !is_reloading:
@@ -64,21 +65,12 @@ func reload() -> void:
 	circular_progress_bar_component._set_texture_scale(Vector2(0.1,0.1))
 	circular_progress_bar_component.loading()
 	
-	gun_reload.emit(self)
+	gun_reload.emit()
 	await circular_progress_bar_component.animation_end
 	
 	actual_clip = max_ammo
 	can_shoot = true
 	is_reloading = false
-
-func _get_texture() -> TextureRect:
-	return null
-
-func apply_upgrade() -> void:
-	pass
-
-func get_actual_clip() -> int:
-	return actual_clip
 
 func _drop_item() -> InteractableItem:
 	var stats: ItemStats = ItemStats.new()
@@ -100,3 +92,12 @@ func _update_item_actual_stats() -> void:
 	max_ammo = stats.get_at(2)
 	shoot_delay = stats.get_at(3)
 	return
+
+func _get_texture() -> TextureRect:
+	return null
+
+func apply_upgrade() -> void:
+	pass
+
+func get_actual_clip() -> int:
+	return actual_clip

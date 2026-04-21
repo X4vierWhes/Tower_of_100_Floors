@@ -41,21 +41,6 @@ func change_visibilty() -> void:
 	coins.visible = !coins.visible
 	bombs.visible = !bombs.visible
 
-func gun_reload(gun: GunBase) -> void:
-	if !gun:
-		return
-	var mod: int = gun.max_ammo - gun.actual_clip
-	print("MOD IN OBJPISTOL: " + str(mod))
-	for i in range(mod):
-		gun_component._stack()
-		await get_tree().create_timer(.01).timeout
-
-func gun_shoot() -> void:
-	gun_component._unstack()
-
-func gun_drop() -> void:
-	gun_component.drop_gun()
-
 func player_take_damage(damage: int) -> void:
 	for i in range(damage):
 		_heart_unstack()
@@ -109,3 +94,17 @@ func _equip_gun(gun_to_equip: GunBase) -> void:
 	gun_component._set_ammo(equipped_gun.max_ammo)
 	equipped_gun.gun_reload.connect(gun_reload.bind(equipped_gun))
 	equipped_gun.gun_shoot.connect(gun_shoot)
+
+func gun_reload(gun: GunBase) -> void:
+	if !gun:
+		return
+	var mod: int = gun.max_ammo - gun.actual_clip
+	for i in range(mod):
+		gun_component._stack()
+		await get_tree().create_timer(.1).timeout
+
+func gun_shoot() -> void:
+	gun_component._unstack()
+
+func gun_drop() -> void:
+	gun_component.drop_gun()
