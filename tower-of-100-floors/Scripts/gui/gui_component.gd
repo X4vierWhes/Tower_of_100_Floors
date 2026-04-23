@@ -30,7 +30,6 @@ func update() -> void:
 		return
 	
 	update_player(player)
-	
 
 func change_visibilty() -> void:
 	canvas_layer.visible = !canvas_layer.visible
@@ -84,7 +83,8 @@ func _set_ammo(_count: int) -> void:
 func _equip_gun(gun_to_equip: GunBase) -> void:
 	if equipped_gun:
 		gun_drop()
-	
+	print("GUI_COMPONENT EQUIPPED GUN")
+	print("Gun to equip stats:", "Actual_clip:", gun_to_equip.actual_clip)
 	equipped_gun = gun_to_equip
 	equipped_gun.gun_reload.connect(gun_reload.bind(equipped_gun))
 	equipped_gun.gun_shoot.connect(gun_shoot)

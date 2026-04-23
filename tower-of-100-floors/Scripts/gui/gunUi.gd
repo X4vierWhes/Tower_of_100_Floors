@@ -27,6 +27,8 @@ func drop_gun() -> void:
 	#_elements.clear()
 	gun_texture.queue_free()
 	gun_texture = null
+	print("GUN_UI PASSEI PELA DROP_GUN")
+	print("Size elements:", _elements.size())
 
 func _stack() -> void:
 	if _elements.size() < max_ammo:
@@ -38,16 +40,12 @@ func _stack() -> void:
 		ammo.custom_minimum_size = Vector2(4, 4)
 		ammo_container.add_child(ammo)
 		_elements.append(ammo)
-	else:
-		print("Ammo full!")
 
-func _unstack() -> bool:
+func _unstack() -> void:
 	if !_elements.is_empty():
 		var last = _elements.pop_back()
 		if is_instance_valid(last):
 			last.queue_free()
-			return true
-	return false
 
 func _set_texture(texture: TextureRect) -> void:
 	gun_texture = texture

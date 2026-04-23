@@ -3,7 +3,7 @@ class_name CharacterInterface
 
 signal is_death
 
-var tween:Tween
+var tween: Tween
 var death: bool = false
 var can_take_damage: bool = true
 

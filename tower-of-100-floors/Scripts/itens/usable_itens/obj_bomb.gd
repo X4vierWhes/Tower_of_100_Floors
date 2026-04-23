@@ -2,7 +2,7 @@ extends UsableItem
 class_name Bomb
 
 @export_category("Parameters")
-@export var damage: int = 10.0
+@export var damage: int = 10
 @export var bomb_speed: float = 100.0
 
 @onready var explosion_area: Area2D = $explosion_area
