@@ -31,10 +31,6 @@ func update() -> void:
 	
 	update_player(player)
 	
-	if !equipped_gun:
-		return
-	
-	update_gun(equipped_gun)
 
 func change_visibilty() -> void:
 	canvas_layer.visible = !canvas_layer.visible
@@ -90,10 +86,10 @@ func _equip_gun(gun_to_equip: GunBase) -> void:
 		gun_drop()
 	
 	equipped_gun = gun_to_equip
-	gun_component._set_texture(equipped_gun._get_texture())
-	gun_component._set_ammo(equipped_gun.max_ammo)
 	equipped_gun.gun_reload.connect(gun_reload.bind(equipped_gun))
 	equipped_gun.gun_shoot.connect(gun_shoot)
+	gun_component._set_texture(equipped_gun._get_texture())
+	gun_component._set_ammo(equipped_gun.actual_clip)
 
 func gun_reload(gun: GunBase) -> void:
 	if !gun:
@@ -101,7 +97,7 @@ func gun_reload(gun: GunBase) -> void:
 	var mod: int = gun.max_ammo - gun.actual_clip
 	for i in range(mod):
 		gun_component._stack()
-		await get_tree().create_timer(.1).timeout
+		await get_tree().create_timer(.08).timeout
 
 func gun_shoot() -> void:
 	gun_component._unstack()

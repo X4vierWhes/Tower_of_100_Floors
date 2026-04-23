@@ -24,7 +24,7 @@ func _set_ammo(_count: int) -> void:
 func drop_gun() -> void:
 	for i in _elements: #retirando munições
 		_unstack()
-	
+	#_elements.clear()
 	gun_texture.queue_free()
 	gun_texture = null
 

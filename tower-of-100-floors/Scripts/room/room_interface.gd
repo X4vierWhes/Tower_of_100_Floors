@@ -11,6 +11,10 @@ signal room_create
 
 signal change_room
 
+func _ready() -> void:
+	if itens_control:
+		Globals.item_component = itens_control
+
 func _get_next_room() -> String:
 	return next_room
 

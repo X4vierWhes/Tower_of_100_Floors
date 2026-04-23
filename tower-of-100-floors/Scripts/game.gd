@@ -13,7 +13,6 @@ var player_in_scene: Player = null
 
 func _ready() -> void:
 	room_manager.init_game()
-	Globals.game = self
 
 func _get_player_stats() -> void:
 	pass

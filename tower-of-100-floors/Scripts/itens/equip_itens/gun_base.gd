@@ -72,7 +72,7 @@ func reload() -> void:
 	can_shoot = true
 	is_reloading = false
 
-func _drop_item() -> InteractableItem:
+func get_drop_item() -> InteractableItem:
 	var stats: ItemStats = ItemStats.new()
 	var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
 	stats.set_item_stats(my_stats)
