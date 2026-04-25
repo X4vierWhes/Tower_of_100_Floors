@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"impact",
-"speed": 15.0
+"speed": 30.0
 }]
 
 [node name="impact_component" type="Node2D" unique_id=881552884]

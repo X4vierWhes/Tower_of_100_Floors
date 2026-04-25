@@ -1,12 +1,6 @@
 extends CharacterBody2D
 class_name CharacterInterface
 
-signal is_death
-
-var tween: Tween
-var death: bool = false
-var can_take_damage: bool = true
-
 @export_category("Base Stats")
 @export var speed: float = 300.0
 @export var max_health: int = 8
@@ -15,8 +9,15 @@ var can_take_damage: bool = true
 @export var bombs: int = 0
 @export var god_mode: bool = false
 @export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
-@onready var actual_health:int = max_health
+
 @onready var anim:AnimatedSprite2D = %AnimatedSprite2D
+
+signal is_death
+
+var tween: Tween
+var death: bool = false
+var can_take_damage: bool = true
+var actual_health: int = max_health
 
 func _take_damage(_damage: int) -> void:
 	pass

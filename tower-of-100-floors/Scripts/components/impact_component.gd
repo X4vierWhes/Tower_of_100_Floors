@@ -14,9 +14,7 @@ func _process(delta: float) -> void:
 func play_impact(character: CharacterInterface) -> void:
 	char = character
 	set_process(true)
-	print("Dei play no impacto")
 	animated_sprite_2d.show()
 	animated_sprite_2d.play("impact")
 	await animated_sprite_2d.animation_finished
 	animated_sprite_2d.hide()
-	print("Terminei o impacto")

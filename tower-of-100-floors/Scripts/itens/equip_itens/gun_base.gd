@@ -18,9 +18,7 @@ var can_shoot: bool = true
 var is_reloading: bool = false
 const bullet_reload_time: float = 0.04
 
-signal gun_reload
-signal gun_shoot
-signal gun_drop
+signal update_gun(action_name: String)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot && !is_reloading:
@@ -53,7 +51,7 @@ func _create_bullet() -> void:
 	for i in bullets:
 		i._activate_item()
 		actual_clip -= 1
-		gun_shoot.emit()
+		update_gun.emit("shoot")
 	await get_tree().create_timer(shoot_delay).timeout
 	can_shoot = true
 
@@ -65,7 +63,7 @@ func reload() -> void:
 	circular_progress_bar_component._set_texture_scale(Vector2(0.1,0.1))
 	circular_progress_bar_component.loading()
 	
-	gun_reload.emit()
+	update_gun.emit("reload")
 	await circular_progress_bar_component.animation_end
 	
 	actual_clip = max_ammo
@@ -73,6 +71,7 @@ func reload() -> void:
 	is_reloading = false
 
 func get_drop_item() -> InteractableItem:
+	update_gun.emit("drop")
 	var stats: ItemStats = ItemStats.new()
 	var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
 	stats.set_item_stats(my_stats)

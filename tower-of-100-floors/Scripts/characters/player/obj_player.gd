@@ -20,15 +20,14 @@ var has_gun: bool = false
 var can_dash: bool = true
 var is_dashing: bool = false
 
-signal damage(damage_count: int)
-signal heal_player(heal_count: int)
+signal update_player(action_name: String, action_count: int)
 signal equipped_gun(new_gun: GunBase)
 
 func _ready() -> void:
 	camera = Globals.global_camera as GlobalCamera
 
 func _process(_delta: float) -> void:
-	if !death:
+	if !death && !Globals.is_paused:
 		_update()
 
 func _update() -> void:
@@ -79,7 +78,6 @@ func _verify_dashing_collision() -> void:
 				is_dashing = false
 				camera.apply_shake(1.2)
 				return
-			
 
 func dash() -> void:
 	can_dash = false
@@ -127,6 +125,7 @@ func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar f
 	item_instance.rotation = item_instance.direction.angle()
 	item_instance._activate_item()
 	bombs -= 1
+	update_player.emit("use_item")
 
 func _equip(item: GunBase) -> void:
 	if has_gun: #Fazer logica de dropar arma atual para trocar por nova
@@ -134,7 +133,6 @@ func _equip(item: GunBase) -> void:
 		Globals.item_component._drop_item(drop_item, global_position)
 		gun.queue_free()
 		gun = null
-		#await get_tree().create_timer(1.0).timeout
 	
 	gun = item as GunBase
 	gun._update_item_actual_stats()
@@ -151,6 +149,7 @@ func _take_damage(damage: int) -> void:
 		return
 	
 	can_take_damage = false
+	update_player.emit("damage", damage)
 	actual_health -= damage
 	impact_component.play_impact(self)
 	_create_damage_label()
@@ -181,6 +180,7 @@ func _damage_effect() -> void:
 
 func _heal(heal_count: int) -> void:
 	actual_health += heal_count
+	update_player.emit("heal", heal_count)
 
 func _get_stats() -> Vector3:
 	return Vector3(actual_health, coins, bombs)

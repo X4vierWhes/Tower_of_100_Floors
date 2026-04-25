@@ -5,7 +5,7 @@ class_name ItensComponent
 @export var coins_label: RichTextLabel
 @export var bombs_label: RichTextLabel
 
-func _update(_coins: int, _bombs: int) -> void:
+func set_itens(_coins: int, _bombs: int) -> void:
 	_update_coins(_coins)
 	_update_bombs(_bombs)
 
