@@ -10,14 +10,12 @@ class_name GUI
 @onready var bombs: Sprite2D = $CanvasLayer/itens_component/bombs
 
 var player: Player = null
-var equipped_gun: GunBase = null
 
 func _ready() -> void:
 	if get_parent() is Player:
 		player = get_parent()
 		itens_component.set_itens(player.coins, player.bombs)
 		heart_component.set_hearts(player.actual_health)
-		equipped_gun = player._get_gun()
 		player.update_player.connect(on_player_update)
 		player.equipped_gun.connect(on_player_equipped_gun)
 
@@ -38,7 +36,4 @@ func _heal_player(heal_count: int) -> void:
 
 func on_player_equipped_gun(gun_to_equip: GunBase) -> void:
 	print("ON GUI COMPONENT PLAYER EQUIP GUN")
-	if equipped_gun:
-		print("Has gun")
-		return
 	gun_component.set_gun(gun_to_equip)
