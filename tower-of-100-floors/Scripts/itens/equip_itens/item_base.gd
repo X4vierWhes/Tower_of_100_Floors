@@ -14,9 +14,6 @@ func _ready() -> void:
 		_update_item_actual_stats()
 	
 
-func _set_pointers(player: Player, gui: GUI) -> void:
-	player_pointer = player as Player
-
 func _get_drop_item() -> String:
 	return DIR_DROP_ITEM + drop_item_name + ".tscn"
 

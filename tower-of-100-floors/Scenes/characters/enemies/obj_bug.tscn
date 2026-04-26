@@ -316,12 +316,13 @@ _data = {
 &"jump": SubResource("Animation_rp456")
 }
 
-[node name="obj_bug" type="CharacterBody2D" unique_id=366718663 groups=["Enemies"]]
+[node name="obj_bug" type="CharacterBody2D" unique_id=366718663 node_paths=PackedStringArray("anim") groups=["Enemies"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_esmmy")
 speed = 2800.0
 max_health = 10
+anim = NodePath("bug/AnimatedSprite2D")
 
 [node name="bug" type="Node2D" parent="." unique_id=1691072482]
 visible = false

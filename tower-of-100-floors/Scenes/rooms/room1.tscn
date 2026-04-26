@@ -122,10 +122,11 @@ sources/2 = SubResource("TileSetAtlasSource_vxv2w")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm5yb"]
 size = Vector2(116, 20)
 
-[node name="room1" type="Node2D" unique_id=977451492]
+[node name="room1" type="Node2D" unique_id=977451492 node_paths=PackedStringArray("itens_control")]
 script = ExtResource("1_riabp")
 room_id = "1"
 next_room = "2"
+itens_control = NodePath("itens_control_component")
 
 [node name="room_principal_layer" type="TileMapLayer" parent="." unique_id=1280141711]
 
@@ -158,6 +159,7 @@ script = ExtResource("11_1ymco")
 
 [node name="obj_bug" parent="enemies_control_component" unique_id=366718663 instance=ExtResource("12_xne5u")]
 position = Vector2(840, 386)
+max_health = 20
 
 [node name="objBee" parent="enemies_control_component" unique_id=1994341278 instance=ExtResource("12_riabp")]
 position = Vector2(544, 98)

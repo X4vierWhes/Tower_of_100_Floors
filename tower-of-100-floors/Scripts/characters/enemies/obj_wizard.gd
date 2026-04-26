@@ -34,6 +34,7 @@ func _shoot() -> void:
 	
 	var magic_scene = preload(MAGIC_SCENE)
 	var magic_projectile = magic_scene.instantiate() as Magic
+	#get_parent().call_deferred("add_child", magic_projectile)
 	get_parent().add_child(magic_projectile)
 	
 	magic_projectile.global_position = magic_point.global_position
@@ -51,7 +52,6 @@ func _shoot() -> void:
 
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("Player entrou no range")
 		player_pointer = body as Player
 		state = "run"
 		navigation_timer.start()

@@ -10,9 +10,9 @@ class_name CharacterInterface
 @export var god_mode: bool = false
 @export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
 
-@onready var anim:AnimatedSprite2D = %AnimatedSprite2D
+@export var anim:AnimatedSprite2D
 
-signal is_death
+@warning_ignore("unused_signal")signal is_death
 
 var tween: Tween
 var death: bool = false
@@ -44,7 +44,9 @@ func _create_damage_label() -> void:
 	
 	label.global_position = global_position + Vector2(-50, -40)
 	
-	var tween = create_tween()
-	tween.tween_property(label, "global_position:y", label.global_position.y - 50, 0.6)
-	tween.parallel().tween_property(label, "modulate:a", 0.0, 0.6)
-	tween.tween_callback(label.queue_free)
+	var damage_tween: Tween = create_tween()
+	
+	damage_tween.tween_property(label, "global_position:y", label.global_position.y - 50, 0.6).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	damage_tween.parallel().tween_property(label, "modulate:a", 0.0, 0.6)
+	
+	damage_tween.tween_callback(label.queue_free)

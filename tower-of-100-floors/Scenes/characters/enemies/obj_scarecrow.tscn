@@ -88,10 +88,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tmco"]
 size = Vector2(27, 30)
 
-[node name="obj_scarecrow" type="CharacterBody2D" unique_id=1561227057 groups=["Enemies"]]
+[node name="obj_scarecrow" type="CharacterBody2D" unique_id=1561227057 node_paths=PackedStringArray("anim") groups=["Enemies"]]
 material = SubResource("ShaderMaterial_twgtx")
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ktcrj")
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1459375792]
 texture_filter = 3

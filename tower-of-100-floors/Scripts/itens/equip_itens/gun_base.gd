@@ -72,7 +72,7 @@ func reload() -> void:
 
 func get_drop_item() -> InteractableItem:
 	update_gun.emit("drop")
-	var stats: ItemStats = ItemStats.new()
+	stats = ItemStats.new()
 	var my_stats: Array = [damage, actual_clip, max_ammo, shoot_delay]
 	stats.set_item_stats(my_stats)
 	var dir: String = DIR_DROP_ITEM + drop_item_name + ".tscn"

@@ -684,6 +684,19 @@ shader_parameter/Wiggle_Angle = false
 shader_parameter/Wiggle_Amount_deg = 15.0
 shader_parameter/Shine_Pause = 0.4
 
+[sub_resource type="GDScript" id="GDScript_vbk55"]
+script/source = "extends Node
+class_name RoomId
+
+@onready var id_label: RichTextLabel = $id_label
+
+func _process(_delta: float) -> void:
+	if id_label.text != Globals.actual_room_id:
+		id_label.text = Globals.actual_room_id
+	
+	return
+"
+
 [node name="gui_component" type="Node2D" unique_id=963733602 node_paths=PackedStringArray("itens_component", "heart_component", "gun_component")]
 show_behind_parent = true
 script = ExtResource("1_rdmnq")
@@ -783,3 +796,24 @@ offset_top = 538.0
 offset_right = 381.0
 offset_bottom = 576.0
 theme_override_constants/separation = 1
+
+[node name="room_id" type="Node" parent="CanvasLayer" unique_id=379777588]
+script = SubResource("GDScript_vbk55")
+
+[node name="id_label" type="RichTextLabel" parent="CanvasLayer/room_id" unique_id=1313234990]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+light_mask = 2
+visibility_layer = 29
+offset_left = 113.0
+offset_top = 155.0
+offset_right = 327.0
+offset_bottom = 268.0
+theme_override_fonts/normal_font = ExtResource("5_vbk55")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "debug
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

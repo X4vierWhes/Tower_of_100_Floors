@@ -1,7 +1,7 @@
 extends Node
 class_name ItensControlComponent
 
-signal itens_collected
+@warning_ignore("unused_signal")signal itens_collected
 
 func _drop_item(item: InteractableItem, throw_position: Vector2) -> void:
 	add_child(item)

@@ -125,10 +125,11 @@ sources/2 = SubResource("TileSetAtlasSource_vxv2w")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm5yb"]
 size = Vector2(116, 20)
 
-[node name="room0" type="Node2D" unique_id=977451492]
+[node name="room0" type="Node2D" unique_id=977451492 node_paths=PackedStringArray("itens_control")]
 script = ExtResource("1_qoogw")
 room_id = "0"
 next_room = "1"
+itens_control = NodePath("itens_control_component")
 
 [node name="room_principal_layer" type="TileMapLayer" parent="." unique_id=1280141711]
 

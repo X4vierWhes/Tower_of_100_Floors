@@ -42,7 +42,7 @@ radius = 15.524175
 [sub_resource type="CircleShape2D" id="CircleShape2D_x14lq"]
 radius = 206.0
 
-[node name="obj_bee" type="CharacterBody2D" unique_id=1994341278 groups=["Enemies"]]
+[node name="obj_bee" type="CharacterBody2D" unique_id=1994341278 node_paths=PackedStringArray("anim") groups=["Enemies"]]
 top_level = true
 collision_layer = 4
 collision_mask = 27
@@ -51,6 +51,7 @@ speed = 150.0
 max_health = 20
 coins = 5
 hurt_phrases = Array[String](["bzzzzz!!!"])
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1261333191]
 unique_name_in_owner = true

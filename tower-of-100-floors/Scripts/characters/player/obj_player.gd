@@ -6,6 +6,7 @@ class_name Player
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
 @export var impact_component: ImpactComponent
+@export var acceleration: float = 0.25
 
 const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
 const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
@@ -55,7 +56,9 @@ func movement_update() -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var speed_mult: float = dash_force if is_dashing else 1.0
 	
-	velocity = direction * (speed * speed_mult)
+	var target = direction * (speed * speed_mult)
+	velocity = velocity.lerp(target, acceleration)
+	
 	move_and_slide()
 	
 	if velocity.x != 0:
@@ -105,7 +108,7 @@ func _dashing_effect() -> void:
 		ghost.frame = anim.frame
 		ghost.stop()
 		
-		var tween = create_tween()
+		tween = create_tween()
 		tween.tween_property(ghost, "modulate:a", 0.0, 0.2) 
 		tween.finished.connect(func(): ghost.queue_free())
 		
@@ -164,11 +167,13 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = true
 
 func _damage_effect() -> void:
+	if tween.is_running():
+		tween.kill()
 	if anim.material == null:
 		anim.material = ShaderMaterial.new()
 		anim.material.shader = DAMAGE_MATERIAL
 
-	var tween: Tween = create_tween()
+	tween= create_tween()
 	
 	var mat = anim.material
 	

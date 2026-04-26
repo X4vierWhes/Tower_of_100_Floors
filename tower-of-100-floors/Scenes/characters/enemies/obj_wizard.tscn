@@ -74,7 +74,7 @@ radius = 348.11636
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7iff"]
 radius = 537.7034
 
-[node name="objWizard" type="CharacterBody2D" unique_id=1839842117 groups=["Enemies"]]
+[node name="objWizard" type="CharacterBody2D" unique_id=1839842117 node_paths=PackedStringArray("anim") groups=["Enemies"]]
 light_mask = 8
 visibility_layer = 23
 z_index = 1
@@ -84,6 +84,7 @@ script = ExtResource("1_j7iff")
 speed = 75.0
 max_health = 40
 hurt_phrases = Array[String](["my magic never dies!!!", "oh, no!", "wizard!!!", "no sense."])
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096245209]
 unique_name_in_owner = true

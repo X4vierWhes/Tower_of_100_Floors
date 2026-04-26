@@ -18,7 +18,8 @@ func enemie_control() -> void:
 		parent._append_enemie(self)
 
 func _take_damage(damage: int) -> void:
-	if !can_take_damage: return
+	if !can_take_damage: 
+		return
 	
 	if tween && tween.is_running():
 		tween.kill()
@@ -27,8 +28,9 @@ func _take_damage(damage: int) -> void:
 	tween = create_tween()
 	if impact_component:
 		impact_component.play_impact(self)
+	
 	_create_damage_label()
-		
+	
 	var shader_setter = func(value: float):
 		anim.material.set_shader_parameter("hit_effect", value)
 	
