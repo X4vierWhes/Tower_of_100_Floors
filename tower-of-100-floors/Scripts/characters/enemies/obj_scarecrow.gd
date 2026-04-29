@@ -11,11 +11,8 @@ func _ready() -> void:
 func _take_damage(_damage: int) -> void:
 	if !can_take_damage: return
 	
-	if tween && tween.is_running():
-		tween.kill()
-	
 	can_take_damage = false
-	tween = create_tween()
+	var tween = create_tween()
 	
 	var shader_setter = func(value: float):
 		animated_sprite_2d.material.set_shader_parameter("hit_effect", value)

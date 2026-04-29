@@ -10,3 +10,7 @@ func append_doors(d: Door) -> void:
 func apply_next_room() -> void:
 	for i in _doors:
 		i.state = "open"
+
+func close_doors() -> void:
+	for i in _doors:
+		i.state = "closed"

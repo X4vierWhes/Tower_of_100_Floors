@@ -6,6 +6,7 @@ class_name UsableItem
 @export_enum("Consumable", "Throwable") var item_type: String
 @export var range_distance: float = 1200.0
 
+var group_to_attack: String = "Enemies"
 var travelled_distance: float = 0.0
 var direction: Vector2 = Vector2.ZERO
 

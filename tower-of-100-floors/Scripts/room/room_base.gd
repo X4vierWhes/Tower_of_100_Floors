@@ -1,5 +1,5 @@
 extends Room
-class_name Room2
+class_name RoomBase
 
 @onready var door_and_plates_component: DoorAndPlatesComponent = $door_and_plates_component
 
