@@ -14,7 +14,6 @@ class_name CharacterInterface
 
 @warning_ignore("unused_signal")signal is_death
 
-var tween: Tween
 var death: bool = false
 var can_take_damage: bool = true
 var actual_health: int = max_health

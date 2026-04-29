@@ -21,11 +21,8 @@ func _take_damage(damage: int) -> void:
 	if !can_take_damage: 
 		return
 	
-	if tween && tween.is_running():
-		tween.kill()
-	
 	can_take_damage = false
-	tween = create_tween()
+	var tween = create_tween()
 	if impact_component:
 		impact_component.play_impact(self)
 	

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crfygq0kybjsb"]
 
-[ext_resource type="Script" uid="uid://cksyhevmjoqoo" path="res://Scripts/room/obj_door.gd" id="1_u0n1v"]
+[ext_resource type="Script" uid="uid://cksyhevmjoqoo" path="res://Scripts/world_objects/obj_door.gd" id="1_u0n1v"]
 [ext_resource type="Texture2D" uid="uid://cl2tv3mxp7rbp" path="res://Resources/images/rooms/Door.png" id="2_swhgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u83ev"]

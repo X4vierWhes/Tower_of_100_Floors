@@ -4,3 +4,5 @@
 
 [node name="room_interface" type="Node2D" unique_id=1181416154]
 script = ExtResource("1_pl1u3")
+room_id = null
+next_room = null

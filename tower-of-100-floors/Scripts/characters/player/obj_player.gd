@@ -108,7 +108,7 @@ func _dashing_effect() -> void:
 		ghost.frame = anim.frame
 		ghost.stop()
 		
-		tween = create_tween()
+		var tween = create_tween()
 		tween.tween_property(ghost, "modulate:a", 0.0, 0.2) 
 		tween.finished.connect(func(): ghost.queue_free())
 		
@@ -167,13 +167,11 @@ func _take_damage(damage: int) -> void:
 	can_take_damage = true
 
 func _damage_effect() -> void:
-	if tween.is_running():
-		tween.kill()
 	if anim.material == null:
 		anim.material = ShaderMaterial.new()
 		anim.material.shader = DAMAGE_MATERIAL
 
-	tween= create_tween()
+	var tween = create_tween()
 	
 	var mat = anim.material
 	

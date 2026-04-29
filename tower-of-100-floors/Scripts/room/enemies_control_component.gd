@@ -18,3 +18,6 @@ func _del_enemie(enemie: CharacterInterface) -> void:
 	
 	if _enemiesList.is_empty():
 		emit_signal("enemies_empty")
+
+func _get_enemies_localization() -> void:
+	pass

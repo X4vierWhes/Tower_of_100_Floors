@@ -3,7 +3,6 @@ class_name Game
 
 @export_category("Pivos")
 @export var room_manager: RoomManager
-@export var player_loader: PlayerLoader
 @export var transition_component: TransitionComponent
 
 @onready var player_spawn: Marker2D = $player_spawn
