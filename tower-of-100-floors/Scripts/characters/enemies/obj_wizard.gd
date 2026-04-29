@@ -35,7 +35,7 @@ func _shoot() -> void:
 	var magic_scene = preload(MAGIC_SCENE)
 	var magic_projectile = magic_scene.instantiate() as Magic
 	#get_parent().set_deferred("add_child", magic_projectile)
-	get_parent().add_child(magic_projectile)
+	get_tree().root.add_child(magic_projectile)
 	
 	magic_projectile.global_position = magic_point.global_position
 	var dir_to_player = magic_point.global_position.direction_to(player_pointer.global_position)
