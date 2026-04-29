@@ -92,6 +92,11 @@ func _update_item_actual_stats() -> void:
 	shoot_delay = stats.get_at(3)
 	return
 
+func _apply_upgrade(up: String) -> void:
+	# Esperado uma string tipo "Damage:+:50"
+	
+	pass
+
 func _get_texture() -> TextureRect:
 	return null
 
