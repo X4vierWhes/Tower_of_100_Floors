@@ -32,7 +32,8 @@ func change_room(room_to_open: String) -> void:
 	if room_to_open == "null":
 		game._spawn_player()
 		return
-	transition.fade_in(.8)
+	Globals.is_paused = true
+	transition.fade_in(.4)
 	await transition.on_transition_end
 	if actual_room:
 		actual_room.queue_free()
@@ -45,7 +46,9 @@ func change_room(room_to_open: String) -> void:
 		add_child(actual_room)
 		actual_room.change_room.connect(change_actual_room)
 	
-	transition.fade_out(.8)
+	transition.fade_out(.4)
+	await transition.on_transition_end
+	Globals.is_paused = false
 
 func _drop_item(item: InteractableItem, throw_direction: Vector2) -> void:
 	if !actual_room:

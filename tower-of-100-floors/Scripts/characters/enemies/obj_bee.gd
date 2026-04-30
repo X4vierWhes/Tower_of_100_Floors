@@ -12,6 +12,10 @@ func _ready() -> void:
 	enemie_control()
 
 func _process(_delta: float) -> void:
+	if !Globals.is_paused:
+		update(_delta)
+
+func update(_delta: float) -> void:
 	if !player_pointer:
 		velocity = searching_goal.normalized() * speed
 		move_and_slide()
