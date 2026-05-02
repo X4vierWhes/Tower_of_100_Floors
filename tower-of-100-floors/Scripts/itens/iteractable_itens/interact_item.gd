@@ -11,7 +11,7 @@ class_name InteractableItem
 @onready var is_player_in_area: bool = false
 @onready var player_pointer: Player = null
 
-const ITENS_DIR: String = "res://Scenes/itens/equip_itens/obj_"
+const ITENS_DIR: String = "res://Scenes/itens/equipment/obj_"
 
 var item_component: ItensControlComponent = null
 var stats: ItemStats = null

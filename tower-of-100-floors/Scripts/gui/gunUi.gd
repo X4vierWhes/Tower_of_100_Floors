@@ -6,7 +6,7 @@ class_name GunComponent
 @export var ammo_container: HBoxContainer
 @export var max_ammo: int = 22
 
-var gun_texture: TextureRect = null
+var texture: Sprite2D = null
 var _elements: Array[TextureRect] = []
 var equipped_gun: GunBase = null
 const AMMO_TEX = preload("res://Resources/images/guns/Ammo.png")
@@ -36,13 +36,10 @@ func _init_ui() -> void:
 		for i in range(equipped_gun.actual_clip):
 			_stack()
 
-func _set_texture(texture: TextureRect) -> void:
-	gun_texture = texture
-	gun_texture.global_position = gun_location.global_position
-	gun_texture.global_position.x -= 50.0
-	gun_texture.global_position.y -= 50.0
-	gun_location.add_child(gun_texture)
-	gun_texture.material = gun_location.material.duplicate()
+func _set_texture(gun_spr: Sprite2D) -> void:
+	texture = gun_spr
+	gun_location.add_child(texture)
+	texture.global_position = gun_location.global_position
 
 func gun_shoot() -> void:
 	_unstack()
@@ -57,8 +54,8 @@ func gun_drop() -> void:
 	for i in equipped_gun.max_ammo: #retirando munições
 		_unstack()
 	
-	gun_texture.queue_free()
-	gun_texture = null
+	texture.queue_free()
+	texture = null
 	equipped_gun = null
 
 func _stack() -> void:

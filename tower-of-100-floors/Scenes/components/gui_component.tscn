@@ -784,6 +784,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("5_adgjo")
 gun_location = NodePath("texture")
 ammo_container = NodePath("ammoContainer")
+max_ammo = null
 
 [node name="texture" type="Marker2D" parent="CanvasLayer/gun_component" unique_id=1762340157]
 material = SubResource("ShaderMaterial_vbk55")

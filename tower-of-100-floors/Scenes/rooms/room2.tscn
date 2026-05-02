@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cv1sxil8h4ogp" path="res://Scenes/characters/enemies/obj_wizard.tscn" id="13_10n5o"]
 [ext_resource type="PackedScene" uid="uid://crfygq0kybjsb" path="res://Scenes/world_objects/obj_door.tscn" id="14_jnapw"]
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://Scripts/room/itens_control_component.gd" id="15_22o4y"]
-[ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable_itens/easter_egg.tscn" id="16_ytagi"]
+[ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable/easter_egg.tscn" id="16_ytagi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)

@@ -12,6 +12,9 @@ var attack_damage:int = 1
 func _chase_player() -> void:
 	pass
 
+func _verify_collision() -> void:
+	pass
+
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl

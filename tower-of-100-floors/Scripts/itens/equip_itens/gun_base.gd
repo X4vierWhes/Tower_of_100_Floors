@@ -97,7 +97,7 @@ func _apply_upgrade(up: String) -> void:
 	
 	pass
 
-func _get_texture() -> TextureRect:
+func _get_texture() -> Sprite2D:
 	return null
 
 func apply_upgrade() -> void:

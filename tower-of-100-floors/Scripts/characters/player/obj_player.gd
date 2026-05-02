@@ -2,10 +2,11 @@ extends CharacterInterface
 class_name Player
 
 @export_category("Parameters")
+@export var impact_component: ImpactComponent
+@export var input_component: InputComponent
 @export var dash_force:float = 3.0
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
-@export var impact_component: ImpactComponent
 @export var acceleration: float = 0.25
 
 const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
@@ -26,6 +27,9 @@ signal equipped_gun(new_gun: GunBase)
 
 func _ready() -> void:
 	camera = Globals.global_camera as GlobalCamera
+	if input_component:
+		input_component.on_dash.connect(dash)
+		input_component.on_throw.connect(throw_item)
 
 func _process(_delta: float) -> void:
 	if !death && !Globals.is_paused:
@@ -33,27 +37,21 @@ func _process(_delta: float) -> void:
 
 func _update() -> void:
 	guns_pivot_update()
-	input_update()
 	movement_update()
 
-func input_update() -> void:
-	if Input.is_action_just_pressed("throw"):
-		throw_item()
-	
-	if Input.is_action_just_pressed("heal"):
-		return
-
 func guns_pivot_update() -> void:
-	guns_pivot.look_at(get_global_mouse_position())
+	if input_component.is_using_controller:
+		if input_component.look_direction.length() > 0.1:
+			guns_pivot.rotation = input_component.look_direction.angle()
+	else:
+		guns_pivot.look_at(input_component.look_direction)
+	
 	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
 
 func movement_update() -> void:
 	_verify_dashing_collision()
 	
-	if Input.is_action_just_pressed("dash") && can_dash:
-		dash()
-	
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction: Vector2 = input_component.input_direction
 	var speed_mult: float = dash_force if is_dashing else 1.0
 	
 	var target = direction * (speed * speed_mult)
@@ -61,14 +59,16 @@ func movement_update() -> void:
 	
 	move_and_slide()
 	
-	if velocity.x != 0:
+	_handle_animations(direction)
+
+func _handle_animations(direction: Vector2) -> void:
+	if velocity.length() > 10.0:
 		anim.play("run")
 	else:
 		anim.play("idle")
 	
 	if direction.x != 0:
 		anim.flip_h = (direction.x < 0)
-	
 
 func _verify_dashing_collision() -> void:
 	if !is_dashing || get_slide_collision_count() == 0:
@@ -123,7 +123,11 @@ func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar f
 	get_parent().add_child(item_instance)
 	
 	item_instance.global_position = global_position
-	var throw_dir = global_position.direction_to(get_global_mouse_position())
+	var throw_dir: Vector2 = Vector2.ZERO
+	if input_component.is_using_controller:
+		throw_dir = input_component.look_direction.normalized()
+	else:
+		throw_dir = global_position.direction_to(input_component.look_direction)
 	item_instance.direction = throw_dir
 	item_instance.rotation = item_instance.direction.angle()
 	item_instance._activate_item()

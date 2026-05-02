@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c1r841o1x0mce" path="res://Resources/images/player/Player_Shadow.png" id="3_eccdn"]
 [ext_resource type="PackedScene" uid="uid://dlsmjg41i2f62" path="res://Scenes/components/gui_component.tscn" id="4_lk5yj"]
 [ext_resource type="PackedScene" uid="uid://c5ha75tya3u2x" path="res://Scenes/components/impact_component.tscn" id="5_eccdn"]
+[ext_resource type="Script" uid="uid://cn7hu0waiw3sn" path="res://Scripts/components/input_component.gd" id="6_15p51"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nlmi"]
 atlas = ExtResource("2_lk5yj")
@@ -76,17 +77,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoce3"]
 size = Vector2(20, 21)
 
-[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("impact_component", "anim") groups=["Player"]]
+[node name="obj_player" type="CharacterBody2D" unique_id=1282361699 node_paths=PackedStringArray("impact_component", "input_component", "anim") groups=["Player"]]
 light_mask = 2
 visibility_layer = 23
 z_index = 1
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_5ecnf")
+impact_component = NodePath("impact_component")
+input_component = NodePath("input_component")
 dash_force = 3.5
 dash_cooldown = 1.8
 dash_duration = 0.6
-impact_component = NodePath("impact_component")
 bombs = 3
 anim = NodePath("AnimatedSprite2D")
 
@@ -115,3 +117,6 @@ texture = ExtResource("3_eccdn")
 [node name="gui_component" parent="." unique_id=963733602 instance=ExtResource("4_lk5yj")]
 
 [node name="impact_component" parent="." unique_id=881552884 instance=ExtResource("5_eccdn")]
+
+[node name="input_component" type="Node2D" parent="." unique_id=1231106698]
+script = ExtResource("6_15p51")

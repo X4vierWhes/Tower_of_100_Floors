@@ -5,7 +5,7 @@ class_name Item
 @export var drop_item_name: String = "null"
 
 var player_pointer: Player = null
-const DIR_DROP_ITEM: String = "res://Scenes/itens/iteractable_itens/"
+const DIR_DROP_ITEM: String = "res://Scenes/itens/iteractable/"
 var stats: ItemStats = null
 
 func _ready() -> void:

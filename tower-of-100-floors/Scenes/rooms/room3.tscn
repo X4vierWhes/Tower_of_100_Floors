@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dvmdmfyq1e3fi" path="res://Scripts/room/door_and_plates_component.gd" id="15_hixwv"]
 [ext_resource type="PackedScene" uid="uid://crfygq0kybjsb" path="res://Scenes/world_objects/obj_door.tscn" id="16_ct38a"]
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://Scripts/room/itens_control_component.gd" id="17_x5fdr"]
-[ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable_itens/easter_egg.tscn" id="18_yrl1x"]
+[ext_resource type="PackedScene" uid="uid://dmb3ba5e17p3d" path="res://Scenes/itens/iteractable/easter_egg.tscn" id="18_yrl1x"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h4fw4"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
