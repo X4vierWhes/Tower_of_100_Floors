@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce62llbkfs1vh"]
 
-[ext_resource type="Script" uid="uid://caxca7xac5hes" path="res://Scripts/itens/iteractable_itens/interact_pistol.gd" id="1_yeg44"]
+[ext_resource type="Script" uid="uid://caxca7xac5hes" path="res://Scripts/itens/iteractable/interact_pistol.gd" id="1_yeg44"]
 [ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/guns/Pistol_Solo.png" id="2_qrsnj"]
 
 [sub_resource type="Shader" id="Shader_yeg44"]

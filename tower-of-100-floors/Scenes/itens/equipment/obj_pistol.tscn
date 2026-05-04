@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk0asmfwgd5mt"]
 
-[ext_resource type="Script" uid="uid://bcl7esckclwa2" path="res://Scripts/itens/equip_itens/obj_pistol.gd" id="1_u8ahy"]
+[ext_resource type="Script" uid="uid://bcl7esckclwa2" path="res://Scripts/itens/equipment/obj_pistol.gd" id="1_u8ahy"]
 [ext_resource type="PackedScene" uid="uid://uy71c1b3cb13" path="res://Scenes/itens/usable_itens/obj_bullet.tscn" id="2_aj1i4"]
 [ext_resource type="Texture2D" uid="uid://dbl7y7c7gwiif" path="res://Resources/images/guns/Pistol_Solo.png" id="2_mrhsx"]
 [ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="3_mrhsx"]

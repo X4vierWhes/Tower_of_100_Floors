@@ -114,11 +114,11 @@ func _dashing_effect() -> void:
 		
 		await get_tree().create_timer(0.03).timeout
 
-func throw_item(_item_to_use: UsableItem = null) -> void: #logica para lançar futuros itens em desenvolvimento
+func throw_item(_item_to_use: Item = null) -> void: #logica para lançar futuros itens em desenvolvimento
 	if bombs <= 0:
 		return
 	
-	var item_instance: UsableItem = BOMB_SCENE.instantiate() as UsableItem
+	var item_instance: Item = BOMB_SCENE.instantiate() as Item
 	
 	get_parent().add_child(item_instance)
 	

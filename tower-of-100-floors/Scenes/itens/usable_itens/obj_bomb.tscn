@@ -46,7 +46,6 @@ top_level = true
 light_mask = 4
 visibility_layer = 27
 script = ExtResource("1_wkar6")
-damage = 100
 bomb_speed = 300.0
 item_name = "bomb"
 item_type = "Throwable"

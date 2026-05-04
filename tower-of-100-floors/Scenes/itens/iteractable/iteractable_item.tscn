@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2e40ym3i8tw5"]
 
-[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://Scripts/itens/iteractable_itens/interact_item.gd" id="1_u2v43"]
+[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://Scripts/itens/iteractable/interact_item.gd" id="1_u2v43"]
 
 [node name="interact_item" type="CharacterBody2D" unique_id=596689065]
 collision_layer = 8

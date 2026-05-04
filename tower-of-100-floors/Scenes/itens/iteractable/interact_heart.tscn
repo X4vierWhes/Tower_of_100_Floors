@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d24pw4fjpp15b"]
 
-[ext_resource type="Script" uid="uid://bf88fip0xadmm" path="res://Scripts/itens/iteractable_itens/interact_heart.gd" id="1_xrn1m"]
+[ext_resource type="Script" uid="uid://bf88fip0xadmm" path="res://Scripts/itens/iteractable/interact_heart.gd" id="1_xrn1m"]
 [ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://shaders/shine.gdshader" id="2_oytio"]
 [ext_resource type="Texture2D" uid="uid://cudckvdjongyy" path="res://Resources/images/player/Heart.png" id="2_uj2em"]
 

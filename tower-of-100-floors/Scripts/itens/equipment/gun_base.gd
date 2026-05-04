@@ -92,7 +92,7 @@ func _update_item_actual_stats() -> void:
 	shoot_delay = stats.get_at(3)
 	return
 
-func _apply_upgrade(up: String) -> void:
+func _apply_upgrade(_up: String) -> void:
 	# Esperado uma string tipo "Damage:+:50"
 	
 	pass

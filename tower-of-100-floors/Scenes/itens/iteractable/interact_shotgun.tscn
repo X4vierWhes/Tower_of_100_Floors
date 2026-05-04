@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dercmwq6ndfhy"]
 
-[ext_resource type="Script" uid="uid://wf66wdt42i0" path="res://Scripts/itens/iteractable_itens/interact_shotgun.gd" id="1_h7cvj"]
+[ext_resource type="Script" uid="uid://wf66wdt42i0" path="res://Scripts/itens/iteractable/interact_shotgun.gd" id="1_h7cvj"]
 [ext_resource type="Texture2D" uid="uid://bfxmua2j1ovg2" path="res://Resources/images/guns/Shotgun.png" id="2_3oep0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7cvj"]

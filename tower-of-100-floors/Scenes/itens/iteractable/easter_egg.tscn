@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmb3ba5e17p3d"]
 
-[ext_resource type="Script" uid="uid://ccw4x3u7hx50e" path="res://Scripts/itens/iteractable_itens/easter_egg.gd" id="1_e5r36"]
+[ext_resource type="Script" uid="uid://ccw4x3u7hx50e" path="res://Scripts/itens/iteractable/easter_egg.gd" id="1_e5r36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5r36"]
 size = Vector2(70, 20)

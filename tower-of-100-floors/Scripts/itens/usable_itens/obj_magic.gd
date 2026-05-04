@@ -1,4 +1,4 @@
-extends UsableItem
+extends Item
 class_name Magic
 
 @export_category("Configurações")

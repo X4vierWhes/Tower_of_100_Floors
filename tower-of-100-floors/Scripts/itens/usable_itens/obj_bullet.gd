@@ -1,4 +1,4 @@
-extends UsableItem
+extends Item
 class_name Bullet
 
 @export_category("Configurações")

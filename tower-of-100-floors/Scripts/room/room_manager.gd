@@ -1,7 +1,7 @@
 extends Node
 class_name RoomManager
 
-@export var initial_room: String = "0"
+@export var initial_room: String = "_init_room"
 @export var game: Game
 @export var transition: TransitionComponent
 const DIR: String = "res://Scenes/rooms/room"
@@ -27,7 +27,6 @@ func change_without_transition(room_to_open: String) -> void:
 		actual_room.change_room.connect(change_actual_room)
 	
 
-
 func change_room(room_to_open: String) -> void:
 	if room_to_open == "null":
 		game._spawn_player()
@@ -39,6 +38,7 @@ func change_room(room_to_open: String) -> void:
 		actual_room.queue_free()
 	
 	var room = load(DIR + room_to_open + ".tscn")
+	
 	if room:
 		actual_room = room.instantiate() as Room
 		game._spawn_player()
@@ -50,6 +50,7 @@ func change_room(room_to_open: String) -> void:
 	await transition.on_transition_end
 	Globals.is_paused = false
 
+
 func _drop_item(item: InteractableItem, throw_direction: Vector2) -> void:
 	if !actual_room:
 		return
@@ -57,4 +58,4 @@ func _drop_item(item: InteractableItem, throw_direction: Vector2) -> void:
 	actual_room._drop_item(item, throw_direction)
 
 func get_next_room(actual: Room) -> String:
-	return actual._get_next_room()
+	return actual._get_next_room() 
