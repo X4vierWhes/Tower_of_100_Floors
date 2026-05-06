@@ -35,5 +35,5 @@ func _heal_player(heal_count: int) -> void:
 	heart_component.update_actual_hearts("heal", heal_count)
 
 func on_player_equipped_gun(gun_to_equip: GunBase) -> void:
-	print("ON GUI COMPONENT PLAYER EQUIP GUN")
+	#print("ON GUI COMPONENT PLAYER EQUIP GUN")
 	gun_component.set_gun(gun_to_equip)

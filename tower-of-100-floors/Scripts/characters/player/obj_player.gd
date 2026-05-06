@@ -9,10 +9,6 @@ class_name Player
 @export var dash_duration: float = 0.5
 @export var acceleration: float = 0.25
 
-const BOMB_SCENE = preload("res://Scenes/itens/usable_itens/obj_bomb.tscn")
-const GHOST_MATERIAL = preload("res://shaders/retro_vhs_glitch.gdshader")
-const DAMAGE_MATERIAL = preload("res://shaders/flash_and_random_shake.gdshader")
-
 @onready var father: Game = get_parent() as Game
 @onready var guns_pivot: Marker2D = $guns_pivot
 
@@ -96,7 +92,7 @@ func _dashing_effect() -> void:
 		var ghost: AnimatedSprite2D = anim.duplicate()
 		
 		ghost.material = ShaderMaterial.new()
-		ghost.material.shader = GHOST_MATERIAL
+		ghost.material.shader = Globals.GHOST_MATERIAL
 		ghost.material.set_shader_parameter("glitch_frequency", 10.0)
 		ghost.material.set_shader_parameter("glitch_duration", 0.5)
 		ghost.material.set_shader_parameter("scanline_intensity", 1.0)
@@ -118,7 +114,7 @@ func throw_item(_item_to_use: Item = null) -> void: #logica para lançar futuros
 	if bombs <= 0:
 		return
 	
-	var item_instance: Item = BOMB_SCENE.instantiate() as Item
+	var item_instance: Item = Globals.BOMB_SCENE.instantiate() as Item
 	
 	get_parent().add_child(item_instance)
 	
@@ -173,7 +169,7 @@ func _take_damage(damage: int) -> void:
 func _damage_effect() -> void:
 	if anim.material == null:
 		anim.material = ShaderMaterial.new()
-		anim.material.shader = DAMAGE_MATERIAL
+		anim.material.shader = Globals.DAMAGE_MATERIAL
 
 	var tween = create_tween()
 	

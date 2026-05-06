@@ -36,7 +36,7 @@ func _explode() -> void:
 	sprite.visible = false
 	explosion_particles.emitting = true
 	explosion_area.set_deferred("monitoring", true)
-	await get_tree().create_timer(.1).timeout
+	await get_tree().create_timer(.05).timeout
 	explosion_area.set_deferred("monitoring", false)
 	explosion_particles.emitting = false
 	await get_tree().create_timer(explosion_particles.lifetime).timeout
@@ -44,5 +44,6 @@ func _explode() -> void:
 
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
+	print("Entrei")
 	if body.is_in_group(group_to_attack) && body.has_method("_take_damage"):
 		body._take_damage(damage)

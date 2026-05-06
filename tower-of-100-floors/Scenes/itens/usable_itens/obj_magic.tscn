@@ -13,6 +13,7 @@ visibility_layer = 23
 z_index = 5
 script = ExtResource("1_241bk")
 damage = 2
+bullet_speed = 400.0
 item_name = "Magic"
 item_type = "Throwable"
 

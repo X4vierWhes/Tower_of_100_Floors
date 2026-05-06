@@ -20,7 +20,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if body.has_method("_take_damage"):
 			body._take_damage(damage)
-			
 	
-	if !body.is_in_group("Enemies"):
+	if !body.is_in_group("Enemies") || body:
 		queue_free()

@@ -63,16 +63,17 @@ light_mask = 4
 visibility_layer = 27
 collision_layer = 8
 collision_mask = 5
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="explosion_area" unique_id=1587811899]
 shape = SubResource("CircleShape2D_xmlqc")
 debug_color = Color(0.94624835, 6.7383053e-06, 0.5909915, 0.41960785)
 
 [node name="explosion_particles" type="GPUParticles2D" parent="." unique_id=1121330928]
-amount = 100
+amount = 800
+lifetime = 1.01
 explosiveness = 1.0
 randomness = 1.0
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_om7c1")
 
 [connection signal="body_entered" from="explosion_area" to="." method="_on_explosion_area_body_entered"]

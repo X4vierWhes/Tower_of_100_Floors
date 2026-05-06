@@ -101,6 +101,8 @@ sprite_frames = SubResource("SpriteFrames_wa4pi")
 animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187931200]
+light_mask = 8
+visibility_layer = 23
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_8tmco")
 

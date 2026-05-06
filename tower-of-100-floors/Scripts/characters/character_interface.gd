@@ -3,7 +3,12 @@ class_name CharacterInterface
 
 @export_category("Base Stats")
 @export var speed: float = 300.0
-@export var max_health: int = 8
+@export var max_health: int = 8: 
+	set(value):
+		max_health = value
+		actual_health = value
+	get():
+		return max_health
 @export var heal: int = 0
 @export var coins: int = 0
 @export var bombs: int = 0
@@ -12,7 +17,7 @@ class_name CharacterInterface
 
 @export var anim:AnimatedSprite2D
 
-@warning_ignore("unused_signal")signal is_death
+@warning_ignore("unused_signal") signal is_death
 
 var death: bool = false
 var can_take_damage: bool = true
@@ -36,7 +41,7 @@ func _create_damage_label() -> void:
 	label.add_theme_font_override("normal_font", font_label)
 	hurt_phrases.shuffle()
 	label.bbcode_enabled = true
-	label.text = "[center][color=RED]" + hurt_phrases.get(0) + "[/color][/center]" 
+	label.text = "[center][color=#9ff4e5]" + hurt_phrases.get(0) + "[/color][/center]" 
 	label.custom_minimum_size = Vector2(100, 50)
 	
 	add_child(label)
