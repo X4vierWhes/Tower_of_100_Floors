@@ -7,7 +7,6 @@ class_name Game
 
 @onready var player_spawn: Marker2D = $player_spawn
 
-const PLAYER_SCENE: String = "uid://ckisamdxmuhow"
 var player_in_scene: Player = null
 
 func _ready() -> void:
@@ -18,8 +17,8 @@ func _get_player_stats() -> void:
 
 func _spawn_player() -> void:
 	if !player_in_scene:
-		var player_scene_resource = load(PLAYER_SCENE) as PackedScene
-		var player_instance = player_scene_resource.instantiate() as Player
+		var player_scene_resource:= load(Globals.PLAYER_SCENE) as PackedScene
+		var player_instance:= player_scene_resource.instantiate() as Player
 		
 		if player_instance:
 			player_in_scene = player_instance
