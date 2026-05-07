@@ -20,15 +20,10 @@ const bullet_reload_time: float = 0.04
 
 signal update_gun(action_name: String)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("attack") && actual_clip > 0 && can_shoot && !is_reloading:
-		shoot()
-	elif Input.is_action_pressed("attack") && actual_clip == 0 && can_shoot && !is_reloading || Input.is_action_pressed("reload") && can_shoot && actual_clip != max_ammo && !is_reloading:
-		reload()
-
 func shoot() -> void:
-	can_shoot = false
-	_create_bullet()
+	if actual_clip > 0 && can_shoot && !is_reloading:
+		can_shoot = false
+		_create_bullet()
 
 func _create_bullet() -> void:
 	var bullets: Array[Bullet] = []
@@ -56,6 +51,9 @@ func _create_bullet() -> void:
 	can_shoot = true
 
 func reload() -> void:
+	if is_reloading || actual_clip == max_ammo:
+		return
+	
 	can_shoot = false
 	is_reloading = true
 	

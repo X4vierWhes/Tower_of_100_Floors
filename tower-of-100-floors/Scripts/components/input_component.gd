@@ -8,6 +8,8 @@ var is_using_controller: bool = false
 signal on_dash
 signal on_throw
 signal on_interact
+signal shoot
+signal reload
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -38,3 +40,11 @@ func _process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("interact"):
 		on_interact.emit()
+	
+	gun_input()
+
+func gun_input() -> void:
+	if Input.is_action_pressed("attack"):
+		shoot.emit()
+	elif Input.is_action_pressed("reload"): 
+		reload.emit()
