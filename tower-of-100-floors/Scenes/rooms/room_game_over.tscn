@@ -10,7 +10,6 @@ room_id = "GameOver"
 next_room = "0"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568519424]
-layer = 99
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=821815072]
 layout_mode = 3
