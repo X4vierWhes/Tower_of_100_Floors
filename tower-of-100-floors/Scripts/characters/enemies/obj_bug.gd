@@ -8,6 +8,8 @@ func _ready():
 	enemie_control()
 
 func _physics_process(delta: float) -> void:
+	if Globals.is_paused:
+		return
 	if !navigation_agent.is_target_reached() and !animation_player.is_playing():
 		var next_path_pos = navigation_agent.get_next_path_position()
 		var direction = global_position.direction_to(next_path_pos)

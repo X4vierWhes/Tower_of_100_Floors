@@ -14,6 +14,8 @@ func _ready() -> void:
 	enemie_control()
 
 func _process(_delta: float) -> void:
+	if Globals.is_paused:
+		return
 	anim.play(state)
 	if state == "run":
 		_chase_player()

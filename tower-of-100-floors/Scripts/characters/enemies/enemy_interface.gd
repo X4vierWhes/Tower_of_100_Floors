@@ -1,13 +1,13 @@
 extends CharacterInterface
 class_name EnemyInterface
 
-var state:String = "idle"
 @onready var navigation_agent:NavigationAgent2D = %NavigationAgent2D
 @onready var navigation_timer:Timer = %navigation_timer
 @onready var attack_area:Area2D = %attack_area
 @onready var impact_component: ImpactComponent = $impact_component
 
 var attack_damage:int = 1
+var state:String = "idle"
 
 func _chase_player() -> void:
 	pass
