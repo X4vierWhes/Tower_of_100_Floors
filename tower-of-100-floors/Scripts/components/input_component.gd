@@ -34,10 +34,8 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("dash"):
 		on_dash.emit()
-		
 	if Input.is_action_just_pressed("throw"):
-		on_throw.emit()
-		
+		on_throw.emit(Globals.BOMB_SCENE.instantiate() as Item)
 	if Input.is_action_just_pressed("interact"):
 		on_interact.emit()
 	

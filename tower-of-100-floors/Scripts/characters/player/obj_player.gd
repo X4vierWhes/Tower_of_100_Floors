@@ -46,7 +46,6 @@ func guns_pivot_update() -> void:
 		guns_pivot.look_at(input_component.look_direction)
 	
 	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
-
 func movement_update() -> void:
 	_verify_dashing_collision()
 	
@@ -66,8 +65,8 @@ func _handle_animations(direction: Vector2) -> void:
 	else:
 		anim.play("idle")
 	
-	if direction.x != 0:
-		anim.flip_h = (direction.x < 0)
+	anim.flip_h = true if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else false
+
 
 func _verify_dashing_collision() -> void:
 	if !is_dashing || get_slide_collision_count() == 0:
@@ -113,11 +112,11 @@ func _dashing_effect() -> void:
 		
 		await get_tree().create_timer(0.03).timeout
 
-func throw_item(_item_to_use: Item = null) -> void: #logica para lançar futuros itens em desenvolvimento
+func throw_item(_item_to_use: Item) -> void: #logica para lançar futuros itens em desenvolvimento
 	if bombs <= 0:
 		return
 	
-	var item_instance: Item = Globals.BOMB_SCENE.instantiate() as Item
+	var item_instance: Item = _item_to_use
 	
 	get_parent().add_child(item_instance)
 	
