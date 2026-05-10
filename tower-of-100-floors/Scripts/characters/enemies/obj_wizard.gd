@@ -16,6 +16,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Globals.is_paused:
 		return
+	if is_knockbacking:
+		_knockbacking_update(_delta)
+		return
 	anim.play(state)
 	if state == "run":
 		_chase_player()

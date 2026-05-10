@@ -32,11 +32,14 @@ func _ready() -> void:
 #region Player
 func _process(_delta: float) -> void:
 	if !death && !Globals.is_paused:
-		_update()
+		_update(_delta)
 
-func _update() -> void:
+func _update(_delta: float) -> void:
 	guns_pivot_update()
-	movement_update()
+	if is_knockbacking:
+		_knockbacking_update(_delta)
+	else:
+		_move()
 
 func guns_pivot_update() -> void:
 	if input_component.is_using_controller:
@@ -46,7 +49,7 @@ func guns_pivot_update() -> void:
 		guns_pivot.look_at(input_component.look_direction)
 	
 	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
-func movement_update() -> void:
+func _move(_direction: Vector2 = Vector2.ZERO) -> void:
 	_verify_dashing_collision()
 	
 	var direction: Vector2 = input_component.input_direction
@@ -57,9 +60,9 @@ func movement_update() -> void:
 	
 	move_and_slide()
 	
-	_handle_animations(direction)
+	_handle_animations()
 
-func _handle_animations(direction: Vector2) -> void:
+func _handle_animations() -> void:
 	if velocity.length() > 10.0:
 		anim.play("run")
 	else:
@@ -141,6 +144,7 @@ func _take_damage(damage: int) -> void:
 	actual_health -= damage
 	impact_component.play_impact(self)
 	_create_damage_label()
+	
 	if actual_health <= 0:
 		anim.play("death")
 		death = true
@@ -194,7 +198,7 @@ func _equip(item: GunBase) -> void:
 
 func _shoot() -> void:
 	if !gun: return
-	gun.shoot()
+	gun.shoot(knockback_force)
 
 func _reload() -> void:
 	if !gun: return

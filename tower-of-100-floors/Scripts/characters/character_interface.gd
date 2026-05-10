@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name CharacterInterface
 
+@warning_ignore("unused_signal") signal is_death
+
 @export_category("Base Stats")
 @export var speed: float = 300.0
 @export var max_health: int = 8: 
@@ -14,11 +16,13 @@ class_name CharacterInterface
 @export var bombs: int = 0
 @export var god_mode: bool = false
 @export var hurt_phrases: Array[String] = ["it hurts!", "oh, no!", "dammit!"]
-
 @export var anim:AnimatedSprite2D
+@export var knockback_force: float = 100.0
+@export var knockback_resistance: float = 100.0
 
-@warning_ignore("unused_signal") signal is_death
-
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
+var is_knockbacking: bool = false
 var death: bool = false
 var can_take_damage: bool = true
 var actual_health: int = max_health
@@ -29,8 +33,8 @@ func _take_damage(_damage: int) -> void:
 func _heal(_amount: int) -> void:
 	pass
 
-func _move(_direction:Vector2) -> void:
-	pass #TODO
+func _move(_direction: Vector2 = Vector2.ZERO) -> void:
+	pass
 
 func _create_damage_label() -> void:
 	var label = RichTextLabel.new()
@@ -54,3 +58,21 @@ func _create_damage_label() -> void:
 	damage_tween.parallel().tween_property(label, "modulate:a", 0.0, 0.6)
 	
 	damage_tween.tween_callback(label.queue_free)
+
+func apply_knockback(direction: Vector2, force: float, duration: float) -> void:
+	if force < knockback_resistance:
+		return
+	knockback = direction * force
+	knockback_timer = duration
+	is_knockbacking = true
+
+func _knockbacking_update(delta: float) -> void:
+	if knockback_timer > 0.0:
+		velocity = knockback
+		knockback_timer -= delta
+		if knockback_timer <= 0.0:
+			knockback = Vector2.ZERO
+	else:
+		is_knockbacking = false
+	
+	move_and_slide()

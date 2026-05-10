@@ -16,7 +16,6 @@ func _verify_collision() -> void:
 	pass
 
 func enemie_control() -> void:
-	printerr("Actual heart:", actual_health)
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
 		parent._append_enemie(self)
@@ -41,7 +40,6 @@ func _take_damage(damage: int) -> void:
 	_calc_damage(damage)
 
 func _calc_damage(damage: int) -> void:
-	print(name, " Damage: ", damage)
 	actual_health -= damage
 	if actual_health > 0:
 		can_take_damage = true
@@ -53,6 +51,8 @@ func _calc_damage(damage: int) -> void:
 func _do_damage(body:Node2D) -> void:
 	if body.is_in_group("Player") and body is CharacterInterface:
 		body._take_damage(attack_damage)
+		var knock_dir: Vector2 = (body.global_position - global_position).normalized()
+		body.apply_knockback(knock_dir, knockback_force, 0.12)
 		attack_area.set_deferred("monitoring", false)
 		await get_tree().create_timer(0.2).timeout
 		attack_area.set_deferred("monitoring", true)

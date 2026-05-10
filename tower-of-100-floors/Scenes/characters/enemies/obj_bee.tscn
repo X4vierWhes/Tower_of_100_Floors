@@ -52,6 +52,7 @@ max_health = 20
 coins = 5
 hurt_phrases = Array[String](["bzzzzz!!!"])
 anim = NodePath("AnimatedSprite2D")
+knockback_force = 110.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1261333191]
 unique_name_in_owner = true

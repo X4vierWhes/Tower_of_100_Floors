@@ -9,6 +9,8 @@ class_name Bomb
 @onready var explosion_particles: GPUParticles2D = $explosion_particles
 @onready var sprite: Sprite2D = $sprite
 
+var force: float = 200.0
+
 func _ready() -> void:
 	super._ready()
 	explosion_area.set_deferred("monitoring", false)
@@ -44,6 +46,7 @@ func _explode() -> void:
 
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
-	print("Entrei")
-	if body.is_in_group(group_to_attack) && body.has_method("_take_damage"):
+	if body.is_in_group(group_to_attack) && body.has_method("_take_damage") && body is CharacterInterface:
 		body._take_damage(damage)
+		var knock_dir: Vector2 = (body.global_position - global_position).normalized()
+		body.apply_knockback(knock_dir, force, 0.12)

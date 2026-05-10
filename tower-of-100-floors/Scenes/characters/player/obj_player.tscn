@@ -91,6 +91,7 @@ dash_cooldown = 1.8
 dash_duration = 0.6
 bombs = 3
 anim = NodePath("AnimatedSprite2D")
+knockback_force = 120.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673899738]
 unique_name_in_owner = true

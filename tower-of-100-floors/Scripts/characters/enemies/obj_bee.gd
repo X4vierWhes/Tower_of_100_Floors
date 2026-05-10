@@ -12,10 +12,13 @@ func _ready() -> void:
 	enemie_control()
 
 func _process(_delta: float) -> void:
-	update()
+	if is_knockbacking:
+		_knockbacking_update(_delta)
+	else:
+		update()
 
 func update() -> void:
-	if !Globals.is_paused:
+	if Globals.is_paused:
 		return
 	if !player_pointer:
 		velocity = searching_goal.normalized() * speed

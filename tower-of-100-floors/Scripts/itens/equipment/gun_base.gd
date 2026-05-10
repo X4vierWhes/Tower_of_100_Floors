@@ -20,17 +20,18 @@ const bullet_reload_time: float = 0.04
 
 signal update_gun(action_name: String)
 
-func shoot() -> void:
+func shoot(_force: float) -> void:
 	if actual_clip > 0 && can_shoot && !is_reloading:
 		can_shoot = false
-		_create_bullet()
+		_create_bullet(_force)
 
-func _create_bullet() -> void:
+func _create_bullet(_force: float) -> void:
 	var bullets: Array[Bullet] = []
 	
 	for i in bullet_count:
 		var new_bullet = OBJ_BULLET.instantiate() as Bullet
 		new_bullet.set_damage(damage)
+		new_bullet.set_force(_force)
 		new_bullet.global_position = shoot_point.global_position
 		var arc_rad = deg_to_rad(arc)
 		if bullet_count == 1:
