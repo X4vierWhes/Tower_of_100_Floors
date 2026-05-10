@@ -22,5 +22,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.has_method("_take_damage"):
 			body._take_damage(damage)
 	
-	if !body.is_in_group("Enemies") || body:
+
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print('entrei')
+	if area.is_in_group("Itens"):
 		queue_free()

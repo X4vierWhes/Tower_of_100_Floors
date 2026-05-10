@@ -22,7 +22,7 @@ script = ExtResource("1_ajj33")
 item_name = "bullet"
 item_type = "Throwable"
 
-[node name="bulletArea" type="Area2D" parent="." unique_id=438633548]
+[node name="bulletArea" type="Area2D" parent="." unique_id=438633548 groups=["Itens"]]
 collision_layer = 16
 collision_mask = 5
 
