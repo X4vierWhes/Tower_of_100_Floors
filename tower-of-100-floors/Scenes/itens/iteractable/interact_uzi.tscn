@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cy5erctathrgl"]
+
+[ext_resource type="Script" uid="uid://d2ugeen8lmaxu" path="res://interact_uzi.gd" id="1_c0xkk"]
+[ext_resource type="Texture2D" uid="uid://bnw2wl7bddi5i" path="res://Resources/images/guns/2DPixelWeapons/PixelWeapons.png" id="2_ag5ox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_672pg"]
+size = Vector2(68, 54)
+
+[node name="interact_uzi" type="Node2D" unique_id=1192547473 groups=["Itens"]]
+light_mask = 4
+visibility_layer = 27
+script = ExtResource("1_c0xkk")
+ITEM_NAME = "uzi"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=630597331]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_ag5ox")
+region_enabled = true
+region_rect = Rect2(37.532368, 1.384994, 10.994053, 10.320368)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1395339171 groups=["Itens"]]
+collision_layer = 8
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1355615751]
+shape = SubResource("RectangleShape2D_672pg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
