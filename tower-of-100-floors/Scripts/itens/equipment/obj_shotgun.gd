@@ -1,4 +1,4 @@
-extends GunBase
+extends ProjectileGun
 class_name Shotgun
 
 const SHOTGUN_TEX: String = "uid://qrw8xmgu32xh"

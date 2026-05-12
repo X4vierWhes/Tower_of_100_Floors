@@ -7,6 +7,7 @@
 
 [node name="objPistol" type="Node2D" unique_id=459385302 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component")]
 script = ExtResource("1_u8ahy")
+range = 1200.0
 OBJ_BULLET = ExtResource("2_aj1i4")
 shoot_point = NodePath("shoot_point")
 circular_progress_bar_component = NodePath("CircularProgressBarComponent")

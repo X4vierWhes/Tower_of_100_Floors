@@ -30,11 +30,12 @@ shader_parameter/Shine_Pause = 0.4
 
 [node name="obj_shotgun" type="Node2D" unique_id=802700861 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component") groups=["Itens"]]
 script = ExtResource("1_tv81w")
-damage = 20
+damage = 40
 bullet_count = 2
 shoot_delay = 0.8
 arc = 5.0
 reload_time = 1.2000000000000002
+range = 300.0
 OBJ_BULLET = ExtResource("2_8bc81")
 shoot_point = NodePath("shoot_point")
 circular_progress_bar_component = NodePath("CircularProgressBarComponent")
