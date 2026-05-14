@@ -2,6 +2,7 @@ extends Node2D
 class_name InteractableItem
 
 @export_category("Configurações")
+@export var price: int = 0
 @export var ITEM_NAME: String = "null"
 @export var action_name: String = "Interact"
 @export var INTERACT_TEXT: String = "Press [F] to "

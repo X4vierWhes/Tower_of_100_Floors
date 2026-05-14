@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://ba354r6c8yk12"]
 
-[ext_resource type="Script" uid="uid://b58i7crgyirq3" path="res://Scripts/itens/equipment/obj_uzi.gd" id="1_p4k5s"]
+[ext_resource type="Script" uid="uid://dumg2lsuwrkqt" path="res://Scripts/itens/equipment/projectile_gun.gd" id="1_p4k5s"]
 [ext_resource type="PackedScene" uid="uid://uy71c1b3cb13" path="res://Scenes/itens/usable_itens/obj_bullet.tscn" id="2_bvmg1"]
 [ext_resource type="Texture2D" uid="uid://bnw2wl7bddi5i" path="res://Resources/images/guns/2DPixelWeapons/PixelWeapons.png" id="3_jhu4j"]
 [ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://Scenes/components/circular_progress_bar_component.tscn" id="4_e6dgq"]
 
-[node name="obj_uzi" type="Node2D" unique_id=585969621 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component")]
+[node name="obj_uzi" type="Node2D" unique_id=585969621 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component", "sprite")]
 script = ExtResource("1_p4k5s")
-damage = 5
-shoot_delay = 0.2
 OBJ_BULLET = ExtResource("2_bvmg1")
 shoot_point = NodePath("shoot_point")
 circular_progress_bar_component = NodePath("CircularProgressBarComponent")
+sprite = NodePath("Sprite2D")
+texture_scale = Vector2(10, 10)
+damage = 5
+shoot_delay = 0.2
 drop_item_name = "interact_uzi"
 item_name = "uzi"
 

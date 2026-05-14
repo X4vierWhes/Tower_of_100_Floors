@@ -1,10 +1,9 @@
 extends Node2D
 class_name Item
 
-@export_category("Configurações")
 @export var drop_item_name: String = "null"
 @export var item_name: String = "null"
-@export_enum("Consumable", "Throwable") var item_type: String
+@export_enum("Consumable", "Throwable") var item_type: String = "Throwable"
 @export var range_distance: float = 1200.0
 
 var group_to_attack: String = "Enemies"

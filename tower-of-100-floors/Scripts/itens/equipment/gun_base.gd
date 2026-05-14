@@ -12,7 +12,6 @@ func shoot(_force: float) -> void:
 func reload() -> void:
 	push_error("NOT IMPLEMENTED")
 
-
 func _apply_upgrade(_up: String) -> void:
 	push_error("NOT IMPLEMENTED")
 

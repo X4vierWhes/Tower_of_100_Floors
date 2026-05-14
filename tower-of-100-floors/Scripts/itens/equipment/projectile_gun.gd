@@ -2,6 +2,13 @@ extends GunBase
 class_name ProjectileGun
 
 @export_category("Projectile Gun Parameters")
+@export_subgroup("Gun imports")
+@export var OBJ_BULLET: PackedScene
+@export var shoot_point: Marker2D
+@export var circular_progress_bar_component: CircularProgressBar
+@export var sprite: Sprite2D
+@export var texture_scale: Vector2 = Vector2.ONE
+@export_subgroup("Gun stats")
 @export var damage: int = 10
 @export var max_ammo: int = 22
 @export var actual_clip: int = 22
@@ -10,9 +17,6 @@ class_name ProjectileGun
 @export_range(0, 360) var arc: float = 0
 @export_range(0.8, 3.0) var reload_time: float = 0.8
 @export_range(200, 1200) var bullet_range: float = 400
-@export var OBJ_BULLET: PackedScene
-@export var shoot_point: Marker2D
-@export var circular_progress_bar_component: CircularProgressBar
 
 func shoot(_force: float) -> void:
 	if actual_clip > 0 && can_shoot && !is_reloading:
@@ -92,7 +96,9 @@ func _apply_upgrade(_up: String) -> void:
 	pass
 
 func _get_texture() -> Sprite2D:
-	return null
+	var texture: Sprite2D = sprite.duplicate()
+	texture.scale = texture_scale
+	return texture
 
 func apply_upgrade() -> void:
 	pass
