@@ -58,7 +58,6 @@ func _calc_damage(damage: int) -> void:
 				coin.global_position = global_position + (random_dir * ray)
 		emit_signal("is_death")
 
-
 func _do_damage(body:Node2D) -> void:
 	if body.is_in_group("Player") and body is CharacterInterface:
 		body._take_damage(attack_damage)

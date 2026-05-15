@@ -89,7 +89,6 @@ input_component = NodePath("input_component")
 dash_force = 3.5
 dash_cooldown = 1.8
 dash_duration = 0.6
-coins = 10
 bombs = 3
 anim = NodePath("AnimatedSprite2D")
 knockback_force = 120.0

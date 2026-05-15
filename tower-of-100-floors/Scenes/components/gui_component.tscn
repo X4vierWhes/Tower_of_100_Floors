@@ -727,10 +727,10 @@ texture = ExtResource("2_2ecj8")
 [node name="coinsCount" type="RichTextLabel" parent="CanvasLayer/itens_component/coins" unique_id=1350903393]
 material = SubResource("ShaderMaterial_rdmnq")
 custom_minimum_size = Vector2(10, 10)
-offset_left = 8.936172
-offset_top = -1.5686263
-offset_right = 74.468094
-offset_bottom = 70.588234
+offset_left = -22.340424
+offset_top = -17.254845
+offset_right = 98.29788
+offset_bottom = 92.54893
 theme_override_fonts/normal_font = ExtResource("5_vbk55")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true

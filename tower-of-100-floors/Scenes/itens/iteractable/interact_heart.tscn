@@ -29,10 +29,11 @@ shader_parameter/Shine_Pause = 0.4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrn1m"]
 size = Vector2(126, 72)
 
-[node name="interact_heart" type="CharacterBody2D" unique_id=124265973]
+[node name="interact_heart" type="Node2D" unique_id=1371498226]
 script = ExtResource("1_xrn1m")
 ITEM_NAME = "Heart"
 action_name = "Heal"
+metadata/_custom_type_script = "uid://b3qrcn8s2hb6p"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=374240849]
 texture_filter = 1
