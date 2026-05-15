@@ -156,25 +156,19 @@ tile_set = SubResource("TileSet_ghhrj")
 script = ExtResource("11_84li0")
 
 [node name="objWizard" parent="enemies_control_component" unique_id=1839842117 instance=ExtResource("13_10n5o")]
-position = Vector2(758, 92)
+position = Vector2(517, 115)
 
 [node name="objWizard2" parent="enemies_control_component" unique_id=218980020 instance=ExtResource("13_10n5o")]
-position = Vector2(958, 82)
+position = Vector2(1214, 117)
 
 [node name="obj_bee" parent="enemies_control_component" unique_id=1994341278 instance=ExtResource("12_psgp1")]
-position = Vector2(556, 157)
+position = Vector2(1216, 487)
 
 [node name="obj_bee2" parent="enemies_control_component" unique_id=745716929 instance=ExtResource("12_psgp1")]
-position = Vector2(1134, 157)
+position = Vector2(874, 345)
 
 [node name="obj_bee3" parent="enemies_control_component" unique_id=1541428552 instance=ExtResource("12_psgp1")]
-position = Vector2(846, 311)
-
-[node name="obj_bee4" parent="enemies_control_component" unique_id=150825061 instance=ExtResource("12_psgp1")]
-position = Vector2(598, 479)
-
-[node name="obj_bee5" parent="enemies_control_component" unique_id=941141312 instance=ExtResource("12_psgp1")]
-position = Vector2(1067, 478)
+position = Vector2(542, 490)
 
 [node name="door_and_plates_component" type="Node" parent="." unique_id=1314398933]
 script = ExtResource("13_4ttol")

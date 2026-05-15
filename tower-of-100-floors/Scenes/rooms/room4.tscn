@@ -196,13 +196,10 @@ position = Vector2(785, 276)
 position = Vector2(914, 277)
 
 [node name="obj_bug" parent="enemies_control_component" unique_id=366718663 instance=ExtResource("13_th6mg")]
-position = Vector2(638, 570)
+position = Vector2(861, 349)
 
 [node name="obj_bug2" parent="enemies_control_component" unique_id=250181924 instance=ExtResource("13_th6mg")]
-position = Vector2(1120, 565)
-
-[node name="obj_bee" parent="enemies_control_component" unique_id=1994341278 instance=ExtResource("12_u1lfo")]
-position = Vector2(865, 366)
+position = Vector2(862, 163)
 
 [node name="obj_bee2" parent="enemies_control_component" unique_id=1805325590 instance=ExtResource("12_u1lfo")]
 position = Vector2(641, 297)
