@@ -29,8 +29,10 @@ shader_parameter/Shine_Pause = 0.4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrn1m"]
 size = Vector2(126, 72)
 
-[node name="interact_heart" type="Node2D" unique_id=1371498226]
+[node name="interact_heart" type="Node2D" unique_id=1371498226 node_paths=PackedStringArray("interact_area", "interact_label")]
 script = ExtResource("1_xrn1m")
+interact_area = NodePath("Area2D")
+interact_label = NodePath("RichTextLabel")
 ITEM_NAME = "Heart"
 action_name = "Heal"
 metadata/_custom_type_script = "uid://b3qrcn8s2hb6p"
@@ -40,12 +42,16 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_0xn5n")
 texture = ExtResource("2_uj2em")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=34693124]
+[node name="Area2D" type="Area2D" parent="." unique_id=34693124 groups=["Itens"]]
 collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=389729743]
 shape = SubResource("RectangleShape2D_xrn1m")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1782288771]
+offset_left = -91.0
+offset_top = -56.0
+offset_right = 95.0
+offset_bottom = -16.0
+bbcode_enabled = true

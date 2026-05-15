@@ -16,3 +16,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	player_pointer = body
 	_interact()
+
+func on_body_entered(body: Node2D) -> void:
+	if body is not Player:
+		return
+	player_pointer = body
+	_interact()
+
+func on_body_exited(body: Node2D) -> void:
+	return

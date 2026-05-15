@@ -42,8 +42,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6u26l"]
 size = Vector2(38, 38)
 
-[node name="InteractCoin" type="Node2D" unique_id=630842651]
+[node name="InteractCoin" type="Node2D" unique_id=630842651 node_paths=PackedStringArray("interact_area")]
 script = ExtResource("1_1nnlw")
+interact_area = NodePath("Area2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=378353179]
 texture_filter = 1
@@ -57,5 +58,3 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=378032724]
 shape = SubResource("RectangleShape2D_6u26l")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

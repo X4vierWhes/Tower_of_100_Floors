@@ -4,6 +4,8 @@ const BOMB_SCENE := preload("uid://ccng2qebsn0c4")
 const GHOST_MATERIAL := preload("uid://b3pnfx5v82x1j")
 const DAMAGE_MATERIAL: = preload("uid://dfotrmxng7wiy")
 const COIN_SCENE:= preload("uid://0v0oy5g30imf")
+const FONT_LABEL := preload("res://Resources/font/Daydream DEMO.otf")
+const MAGIC_SCENE:= preload("uid://krmikpan11be")
 const PLAYER_SCENE: String = "uid://ckisamdxmuhow"
 
 var is_paused: bool = false
