@@ -10,7 +10,9 @@ size = Vector2(68, 54)
 light_mask = 4
 visibility_layer = 27
 script = ExtResource("1_c0xkk")
+price = 10
 ITEM_NAME = "uzi"
+action_name = "Buy: 10 coins"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=630597331]
 texture_filter = 1

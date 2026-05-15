@@ -19,6 +19,8 @@ func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
 		parent._append_enemie(self)
+		randomize()
+		coins = randi_range(0,5)
 
 func _take_damage(damage: int) -> void:
 	if !can_take_damage: 
@@ -45,6 +47,15 @@ func _calc_damage(damage: int) -> void:
 		can_take_damage = true
 	else:
 		set_process(false)
+		
+		if Globals.COIN_SCENE:
+			for i in range(coins):
+				var coin:= Globals.COIN_SCENE.instantiate()
+				var random_dir = Vector2.LEFT.rotated(randf_range(0, TAU))
+				var ray = randf_range(10.0,  30.0)
+				
+				get_parent().add_child(coin)
+				coin.global_position = global_position + (random_dir * ray)
 		emit_signal("is_death")
 
 

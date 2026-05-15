@@ -22,8 +22,10 @@ func _input(event: InputEvent) -> void:
 		_interact()
 
 func _interact() -> void:
-	if is_player_in_area && player_pointer && consumable_item:
+	if is_player_in_area && player_pointer && consumable_item && player_pointer.coins >= price:
 		player_pointer._equip(_get_item())
+		player_pointer.coins -= price
+		player_pointer.update_player.emit("use_item")
 		if item_component && key_item:
 			item_component.itens_collected.emit()
 		queue_free()
