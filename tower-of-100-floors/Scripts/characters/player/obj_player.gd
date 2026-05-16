@@ -2,8 +2,10 @@ extends CharacterInterface
 class_name Player
 
 @export_category("Parameters")
+@export_subgroup("Components")
 @export var impact_component: ImpactComponent
 @export var input_component: InputComponent
+@export_subgroup("Parameters")
 @export var dash_force:float = 3.0
 @export var dash_cooldown: float = 1.4
 @export var dash_duration: float = 0.5
@@ -76,7 +78,6 @@ func _verify_hole_collision() -> void:
 	var is_in_hole: bool = test_move(global_transform, Vector2(0, 0.01))
 	
 	if is_in_hole:
-		print("Caiu no buraco!")
 		Globals.is_paused = true
 		velocity = Vector2.ZERO
 		

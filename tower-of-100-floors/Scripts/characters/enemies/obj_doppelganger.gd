@@ -1,0 +1,2 @@
+extends EnemyInterface
+class_name Doppelganger
