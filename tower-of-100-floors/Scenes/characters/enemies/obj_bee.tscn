@@ -92,6 +92,7 @@ debug_color = Color(0.36569506, 0.4794855, 1, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1362342426]
 unique_name_in_owner = true
+navigation_layers = 33
 path_postprocessing = 1
 
 [node name="navigation_timer" type="Timer" parent="." unique_id=237579820]

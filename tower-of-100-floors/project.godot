@@ -31,6 +31,7 @@ window/stretch/aspect="expand"
 Player=""
 Enemies=""
 Itens=""
+Derivados=""
 
 [input]
 
@@ -120,6 +121,8 @@ throw={
 2d_navigation/layer_4="itens"
 2d_physics/layer_5="gun"
 2d_navigation/layer_5="guns"
+2d_physics/layer_6="hole"
+2d_navigation/layer_6="hole"
 
 [physics]
 

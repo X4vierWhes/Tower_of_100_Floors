@@ -70,6 +70,22 @@ func _handle_animations() -> void:
 	
 	anim.flip_h = true if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else false
 
+func _verify_hole_collision() -> void:
+	var is_in_hole: bool = test_move(global_transform, Vector2(0, 0.01))
+	if is_in_hole:
+		
+		print("esta no buraco")
+
+func dash() -> void:
+	can_dash = false
+	is_dashing = true
+	set_collision_mask_value(6, false)
+	_dashing_effect()
+	await get_tree().create_timer(dash_duration).timeout
+	is_dashing = false
+	set_collision_mask_value(6, true)
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true
 
 func _verify_dashing_collision() -> void:
 	if !is_dashing || get_slide_collision_count() == 0:
@@ -80,17 +96,10 @@ func _verify_dashing_collision() -> void:
 		if is_instance_valid(slide):
 			if !slide.get_collider().is_in_group("Player") && is_dashing:
 				is_dashing = false
+				set_collision_mask_value(6, true)
+				_verify_hole_collision()
 				camera.apply_shake(1.2)
 				return
-
-func dash() -> void:
-	can_dash = false
-	is_dashing = true
-	_dashing_effect()
-	await get_tree().create_timer(dash_duration).timeout
-	is_dashing = false
-	await get_tree().create_timer(dash_cooldown).timeout
-	can_dash = true
 
 func _dashing_effect() -> void:
 	while is_dashing:

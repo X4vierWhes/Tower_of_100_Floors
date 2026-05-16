@@ -13,6 +13,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		emit_signal("change_room")
 
-
 func _on_enemies_control_component_enemies_empty() -> void:
 	open_door()
