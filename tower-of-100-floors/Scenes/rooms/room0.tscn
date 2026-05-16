@@ -199,7 +199,7 @@ position = Vector2(607, 395)
 consumable_item = false
 
 [node name="interact_uzi" parent="itens_control_component" unique_id=1192547473 instance=ExtResource("20_432qi")]
-position = Vector2(1121, 395)
+position = Vector2(1122, 396)
 
 [node name="next_room_exit" type="Node" parent="." unique_id=1757532730]
 

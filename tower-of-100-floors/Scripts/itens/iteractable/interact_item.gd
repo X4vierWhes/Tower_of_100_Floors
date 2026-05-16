@@ -7,7 +7,6 @@ class_name InteractableItem
 @export var interact_label: RichTextLabel
 @export_subgroup("Item Propertys")
 @export var ITEM_NAME: String = "null"
-@export var action_name: String = "Interact"
 @export var INTERACT_TEXT: String = "Press [F] to "
 @export var price: int = 0
 @export var consumable_item: bool = true
@@ -16,10 +15,12 @@ class_name InteractableItem
 @onready var is_player_in_area: bool = false
 @onready var player_pointer: Player = null
 
-const ITENS_DIR: String = "res://Scenes/itens/equipment/obj_"
-
 var item_component: ItensControlComponent = null
 var stats: ItemStats = null
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") && is_player_in_area:
+		_interact()
 
 func _ready() -> void:
 	if get_parent() && get_parent() is ItensControlComponent:
@@ -27,7 +28,7 @@ func _ready() -> void:
 	if interact_area:
 		_init_area2d()
 	else:
-		push_error("Interactable Item need area2d to works")
+		push_error("Interactable Item need a Area2D to works")
 	if interact_label:
 		_init_label()
 	top_level = true
@@ -43,10 +44,10 @@ func _init_label() -> void:
 	interact_label.add_theme_font_override("normal_font", Globals.FONT_LABEL)
 	interact_label.add_theme_font_size_override("normal_font_size", 10)
 	interact_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	#interact_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	interact_label.size = Vector2(256,256)
 
 func on_body_entered(body: Node2D) -> void:
+	interact_label.text = get_interact_label_text()
 	if body.is_in_group("Player"):
 		interact_label.show()
 		is_player_in_area = true
@@ -57,12 +58,11 @@ func on_body_exited(body: Node2D) -> void:
 		interact_label.hide()
 		is_player_in_area = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") && is_player_in_area:
-		_interact()
-
 func _interact() -> void:
-	if is_player_in_area && player_pointer && consumable_item && player_pointer.coins >= price:
+	if price > player_pointer.coins:
+		interact_label.text = "[shake][color=9ff4e5]Not enough money[/color][/shake]"
+		return
+	if is_player_in_area && player_pointer && consumable_item:
 		player_pointer._equip(_get_item())
 		player_pointer.coins -= price
 		player_pointer.update_player.emit("use_item")
@@ -71,9 +71,9 @@ func _interact() -> void:
 		queue_free()
 
 func _get_item() -> Item: #Sobrescrever cenas que herdam
-	if ITEM_NAME == "null" && Scripts._search_item(ITENS_DIR, ITEM_NAME):
+	if ITEM_NAME == "null" && Scripts._search_item(Globals.EQUIPMENTS_DIR, ITEM_NAME):
 		return null
-	var dir: String = ITENS_DIR + ITEM_NAME + ".tscn"
+	var dir: String = Globals.EQUIPMENTS_DIR + ITEM_NAME + ".tscn"
 	var item = load(dir)
 	
 	if item:
@@ -83,22 +83,9 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 	return null
 
 func get_interact_label_text() -> String:
-	return "[shake][color=9ff4e5]" + INTERACT_TEXT + action_name + "[/color][/shake]"
-
-func _get_interact_label_text(item: InteractableItem) -> RichTextLabel:
-	var label: RichTextLabel = RichTextLabel.new()
-	
-	label.add_theme_font_size_override("normal_font_size", 8)
-	
-	label.add_theme_font_override("normal_font", Globals.FONT_LABEL)
-	label.custom_minimum_size = Vector2(200.0, 40.0)
-	label.global_position = item.global_position
-	label.global_position.x -= 45.0
-	label.global_position.y -= 50.0
-	label.text = "[shake][color=9ff4e5]" + INTERACT_TEXT + action_name + "[/color][/shake]"
-	label.bbcode_enabled = true
-	label.top_level = true
-	return label
+	if price != 0:
+		return "[shake][color=9ff4e5]" + ITEM_NAME + " PRICE: " + str(price)  + "[/color][/shake]"
+	return "[shake][color=9ff4e5]" + INTERACT_TEXT + "[/color][/shake]"
 
 func _set_drop_item_stats(new_stats: ItemStats) -> void:
 	stats = new_stats

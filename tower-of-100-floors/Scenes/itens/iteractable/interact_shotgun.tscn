@@ -11,11 +11,7 @@ script = ExtResource("1_r6vlc")
 interact_area = NodePath("Area2D")
 interact_label = NodePath("RichTextLabel")
 ITEM_NAME = "shotgun"
-action_name = null
-INTERACT_TEXT = null
-price = null
-consumable_item = null
-key_item = null
+INTERACT_TEXT = "SHOTGUN"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=483852237]
 light_mask = 4

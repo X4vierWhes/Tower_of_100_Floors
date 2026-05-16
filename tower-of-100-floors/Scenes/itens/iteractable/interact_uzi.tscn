@@ -12,6 +12,9 @@ visibility_layer = 27
 script = ExtResource("1_mu32m")
 interact_area = NodePath("Area2D")
 interact_label = NodePath("RichTextLabel")
+ITEM_NAME = "uzi"
+INTERACT_TEXT = "UZI"
+price = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=630597331]
 texture_filter = 1

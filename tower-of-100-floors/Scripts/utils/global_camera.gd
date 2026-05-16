@@ -2,8 +2,8 @@ extends Camera2D
 class_name GlobalCamera
 
 var shake_intensity = 0.0
-var decay_rate = 5.0 # How fast the shake stops
-var max_offset = Vector2(20, 15) # Max screen shake in pixels
+var decay_rate = 5.0
+var max_offset = Vector2(20, 15)
 @export var noise: FastNoiseLite
 var noise_y = 0
 

@@ -8,6 +8,8 @@ const FONT_LABEL := preload("res://Resources/font/Daydream DEMO.otf")
 const MAGIC_SCENE:= preload("uid://krmikpan11be")
 const PLAYER_SCENE: String = "uid://ckisamdxmuhow"
 
+const EQUIPMENTS_DIR: String = "res://Scenes/itens/equipment/obj_"
+
 var is_paused: bool = false
 
 var global_camera: GlobalCamera = null

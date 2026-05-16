@@ -230,6 +230,7 @@ script = ExtResource("1_ihv3s")
 interact_area = NodePath("Area2D")
 interact_label = NodePath("RichTextLabel")
 ITEM_NAME = "pistol"
+INTERACT_TEXT = "PISTOL "
 key_item = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1360728355]
