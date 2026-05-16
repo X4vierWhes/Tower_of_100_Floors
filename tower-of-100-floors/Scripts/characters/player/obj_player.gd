@@ -17,6 +17,7 @@ var gun: GunBase = null
 var has_gun: bool = false
 var can_dash: bool = true
 var is_dashing: bool = false
+var last_valid_position: Vector2 = Vector2.ZERO
 
 signal update_player(action_name: String, action_count: int)
 signal equipped_gun(new_gun: GunBase)
@@ -50,7 +51,8 @@ func guns_pivot_update() -> void:
 	
 	guns_pivot.scale.y = -1 if guns_pivot.global_rotation_degrees > 90 || guns_pivot.global_rotation_degrees < -90 else 1
 func _move(_direction: Vector2 = Vector2.ZERO) -> void:
-	_verify_dashing_collision()
+	if is_dashing:
+		_verify_dashing_collision()
 	
 	var direction: Vector2 = input_component.input_direction
 	var speed_mult: float = dash_force if is_dashing else 1.0
@@ -72,18 +74,49 @@ func _handle_animations() -> void:
 
 func _verify_hole_collision() -> void:
 	var is_in_hole: bool = test_move(global_transform, Vector2(0, 0.01))
+	
 	if is_in_hole:
+		print("Caiu no buraco!")
+		Globals.is_paused = true
+		velocity = Vector2.ZERO
 		
-		print("esta no buraco")
+		var player_scale: Vector2 = anim.scale
+		var gun_scale: Vector2 = gun.scale if gun else Vector2.ONE
+		
+		var tween_fall: Tween = create_tween().set_parallel(true)
+		tween_fall.tween_property(anim, "scale", Vector2(0.1, 0.1), 0.5)
+		tween_fall.tween_property(anim, "modulate:a", 0.0, 0.5)
+		
+		if gun:
+			tween_fall.tween_property(gun, "scale", Vector2(0.1, 0.1), 0.5)
+			tween_fall.tween_property(gun, "modulate:a", 0.0, 0.5)
+			
+		await tween_fall.finished
+		
+		global_position = last_valid_position
+		
+		var tween_respawn: Tween = create_tween().set_parallel(true)
+		tween_respawn.tween_property(anim, "scale", player_scale, 0.2)
+		tween_respawn.tween_property(anim, "modulate:a", 1.0, 0.2)
+		
+		if gun:
+			tween_respawn.tween_property(gun, "scale", gun_scale, 0.2)
+			tween_respawn.tween_property(gun, "modulate:a", 1.0, 0.2)
+			
+		await tween_respawn.finished
+		
+		Globals.is_paused = false
 
 func dash() -> void:
+	last_valid_position = global_position
+	set_collision_mask_value(6, false)
 	can_dash = false
 	is_dashing = true
-	set_collision_mask_value(6, false)
 	_dashing_effect()
 	await get_tree().create_timer(dash_duration).timeout
 	is_dashing = false
 	set_collision_mask_value(6, true)
+	_verify_hole_collision()
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
 
