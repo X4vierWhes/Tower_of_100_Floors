@@ -8,7 +8,6 @@ class_name InteractableItem
 @export_subgroup("Item Propertys")
 @export var ITEM_NAME: String = "null"
 @export var INTERACT_TEXT: String = "Press [F] to "
-@export var price: int = 0
 @export var consumable_item: bool = true
 @export var key_item: bool = false
 
@@ -59,12 +58,8 @@ func on_body_exited(body: Node2D) -> void:
 		is_player_in_area = false
 
 func _interact() -> void:
-	if price > player_pointer.coins:
-		interact_label.text = "[shake][color=9ff4e5]Not enough money[/color][/shake]"
-		return
 	if is_player_in_area && player_pointer && consumable_item:
 		player_pointer._equip(_get_item())
-		player_pointer.coins -= price
 		player_pointer.update_player.emit("use_item")
 		if item_component && key_item:
 			item_component.itens_collected.emit()
@@ -83,8 +78,6 @@ func _get_item() -> Item: #Sobrescrever cenas que herdam
 	return null
 
 func get_interact_label_text() -> String:
-	if price != 0:
-		return "[shake][color=9ff4e5]" + ITEM_NAME + " PRICE: " + str(price)  + "[/color][/shake]"
 	return "[shake][color=9ff4e5]" + INTERACT_TEXT + "[/color][/shake]"
 
 func _set_drop_item_stats(new_stats: ItemStats) -> void:

@@ -5,7 +5,8 @@ class_name ItensControlComponent
 
 func _drop_item(item: InteractableItem, throw_position: Vector2) -> void:
 	add_child(item)
-	item.price = 0
+	if "price" in item:
+		item.price = 0
 	item.top_level = true 
 	#item.scale = Vector2(4, 4)
 	item.global_position = throw_position

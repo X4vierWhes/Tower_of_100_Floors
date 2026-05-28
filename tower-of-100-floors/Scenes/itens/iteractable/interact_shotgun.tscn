@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dercmwq6ndfhy"]
 
-[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://Scripts/itens/iteractable/interact_item.gd" id="1_r6vlc"]
+[ext_resource type="Script" uid="uid://b8blkipysecin" path="res://Scripts/itens/iteractable/purchasable_item.gd" id="1_r6vlc"]
 [ext_resource type="Texture2D" uid="uid://bfxmua2j1ovg2" path="res://Resources/images/guns/Shotgun.png" id="2_3oep0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7cvj"]
@@ -8,6 +8,7 @@ size = Vector2(95, 68)
 
 [node name="interact_shotgun" type="Node2D" unique_id=1847583771 node_paths=PackedStringArray("interact_area", "interact_label") groups=["Itens"]]
 script = ExtResource("1_r6vlc")
+price = 20
 interact_area = NodePath("Area2D")
 interact_label = NodePath("RichTextLabel")
 ITEM_NAME = "shotgun"

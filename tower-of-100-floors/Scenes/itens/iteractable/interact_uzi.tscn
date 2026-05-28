@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy5erctathrgl"]
 
-[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://Scripts/itens/iteractable/interact_item.gd" id="1_mu32m"]
+[ext_resource type="Script" uid="uid://b8blkipysecin" path="res://Scripts/itens/iteractable/purchasable_item.gd" id="1_mu32m"]
 [ext_resource type="Texture2D" uid="uid://bnw2wl7bddi5i" path="res://Resources/images/guns/2DPixelWeapons/PixelWeapons.png" id="2_ag5ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_672pg"]
@@ -14,7 +14,6 @@ interact_area = NodePath("Area2D")
 interact_label = NodePath("RichTextLabel")
 ITEM_NAME = "uzi"
 INTERACT_TEXT = "UZI"
-price = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=630597331]
 texture_filter = 1
