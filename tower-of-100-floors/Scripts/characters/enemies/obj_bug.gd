@@ -25,7 +25,6 @@ func _on_range_area_body_entered(body: Node2D) -> void:
 		navigation_timer.paused = false
 		navigation_timer.start()
 
-
 func _on_range_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_pointer = null

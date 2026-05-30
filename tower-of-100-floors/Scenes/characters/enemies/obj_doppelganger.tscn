@@ -42,14 +42,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8p6t"]
 size = Vector2(20, 25)
 
-[node name="obj_doppelganger" type="CharacterBody2D" unique_id=432277102]
+[node name="obj_doppelganger" type="CharacterBody2D" unique_id=432277102 node_paths=PackedStringArray("anim")]
 script = ExtResource("1_sburo")
+max_health = 60
+anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1134762405]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ono7m")
 animation = &"run"
-frame_progress = 0.9553848
+frame_progress = 0.14955097
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=697975343]
 position = Vector2(0, 2.5)
