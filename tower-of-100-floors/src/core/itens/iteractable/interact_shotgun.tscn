@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dercmwq6ndfhy"]
+
+[ext_resource type="Script" uid="uid://b8blkipysecin" path="res://src/core/itens/iteractable/purchasable_item.gd" id="1_r6vlc"]
+[ext_resource type="Texture2D" uid="uid://bfxmua2j1ovg2" path="res://assets/Resources/images/guns/Shotgun.png" id="2_3oep0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7cvj"]
+size = Vector2(95, 68)
+
+[node name="interact_shotgun" type="Node2D" unique_id=1847583771 node_paths=PackedStringArray("interact_area", "interact_label") groups=["Itens"]]
+script = ExtResource("1_r6vlc")
+price = 20
+interact_area = NodePath("Area2D")
+interact_label = NodePath("RichTextLabel")
+ITEM_NAME = "shotgun"
+INTERACT_TEXT = "SHOTGUN"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483852237]
+light_mask = 4
+visibility_layer = 27
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_3oep0")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1265731082]
+collision_layer = 8
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1171091487]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_h7cvj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1596913748]
+offset_left = -85.0
+offset_top = -56.0
+offset_right = 81.0
+offset_bottom = -16.0
+bbcode_enabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

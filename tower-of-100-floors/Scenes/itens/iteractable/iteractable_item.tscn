@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://1ug8fbd6xvie"]
-
-[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://Scripts/itens/iteractable/interact_item.gd" id="1_u2v43"]
-
-[node name="interact_item" type="CharacterBody2D" unique_id=596689065]
-collision_layer = 8
-collision_mask = 23
-script = ExtResource("1_u2v43")

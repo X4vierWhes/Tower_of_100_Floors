@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dmb3ba5e17p3d"]
+
+[ext_resource type="Script" uid="uid://b3qrcn8s2hb6p" path="res://src/core/itens/iteractable/interact_item.gd" id="1_4f0bj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5r36"]
+size = Vector2(70, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o31wb"]
+size = Vector2(84.3076, 30.090813)
+
+[node name="easter_egg" type="CharacterBody2D" unique_id=137566444 node_paths=PackedStringArray("interact_area", "interact_label")]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_4f0bj")
+interact_area = NodePath("Area2D")
+interact_label = NodePath("RichTextLabel")
+ITEM_NAME = "easter_egg"
+INTERACT_TEXT = "Are you running away? Are you a weak?"
+consumable_item = false
+metadata/_custom_type_script = "uid://b3qrcn8s2hb6p"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2047161689]
+shape = SubResource("RectangleShape2D_e5r36")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=883488997]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=49871428]
+position = Vector2(-0.49094605, -4.5)
+scale = Vector2(1.1270407, 1.495473)
+shape = SubResource("RectangleShape2D_o31wb")
+debug_color = Color(0.8342653, 0.0013284087, 0.9372449, 0.41960785)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1510612011]
+offset_left = -60.0
+offset_top = -88.0
+offset_right = 64.0
+offset_bottom = -12.0
+bbcode_enabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

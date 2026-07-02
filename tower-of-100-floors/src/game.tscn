@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bsb4rfndty27l"]
+
+[ext_resource type="Script" uid="uid://dc3a3agx54c2a" path="res://src/game.gd" id="1_i6g32"]
+[ext_resource type="Script" uid="uid://bo23esseomo07" path="res://src/core/rooms/scripts/room_manager.gd" id="4_i6g32"]
+[ext_resource type="PackedScene" uid="uid://cvgc62o86iong" path="res://src/core/components/transition/transition_component.tscn" id="5_1l0tm"]
+[ext_resource type="Shader" uid="uid://qp56pcifdr5x" path="res://src/shaders/palette_changer.gdshader" id="5_i6g32"]
+[ext_resource type="Script" uid="uid://du74j4wsvw30j" path="res://src/core/components/palette_component.gd" id="5_v158k"]
+[ext_resource type="Script" uid="uid://cm2iugufynj5v" path="res://src/common/globals/global_camera.gd" id="5_wowpa"]
+[ext_resource type="Texture2D" uid="uid://pxal5ab0ccrb" path="res://assets/Resources/images/palettes/blue_palette.png" id="6_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://inaku7w647vj" path="res://assets/Resources/images/palettes/green_palette.png" id="8_v158k"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wowpa"]
+frequency = 0.012
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1l0tm"]
+shader = ExtResource("5_i6g32")
+shader_parameter/brightness = 0.0
+shader_parameter/source_palette = ExtResource("6_1l0tm")
+shader_parameter/target_palette = ExtResource("8_v158k")
+
+[node name="game" type="Node2D" unique_id=1109737252 node_paths=PackedStringArray("room_manager", "transition_component")]
+process_mode = 3
+script = ExtResource("1_i6g32")
+room_manager = NodePath("room_manager")
+transition_component = NodePath("transition_component")
+
+[node name="room_manager" type="Node" parent="." unique_id=1747045631 node_paths=PackedStringArray("game", "transition")]
+process_mode = 1
+script = ExtResource("4_i6g32")
+game = NodePath("..")
+transition = NodePath("../transition_component")
+
+[node name="transition_component" parent="." unique_id=1868355065 instance=ExtResource("5_1l0tm")]
+
+[node name="player_spawn" type="Marker2D" parent="." unique_id=1290071207]
+position = Vector2(868, 616)
+
+[node name="global_camera" type="Camera2D" parent="." unique_id=88633116]
+anchor_mode = 0
+script = ExtResource("5_wowpa")
+noise = SubResource("FastNoiseLite_wowpa")
+
+[node name="palette_component" type="CanvasLayer" parent="." unique_id=1245267323]
+follow_viewport_enabled = true
+script = ExtResource("5_v158k")
+
+[node name="ColorRect" type="ColorRect" parent="palette_component" unique_id=2006677846]
+top_level = true
+material = SubResource("ShaderMaterial_1l0tm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

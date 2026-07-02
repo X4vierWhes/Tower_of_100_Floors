@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ba354r6c8yk12"]
+
+[ext_resource type="Script" uid="uid://dumg2lsuwrkqt" path="res://src/core/itens/equipment/projectile_gun.gd" id="1_p4k5s"]
+[ext_resource type="PackedScene" uid="uid://uy71c1b3cb13" path="res://src/core/itens/usable_itens/obj_bullet.tscn" id="2_bvmg1"]
+[ext_resource type="Texture2D" uid="uid://bnw2wl7bddi5i" path="res://assets/Resources/images/guns/2DPixelWeapons/PixelWeapons.png" id="3_jhu4j"]
+[ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://src/core/components/circular_progress_bar/circular_progress_bar_component.tscn" id="4_e6dgq"]
+
+[node name="obj_uzi" type="Node2D" unique_id=585969621 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component", "sprite")]
+script = ExtResource("1_p4k5s")
+OBJ_BULLET = ExtResource("2_bvmg1")
+shoot_point = NodePath("shoot_point")
+circular_progress_bar_component = NodePath("CircularProgressBarComponent")
+sprite = NodePath("Sprite2D")
+texture_scale = Vector2(10, 10)
+damage = 5
+shoot_delay = 0.2
+drop_item_name = "interact_uzi"
+item_name = "uzi"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=434955860]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("3_jhu4j")
+region_enabled = true
+region_rect = Rect2(37.951645, 1.9703581, 10.10577, 8.990929)
+
+[node name="CircularProgressBarComponent" parent="." unique_id=1154130359 node_paths=PackedStringArray("gun") instance=ExtResource("4_e6dgq")]
+gun = NodePath("..")
+
+[node name="shoot_point" type="Marker2D" parent="." unique_id=411628401]
+position = Vector2(16, -9)

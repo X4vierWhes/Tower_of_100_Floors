@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TowerOf100Floors"
 run/main_scene="uid://bsb4rfndty27l"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +25,13 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://src/": "red"
+}
 
 [global_group]
 

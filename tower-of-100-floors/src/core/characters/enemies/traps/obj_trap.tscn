@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b2kcnn4bp2kqj"]
+
+[ext_resource type="Texture2D" uid="uid://cdwx8itkuq2x4" path="res://assets/Resources/images/enemies/Trap.png" id="1_olbn3"]
+[ext_resource type="Script" uid="uid://d0rpqshss4x48" path="res://src/core/characters/enemies/traps/obj_trap.gd" id="1_y18f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y18f0"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0x6c"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxtpd"]
+atlas = ExtResource("1_olbn3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6ypg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y18f0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0x6c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxtpd")
+}],
+"loop": true,
+"name": &"preparing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gruo"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y18f0"]
+size = Vector2(24, 24)
+
+[node name="objTrap" type="CharacterBody2D" unique_id=255404683]
+show_behind_parent = true
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_y18f0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1745165199]
+texture_filter = 3
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_v6ypg")
+animation = &"preparing"
+
+[node name="collision_area" type="Area2D" parent="." unique_id=919409845 groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_area" unique_id=626448392]
+shape = SubResource("RectangleShape2D_7gruo")
+debug_color = Color(2.2140146e-06, 0.64134073, 0.3408001, 0.41960785)
+
+[node name="attack_area" type="Area2D" parent="." unique_id=1360538979]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area" unique_id=1468716148]
+shape = SubResource("RectangleShape2D_y18f0")
+
+[connection signal="body_entered" from="collision_area" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

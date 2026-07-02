@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://w4powii73d15"]
+
+[ext_resource type="Script" uid="uid://dumg2lsuwrkqt" path="res://src/core/itens/equipment/projectile_gun.gd" id="1_dd6i5"]
+[ext_resource type="PackedScene" uid="uid://uy71c1b3cb13" path="res://src/core/itens/usable_itens/obj_bullet.tscn" id="2_8bc81"]
+[ext_resource type="Shader" uid="uid://byj2sswkk5bhw" path="res://src/shaders/shine.gdshader" id="2_ypodp"]
+[ext_resource type="Texture2D" uid="uid://qrw8xmgu32xh" path="res://assets/Resources/images/guns/Shotgun01.png" id="3_ypodp"]
+[ext_resource type="PackedScene" uid="uid://bbv410pi8rqxa" path="res://src/core/components/circular_progress_bar/circular_progress_bar_component.tscn" id="9_0ere1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bc81"]
+shader = ExtResource("2_ypodp")
+shader_parameter/Angle_deg = 30.0
+shader_parameter/Brightness = 2.5
+shader_parameter/Band_Soft = 0.06
+shader_parameter/Stage_Count = 2
+shader_parameter/Stage1_Duration = 1.0
+shader_parameter/Stage2_Duration = 1.5
+shader_parameter/Stage3_Duration = 1.0
+shader_parameter/Stage1_Width = 0.12
+shader_parameter/Stage2_Width = 0.12
+shader_parameter/Stage3_Width = 0.12
+shader_parameter/Stage1_LeftToRight = true
+shader_parameter/Stage2_LeftToRight = false
+shader_parameter/Stage3_LeftToRight = true
+shader_parameter/One_Shot = false
+shader_parameter/OneShot_Delay = 0.0
+shader_parameter/Phase_Offset = 0.0
+shader_parameter/Wiggle_Angle = false
+shader_parameter/Wiggle_Amount_deg = 15.0
+shader_parameter/Shine_Pause = 0.4
+
+[node name="obj_shotgun" type="Node2D" unique_id=802700861 node_paths=PackedStringArray("shoot_point", "circular_progress_bar_component", "sprite") groups=["Itens"]]
+script = ExtResource("1_dd6i5")
+OBJ_BULLET = ExtResource("2_8bc81")
+shoot_point = NodePath("shoot_point")
+circular_progress_bar_component = NodePath("CircularProgressBarComponent")
+sprite = NodePath("Sprite2D")
+texture_scale = Vector2(2.5, 2.5)
+damage = 40
+bullet_count = 2
+shoot_delay = 0.8
+arc = 5.0
+reload_time = 1.2000000000000002
+drop_item_name = "interact_shotgun"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1069252441]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8bc81")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ypodp")
+
+[node name="CircularProgressBarComponent" parent="." unique_id=897445385 node_paths=PackedStringArray("gun") instance=ExtResource("9_0ere1")]
+gun = NodePath("..")
+
+[node name="shoot_point" type="Marker2D" parent="." unique_id=1151236375]
+unique_name_in_owner = true
+position = Vector2(33, -2)
