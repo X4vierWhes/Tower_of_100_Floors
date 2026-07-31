@@ -12,9 +12,6 @@ var state:String = "idle"
 func _chase_player() -> void:
 	pass
 
-func _verify_collision() -> void:
-	pass
-
 func enemie_control() -> void:
 	if get_parent() && get_parent() is EnemiesControl:
 		var parent = get_parent() as EnemiesControl
@@ -33,6 +30,9 @@ func _take_damage(damage: int) -> void:
 	
 	_create_damage_label()
 	
+	if !anim:
+		return
+		
 	var shader_setter = func(value: float):
 		anim.material.set_shader_parameter("hit_effect", value)
 	

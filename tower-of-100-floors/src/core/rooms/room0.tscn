@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dk4e3ldqvau6m" path="res://src/core/components/enemies_control_component.gd" id="11_08pox"]
 [ext_resource type="PackedScene" uid="uid://c6f2bt6b2exsi" path="res://src/core/characters/enemies/scarecrow/obj_scarecrow.tscn" id="12_b6ndn"]
 [ext_resource type="PackedScene" uid="uid://b2kcnn4bp2kqj" path="res://src/core/characters/enemies/traps/obj_trap.tscn" id="13_28o7i"]
+[ext_resource type="PackedScene" uid="uid://c3medbfqagbuq" path="res://src/core/characters/enemies/spine/obj_spine.tscn" id="14_08pox"]
 [ext_resource type="Script" uid="uid://dvmdmfyq1e3fi" path="res://src/core/components/door_and_plates_component.gd" id="14_liu1g"]
 [ext_resource type="PackedScene" uid="uid://crfygq0kybjsb" path="res://src/core/rooms/world_objects/obj_door.tscn" id="15_30x6m"]
 [ext_resource type="Script" uid="uid://du13x8w2k4hre" path="res://src/core/components/itens_control_component.gd" id="16_cxsbh"]
@@ -173,6 +174,9 @@ position = Vector2(848, 176)
 
 [node name="objTrap2" parent="enemies_control_component" unique_id=1974018707 instance=ExtResource("13_28o7i")]
 position = Vector2(879, 176)
+
+[node name="obj_spine" parent="enemies_control_component" unique_id=1072900752 instance=ExtResource("14_08pox")]
+position = Vector2(520, 290)
 
 [node name="door_and_plates_component" type="Node" parent="." unique_id=1314398933]
 script = ExtResource("14_liu1g")

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c3medbfqagbuq"]
+
+[ext_resource type="Script" uid="uid://b71uc0302l0ie" path="res://obj_spine.gd" id="1_vph4g"]
+[ext_resource type="Texture2D" uid="uid://cnn0dlcaq26jb" path="res://assets/Resources/images/enemies/ball.png" id="2_03cpt"]
+[ext_resource type="Texture2D" uid="uid://cdrafo6rx1q4p" path="res://assets/Resources/images/enemies/spine.png" id="3_03cpt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="obj_spine" type="CharacterBody2D" unique_id=1072900752 groups=["Enemies"]]
+script = ExtResource("1_vph4g")
+
+[node name="ball" type="Sprite2D" parent="." unique_id=1174774881]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_03cpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872228370 groups=["Enemies"]]
+light_mask = 8
+visibility_layer = 23
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=87164799]
+
+[node name="spine" type="Sprite2D" parent="Marker2D" unique_id=694391169 groups=["Enemies"]]
+light_mask = 8
+visibility_layer = 23
+texture_filter = 1
+position = Vector2(21, 0)
+texture = ExtResource("3_03cpt")
+
+[node name="spine2" type="Sprite2D" parent="Marker2D" unique_id=1212968156 groups=["Enemies"]]
+light_mask = 8
+visibility_layer = 23
+texture_filter = 1
+position = Vector2(0, -21)
+rotation = -1.5707964
+texture = ExtResource("3_03cpt")
+
+[node name="spine3" type="Sprite2D" parent="Marker2D" unique_id=1941296213 groups=["Enemies"]]
+light_mask = 8
+visibility_layer = 23
+texture_filter = 1
+position = Vector2(-21, -1)
+texture = ExtResource("3_03cpt")
+flip_h = true
+
+[node name="spine4" type="Sprite2D" parent="Marker2D" unique_id=995540307 groups=["Enemies"]]
+light_mask = 8
+visibility_layer = 23
+texture_filter = 1
+position = Vector2(0, 21)
+rotation = -1.5707964
+texture = ExtResource("3_03cpt")
+flip_h = true

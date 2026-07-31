@@ -39,16 +39,6 @@ func _chase_player() -> void:
 		
 		anim.flip_h = velocity.x < 0
 
-func _verify_collision() -> void:
-	if get_slide_collision_count() == 0:
-		return
-	
-	for i in get_slide_collision_count():
-		var slide = get_slide_collision(i)
-		if is_instance_valid(slide):
-			print("Bateu")
-			searching_goal *= -1
-			return
 
 func _on_range_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -60,3 +50,13 @@ func _on_navigation_timer_timeout() -> void:
 		if navigation_agent.target_position != player_pointer.global_position:
 			navigation_agent.target_position = player_pointer.global_position
 	navigation_timer.start()
+
+func _verify_collision() -> void:
+	if get_slide_collision_count() == 0:
+		return
+	
+	for i in get_slide_collision_count():
+		var slide = get_slide_collision(i)
+		if is_instance_valid(slide):
+			searching_goal *= -1
+			return
